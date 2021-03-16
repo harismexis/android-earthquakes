@@ -12,8 +12,6 @@ The API requires a username which can be obtained after registering with the web
 Also the username needs to be registered in the website for using the APIs 
 The username needs to be entered in buildsystem/configurations.gradle
 
-![Alt text](screenshots/config/config.png?raw=true "app screenshot")
-
 ### Description:
 
 The application fetches a json feed of Earthquakes and shows them in a list in Home Screen.
@@ -31,8 +29,8 @@ and database items. The Tests share common resources under the sharedTest folder
 ### Screenshots:
 
 #### Home
-![Alt text](screenshots/home/home-screen-poco-f1.png?raw=true "app screenshot")
+![Alt text](screenshots/home-1.png?raw=true "app screenshot")
 
 #### Map
-![Alt text](screenshots/detail/detail-screen-poco-f1.png?raw=true "app screenshot")
+![Alt text](screenshots/map-1.png?raw=true "app screenshot")
 
