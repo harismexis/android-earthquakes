@@ -1,7 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
+
+def commonValues = rootProject.ext.common
 
 android {
     compileSdkVersion 30
@@ -13,8 +16,9 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.example.earthquakes.setup.runner.InstrumentedRunner"
+        buildConfigField "String", "GEONAMES_USERNAME", commonValues.GEONAMES_USERNAME
+        buildConfigField "String", "EARTHQUAKE_API_BASE_URL", commonValues.EARTHQUAKE_API_BASE_URL
     }
 
     buildTypes {
@@ -23,23 +27,57 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
+    sourceSets {
+        androidTest {
+            java.srcDirs += "src/sharedTest/java"
+            resources.srcDirs += "src/sharedTest/resources"
+        }
+        test {
+            java.srcDirs += "src/sharedTest/java"
+            resources.srcDirs += "src/sharedTest/resources"
+        }
+    }
+
 }
 
 dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(':core')
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation libraries.values()
+    implementation rxJavaDependencies.values()
+    implementation daggerDependancies.values()
+
+    debugImplementation librariesDebug.values()
+
+    api glideDependencies.values()
+
+    kapt librariesKapt.values()
+    kapt annotationProcessorsDependencies.values()
+
+    testImplementation testLibraries.values()
+
+    androidTestImplementation androidTestLibraries.values()
+
+    kaptAndroidTest annotationProcessorsDependencies.dagger_compiler
+    kaptAndroidTest annotationProcessorsDependencies.dagger_android_processor
+
 }

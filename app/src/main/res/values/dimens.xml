@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="loading_progress_size">50dp</dimen>
+
+    <!-- toolbar -->
+    <dimen name="toolbar_text_size">18sp</dimen>
+
+    <!-- vh quake item -->
+    <dimen name="vh_quake_item_img_width">140dp</dimen>
+    <dimen name="vh_quake_item_img_height">120dp</dimen>
+    <dimen name="vh_quake_item_title_text_size">17sp</dimen>
+    <dimen name="vh_quake_item_meta_text_size">16sp</dimen>
+    <dimen name="vh_quake_item_padding_vertical">16dp</dimen>
+    <dimen name="vh_quake_item_padding_horizontal">20dp</dimen>
+    <dimen name="vh_quake_item_txt_margin_horizontal">10dp</dimen>
+    <dimen name="vh_quake_item_txt_meta_margin_top">10dp</dimen>
+
+    <!-- recycler divider -->
+    <dimen name="divider_margin_horizontal">20dp</dimen>
+
+</resources>

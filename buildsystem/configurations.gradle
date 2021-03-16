@@ -1,0 +1,8 @@
+ext {
+
+    common = [
+            GEONAMES_USERNAME : '\"' + "harismexis" + '\"',
+            EARTHQUAKE_API_BASE_URL : '\"' + "http://api.geonames.org/" + '\"'
+    ]
+
+}

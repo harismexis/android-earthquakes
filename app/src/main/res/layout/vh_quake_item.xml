@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/vh_quake_item_root_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/vh_quake_item_padding_horizontal"
+    android:paddingTop="@dimen/vh_quake_item_padding_vertical"
+    android:paddingEnd="@dimen/vh_quake_item_padding_horizontal"
+    android:paddingBottom="@dimen/vh_quake_item_padding_vertical">
+
+    <TextView
+        android:id="@+id/txt_source_label"
+        style="@style/VhQuakeTxtv"
+        android:text="@string/vh_source_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Title" />
+
+    <TextView
+        android:id="@+id/txt_source"
+        style="@style/VhQuakeMetaTxtv"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_source_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/txt_source_label"
+        tools:text="Title" />
+
+    <TextView
+        android:id="@+id/txt_datetime_label"
+        style="@style/VhQuakeTxtv"
+        android:layout_marginTop="@dimen/vh_quake_item_txt_meta_margin_top"
+        android:text="@string/vh_date_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_source_label"
+        tools:text="Date Time" />
+
+    <TextView
+        android:id="@+id/txt_datetime"
+        style="@style/VhQuakeMetaTxtv"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_datetime_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/txt_datetime_label"
+        tools:text="Date Time" />
+
+    <TextView
+        android:id="@+id/txt_depth_label"
+        style="@style/VhQuakeTxtv"
+        android:layout_marginTop="@dimen/vh_quake_item_txt_meta_margin_top"
+        android:text="@string/vh_depth_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_datetime_label"
+        tools:text="Metadata" />
+
+    <TextView
+        android:id="@+id/txt_depth"
+        style="@style/VhQuakeMetaTxtv"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_depth_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/txt_depth_label"
+        tools:text="Metadata" />
+
+    <TextView
+        android:id="@+id/txt_magnitude_label"
+        style="@style/VhQuakeTxtv"
+        android:layout_marginTop="@dimen/vh_quake_item_txt_meta_margin_top"
+        android:text="@string/vh_magnitude_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_depth_label"
+        tools:text="Metadata" />
+
+    <TextView
+        android:id="@+id/txt_magnitude"
+        style="@style/VhQuakeMetaTxtv"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_magnitude_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/txt_magnitude_label"
+        tools:text="Metadata" />
+
+    <TextView
+        android:id="@+id/txt_longitude_label"
+        style="@style/VhQuakeTxtv"
+        android:layout_marginTop="@dimen/vh_quake_item_txt_meta_margin_top"
+        android:text="@string/vh_longitude_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_magnitude_label"
+        tools:text="Metadata" />
+
+    <TextView
+        android:id="@+id/txt_longitude"
+        style="@style/VhQuakeMetaTxtv"
+        android:layout_marginTop="@dimen/vh_quake_item_txt_meta_margin_top"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_longitude_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/txt_longitude_label"
+        tools:text="Metadata" />
+
+    <TextView
+        android:id="@+id/txt_latitude_label"
+        style="@style/VhQuakeTxtv"
+        android:layout_marginTop="@dimen/vh_quake_item_txt_meta_margin_top"
+        android:text="@string/vh_latitude_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_longitude_label"
+        tools:text="Metadata" />
+
+    <TextView
+        android:id="@+id/txt_latitude"
+        style="@style/VhQuakeMetaTxtv"
+        android:layout_marginTop="@dimen/vh_quake_item_txt_meta_margin_top"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_latitude_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/txt_latitude_label"
+        tools:text="Metadata" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- toolbar -->
+    <dimen name="toolbar_text_size">20sp</dimen>
+
+    <!-- vh quake item -->
+    <dimen name="vh_quake_item_img_width">300dp</dimen>
+    <dimen name="vh_quake_item_img_height">280dp</dimen>
+    <dimen name="vh_quake_item_title_text_size">28sp</dimen>
+    <dimen name="vh_quake_item_meta_text_size">24sp</dimen>
+    <dimen name="vh_quake_item_txt_margin_horizontal">30dp</dimen>
+
+</resources>
