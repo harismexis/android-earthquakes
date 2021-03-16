@@ -1,10 +1,8 @@
 ### Technologies:
 
 The project is written in Kotlin and uses Clean Architecture + MVVM \
-https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html \
-https://www.raywenderlich.com/3595916-clean-architecture-tutorial-for-android-getting-started \
 Some frameworks & libraries have been used i.e. JetPack (Coroutines, LiveData, Room, ViewModel), 
-Retrofit, Gson, Glide, Dagger, Mockito-kotlin, Mockk, Espresso.
+Retrofit, Gson, Dagger, Mockito-kotlin, Mockk, Espresso.
 
 ### Configuration:
 The project uses the API  
