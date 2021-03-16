@@ -86,32 +86,12 @@
         tools:text="Metadata" />
 
     <TextView
-        android:id="@+id/txt_longitude_label"
-        style="@style/VhQuakeTxtv"
-        android:layout_marginTop="@dimen/vh_quake_item_txt_meta_margin_top"
-        android:text="@string/vh_longitude_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_magnitude_label"
-        tools:text="Metadata" />
-
-    <TextView
-        android:id="@+id/txt_longitude"
-        style="@style/VhQuakeMetaTxtv"
-        android:layout_marginTop="@dimen/vh_quake_item_txt_meta_margin_top"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_longitude_label"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toEndOf="@+id/txt_longitude_label"
-        tools:text="Metadata" />
-
-    <TextView
         android:id="@+id/txt_latitude_label"
         style="@style/VhQuakeTxtv"
         android:layout_marginTop="@dimen/vh_quake_item_txt_meta_margin_top"
         android:text="@string/vh_latitude_label"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_longitude_label"
+        app:layout_constraintTop_toBottomOf="@+id/txt_magnitude_label"
         tools:text="Metadata" />
 
     <TextView
@@ -123,6 +103,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/txt_latitude_label"
+        tools:text="Metadata" />
+
+    <TextView
+        android:id="@+id/txt_longitude_label"
+        style="@style/VhQuakeTxtv"
+        android:layout_marginTop="@dimen/vh_quake_item_txt_meta_margin_top"
+        android:text="@string/vh_longitude_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_latitude_label"
+        tools:text="Metadata" />
+
+    <TextView
+        android:id="@+id/txt_longitude"
+        style="@style/VhQuakeMetaTxtv"
+        android:layout_marginTop="@dimen/vh_quake_item_txt_meta_margin_top"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_longitude_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/txt_longitude_label"
         tools:text="Metadata" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

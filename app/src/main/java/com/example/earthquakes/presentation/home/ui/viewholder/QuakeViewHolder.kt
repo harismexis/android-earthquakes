@@ -27,8 +27,8 @@ class QuakeViewHolder(
         binding.txtDepth.text = item.depth.toString()
         setupMagnitudeText(item.magnitude)
         binding.txtMagnitude.text = item.magnitude.toString()
-        binding.txtLongitude.text = item.longitude.toString()
         binding.txtLatitude.text = item.latitude.toString()
+        binding.txtLongitude.text = item.longitude.toString()
         itemView.setOnClickListener {
             itemClick.onQuakeItemClick(item, position)
         }

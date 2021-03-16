@@ -56,7 +56,7 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
         if (item.longitude == null && item.latitude == null) return
         val lon = item.longitude
         val lat = item.latitude
-        val mapUri = Uri.parse("geo:$lat,$lon")
+        val mapUri = Uri.parse("geo:0,0?q=$lat,$lon(Quake)")
         val intent = Intent(Intent.ACTION_VIEW, mapUri)
         intent.setPackage("com.google.android.apps.maps")
         try {
