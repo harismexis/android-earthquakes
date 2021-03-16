@@ -57,7 +57,8 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
         val lon = item.longitude
         val lat = item.latitude
         val mapUri = Uri.parse("geo:0,0?q=$lat,$lon(Quake)")
-        val intent = Intent(Intent.ACTION_VIEW, mapUri)
+        val uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=$lat,$lon")
+        val intent = Intent(Intent.ACTION_VIEW, uri)
         intent.setPackage("com.google.android.apps.maps")
         try {
             startActivity(intent)

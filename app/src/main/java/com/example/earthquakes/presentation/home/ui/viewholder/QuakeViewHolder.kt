@@ -4,6 +4,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.earthquakes.R
 import com.example.earthquakes.databinding.VhQuakeItemBinding
 import com.example.earthquakes.domain.Quake
+import com.example.earthquakes.framework.extensions.setTextColorCompat
+import com.example.earthquakes.framework.extensions.setTextOrMissing
 
 class QuakeViewHolder(
     private val binding: VhQuakeItemBinding,
@@ -22,13 +24,13 @@ class QuakeViewHolder(
         item: Quake,
         position: Int
     ) {
-        binding.txtSource.text = item.source
-        binding.txtDatetime.text = item.datetime
-        binding.txtDepth.text = item.depth.toString()
+        binding.txtSource.setTextOrMissing(item.source)
+        binding.txtDatetime.setTextOrMissing(item.datetime)
+        binding.txtDepth.setTextOrMissing(item.depth.toString())
         setupMagnitudeText(item.magnitude)
-        binding.txtMagnitude.text = item.magnitude.toString()
-        binding.txtLatitude.text = item.latitude.toString()
-        binding.txtLongitude.text = item.longitude.toString()
+        binding.txtMagnitude.setTextOrMissing(item.magnitude.toString())
+        binding.txtLatitude.setTextOrMissing(item.latitude.toString())
+        binding.txtLongitude.setTextOrMissing(item.longitude.toString())
         itemView.setOnClickListener {
             itemClick.onQuakeItemClick(item, position)
         }
@@ -36,9 +38,9 @@ class QuakeViewHolder(
 
     private fun setupMagnitudeText(magnitude: Float?) {
         if (magnitude != null && magnitude >= MAGNITUDE_THRESHOLD) {
-            binding.txtMagnitude.setTextColor(binding.txtMagnitude.context.getColor(R.color.red_8))
+            binding.txtMagnitude.setTextColorCompat(R.color.red_8)
         } else {
-            binding.txtMagnitude.setTextColor(binding.txtMagnitude.context.getColor(R.color.default_text_color))
+            binding.txtMagnitude.setTextColorCompat(R.color.default_text_color)
         }
     }
 
