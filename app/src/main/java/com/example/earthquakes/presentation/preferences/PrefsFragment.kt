@@ -30,22 +30,26 @@ class PrefsFragment : PreferenceFragmentCompat() {
         @StringRes defValueResId: Int
     ) {
         val editTextPref = findEditTextPrefByKey(prefKeyResId)
-        val defaultValue = getString(defValueResId)
-        editTextPref?.setOnBindEditTextListener { editText ->
-            editText.makeSignedDecimal()
-            if (editText.text.isNullOrBlank()) {
-                editText.setText(defaultValue)
+        editTextPref?.let {
+            val defaultValue = getString(defValueResId)
+            it.setOnBindEditTextListener { editText ->
+                editText.makeSignedDecimal()
+                if (editText.text.isNullOrBlank()) {
+                    editText.setText(defaultValue)
+                }
             }
         }
     }
 
     private fun setupMaxResultsPref() {
         val maxResults = findEditTextPrefByKey(R.string.key_pref_max_quakes)
-        val maxResultsDefault = getString(R.string.pref_max_results_default)
-        maxResults?.setOnBindEditTextListener { editText ->
-            editText.makeNumeric()
-            editText.filters = arrayOf<InputFilter>(InputFilterMinMax("1", "500"))
-            if (editText.text.isNullOrBlank()) editText.setText(maxResultsDefault)
+        maxResults?.let {
+            val defaultValue = getString(R.string.pref_max_results_default)
+            it.setOnBindEditTextListener { editText ->
+                editText.makeNumeric()
+                editText.filters = arrayOf<InputFilter>(InputFilterMinMax("1", "500"))
+                if (editText.text.isNullOrBlank()) editText.setText(defaultValue)
+            }
         }
     }
 }
