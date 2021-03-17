@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 import com.example.earthquakes.R
-import com.example.earthquakes.framework.extensions.getFloatRes
-import com.example.earthquakes.framework.extensions.getIntRes
+import com.example.earthquakes.framework.extensions.getStringResAsFloat
+import com.example.earthquakes.framework.extensions.getStringResAsInt
 
 class PrefsManager(context: Context) {
 
@@ -17,11 +17,16 @@ class PrefsManager(context: Context) {
     private val keyWestBound = appContext.getString(R.string.key_pref_west_bound)
     private val keyMaxQuakes = appContext.getString(R.string.key_pref_max_quakes)
 
-    private val northDefault: Float = appContext.getFloatRes(R.dimen.pref_north_default)
-    private val southDefault: Float = appContext.getFloatRes(R.dimen.pref_south_default)
-    private val eastDefault: Float = appContext.getFloatRes(R.dimen.pref_east_default)
-    private val westDefault: Float = appContext.getFloatRes(R.dimen.pref_west_default)
-    private val maxQuakesDefault: Int = appContext.getIntRes(R.integer.pref_max_results_default)
+    private val northDefault: Float =
+        appContext.getStringResAsFloat(R.string.pref_north_default) ?: 0.0f
+    private val southDefault: Float =
+        appContext.getStringResAsFloat(R.string.pref_south_default) ?: 0.0f
+    private val eastDefault: Float =
+        appContext.getStringResAsFloat(R.string.pref_east_default) ?: 0.0f
+    private val westDefault: Float =
+        appContext.getStringResAsFloat(R.string.pref_west_default) ?: 0.0f
+    private val maxQuakesDefault: Int =
+        appContext.getStringResAsInt(R.string.pref_max_results_default) ?: 0
 
     companion object {
         private const val MAX_QUAKES_THRESHOLD = 500

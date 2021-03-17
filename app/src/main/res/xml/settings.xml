@@ -2,30 +2,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <EditTextPreference
+        android:defaultValue="@string/pref_north_default"
         android:key="@string/key_pref_north_bound"
         android:singleLine="true"
         android:summary="North coordinate of bounding box"
         android:title="North bound" />
 
     <EditTextPreference
+        android:defaultValue="@string/pref_south_default"
         android:key="@string/key_pref_south_bound"
         android:singleLine="true"
         android:summary="South coordinate of bounding box"
         android:title="South bound" />
 
     <EditTextPreference
+        android:defaultValue="@string/pref_east_default"
         android:key="@string/key_pref_east_bound"
         android:singleLine="true"
         android:summary="East coordinate of bounding box"
         android:title="East bound" />
 
     <EditTextPreference
+        android:defaultValue="@string/pref_west_default"
         android:key="@string/key_pref_west_bound"
         android:singleLine="true"
         android:summary="West coordinate of bounding box"
         android:title="West bound" />
 
     <EditTextPreference
+        android:defaultValue="@string/pref_max_results_default"
         android:key="@string/key_pref_max_quakes"
         android:singleLine="true"
         android:title="Max results"
