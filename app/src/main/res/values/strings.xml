@@ -25,7 +25,13 @@
     <string name="pref_south_bound_title">South bound</string>
     <string name="pref_east_bound_title">East bound</string>
     <string name="pref_west_bound_title">West bound</string>
-    <string name="pref_max_quakes_title">Max results (max 500)</string>
+    <string name="pref_max_quakes_title">Max results</string>
+
+    <string name="pref_north_bound_summary">North coordinate of bounding box</string>
+    <string name="pref_south_bound_summary">South coordinate of bounding box</string>
+    <string name="pref_east_bound_summary">East coordinate of bounding box</string>
+    <string name="pref_west_bound_summary">West coordinate of bounding box</string>
+    <string name="pref_max_quakes_summary">Max quake results (max 500)</string>
 
     <string name="pref_north_default">30.0</string>
     <string name="pref_south_default">-30.0</string>

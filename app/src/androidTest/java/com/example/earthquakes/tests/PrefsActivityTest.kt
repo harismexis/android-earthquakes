@@ -3,6 +3,7 @@ package com.example.earthquakes.tests
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItem
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -77,6 +78,33 @@ class PrefsActivityTest : InstrumentedTestSetup() {
         onView(withId(androidx.preference.R.id.recycler_view))
             .perform(actionOnItem<RecyclerView.ViewHolder>(
                 hasDescendant(withText(R.string.pref_max_quakes_title)), click()))
+    }
+
+    @Test
+    fun checkPreferenceViewsBySummaries() {
+        // when
+        testRule.launchActivity(null)
+
+        // then
+        onView(withId(androidx.preference.R.id.recycler_view)).check(
+            matches(hasDescendant(withText(R.string.pref_north_bound_summary)))
+        )
+
+        onView(withId(androidx.preference.R.id.recycler_view)).check(
+            matches(hasDescendant(withText(R.string.pref_south_bound_summary)))
+        )
+
+        onView(withId(androidx.preference.R.id.recycler_view)).check(
+            matches(hasDescendant(withText(R.string.pref_east_bound_summary)))
+        )
+
+        onView(withId(androidx.preference.R.id.recycler_view)).check(
+            matches(hasDescendant(withText(R.string.pref_west_bound_summary)))
+        )
+
+        onView(withId(androidx.preference.R.id.recycler_view)).check(
+            matches(hasDescendant(withText(R.string.pref_max_quakes_summary)))
+        )
     }
 
 }

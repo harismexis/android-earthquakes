@@ -5,28 +5,28 @@
         android:defaultValue="@string/pref_north_default"
         android:key="@string/key_pref_north_bound"
         android:singleLine="true"
-        android:summary="North coordinate of bounding box"
+        android:summary="@string/pref_north_bound_summary"
         android:title="@string/pref_north_bound_title" />
 
     <EditTextPreference
         android:defaultValue="@string/pref_south_default"
         android:key="@string/key_pref_south_bound"
         android:singleLine="true"
-        android:summary="South coordinate of bounding box"
+        android:summary="@string/pref_south_bound_summary"
         android:title="@string/pref_south_bound_title" />
 
     <EditTextPreference
         android:defaultValue="@string/pref_east_default"
         android:key="@string/key_pref_east_bound"
         android:singleLine="true"
-        android:summary="East coordinate of bounding box"
+        android:summary="@string/pref_east_bound_summary"
         android:title="@string/pref_east_bound_title" />
 
     <EditTextPreference
         android:defaultValue="@string/pref_west_default"
         android:key="@string/key_pref_west_bound"
         android:singleLine="true"
-        android:summary="West coordinate of bounding box"
+        android:summary="@string/pref_west_bound_summary"
         android:title="@string/pref_west_bound_title" />
 
     <EditTextPreference
@@ -34,6 +34,6 @@
         android:key="@string/key_pref_max_quakes"
         android:singleLine="true"
         android:title="@string/pref_max_quakes_title"
-        app:summary="Max quake results" />
+        app:summary="@string/pref_max_quakes_summary" />
 
 </PreferenceScreen>
