@@ -7,6 +7,8 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
 import androidx.test.espresso.intent.Intents
+import androidx.test.espresso.intent.Intents.intended
+import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -19,6 +21,7 @@ import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAK
 import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAKES_WHEN_TWO_IDS_ABSENT
 import com.example.earthquakes.presentation.home.ui.activity.HomeActivity
 import com.example.earthquakes.presentation.home.viewmodel.HomeViewModel
+import com.example.earthquakes.presentation.preferences.PrefsActivity
 import com.example.earthquakes.setup.base.InstrumentedTestSetup
 import com.example.earthquakes.setup.viewmodel.MockHomeViewModelObject
 import com.example.earthquakes.setup.testutil.RecyclerViewItemCountAssertion
@@ -126,6 +129,19 @@ class HomeActivityTest : InstrumentedTestSetup() {
         onView(withId(R.id.home_list)).check(
             RecyclerViewItemCountAssertion(EXPECTED_NUM_QUAKES_WHEN_NO_DATA)
         )
+    }
+
+    @Test
+    fun clickOnMenuSettingsItem_opensPrefsActivity() {
+        // given
+        every { mockViewModel.models } returns MockHomeViewModelObject.models
+        launchActivityAndMockLiveData()
+
+        // when
+        onView(withId(R.id.action_settings)).perform(click())
+
+        // then
+        intended(hasComponent(PrefsActivity::class.java.name))
     }
 
     private fun verifyRecyclerViewShowsExpectedData() {
