@@ -12,11 +12,6 @@ class InputFilterMinMax : InputFilter {
         this.max = max
     }
 
-    constructor(min: String, max: String) {
-        this.min = min.toInt()
-        this.max = max.toInt()
-    }
-
     override fun filter(
         source: CharSequence,
         start: Int,

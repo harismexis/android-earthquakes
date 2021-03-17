@@ -47,7 +47,7 @@ class PrefsFragment : PreferenceFragmentCompat() {
             val defaultValue = getString(R.string.pref_max_results_default)
             it.setOnBindEditTextListener { editText ->
                 editText.makeNumeric()
-                editText.filters = arrayOf<InputFilter>(InputFilterMinMax("1", "500"))
+                editText.filters = arrayOf<InputFilter>(InputFilterMinMax(1, 500))
                 if (editText.text.isNullOrBlank()) editText.setText(defaultValue)
             }
         }
