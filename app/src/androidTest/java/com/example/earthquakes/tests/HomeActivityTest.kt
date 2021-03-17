@@ -57,6 +57,8 @@ class HomeActivityTest : InstrumentedTestSetup() {
     fun remoteFeedHasAllItemsValid_then_homeListHasExpectedItems() {
         // given
         every { mockViewModel.models } returns MockHomeViewModelObject.models
+
+        // when
         launchActivityAndMockLiveData()
 
         // then
@@ -73,6 +75,8 @@ class HomeActivityTest : InstrumentedTestSetup() {
         // given
         mockItems = mockParser.getMockQuakesFromFeedWithSomeIdsAbsent()
         every { mockViewModel.models } returns MockHomeViewModelObject.models
+
+        // when
         launchActivityAndMockLiveData()
 
         // then
@@ -89,6 +93,8 @@ class HomeActivityTest : InstrumentedTestSetup() {
         // given
         mockItems = mockParser.getMockQuakesFromFeedWithAllIdsAbsent()
         every { mockViewModel.models } returns MockHomeViewModelObject.models
+
+        // when
         launchActivityAndMockLiveData()
 
         // then
@@ -104,6 +110,8 @@ class HomeActivityTest : InstrumentedTestSetup() {
         // given
         mockItems = mockParser.getMockQuakesFromFeedWithSomeItemsEmpty()
         every { mockViewModel.models } returns MockHomeViewModelObject.models
+
+        // when
         launchActivityAndMockLiveData()
 
         // then
@@ -120,6 +128,8 @@ class HomeActivityTest : InstrumentedTestSetup() {
         // given
         mockItems = mockParser.getMockQuakesFromFeedWithEmptyJsonArray()
         every { mockViewModel.models } returns MockHomeViewModelObject.models
+
+        // when
         launchActivityAndMockLiveData()
 
         // then
