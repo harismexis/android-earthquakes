@@ -2,6 +2,8 @@
 <resources>
 
     <!-- Palette -->
+    <color name="white">#FFFFFFFF</color>
+
     <color name="transparent">#00ffffff</color>
 
     <color name="primary">#2196F3</color>
@@ -18,17 +20,16 @@
     <color name="black">#FF000000</color>
     <color name="black_six">#222222</color>
 
-    <color name="white">#FFFFFFFF</color>
-
     <color name="grey_one">#4d4d4d</color>
-    <color name="grey_three">#cccccc</color>
     <color name="grey_four">#808080</color>
     <color name="grey_nine">#80404040</color>
+    <color name="grey_eleven">#424242</color>
+    <color name="grey_ten">#212121</color>
 
     <color name="red_8">#D32F2F</color>
     <!-- End Palette -->
 
-    <color name="default_background_color">@color/black_six</color>
+    <color name="default_background_color">@color/black</color>
     <color name="default_text_color">@color/white</color>
 
 </resources>

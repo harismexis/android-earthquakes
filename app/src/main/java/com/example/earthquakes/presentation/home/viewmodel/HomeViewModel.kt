@@ -10,13 +10,15 @@ import com.example.earthquakes.domain.Quake
 import com.example.earthquakes.framework.extensions.getErrorMessage
 import com.example.earthquakes.framework.util.functional.Action1
 import com.example.earthquakes.framework.util.network.ConnectivityMonitor
-import com.example.earthquakes.presentation.interactors.HomeInteractors
+import com.example.earthquakes.presentation.home.interactors.HomeInteractors
+import com.example.earthquakes.presentation.preferences.PrefsManager
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(
     private val interactors: HomeInteractors,
     private val connectivity: ConnectivityMonitor,
+    private val prefsManager: PrefsManager
 ) : ViewModel() {
 
     private val TAG = HomeViewModel::class.qualifiedName
@@ -24,13 +26,6 @@ class HomeViewModel @Inject constructor(
     private val mModels = MutableLiveData<List<Quake>>()
     val models: LiveData<List<Quake>>
         get() = mModels
-
-    companion object {
-        const val NORTH_DEFAULT = 44.1f
-        const val SOUTH_DEFAULT = -9.9f
-        const val EAST_DEFAULT = -22.4f
-        const val WEST_DEFAULT = 55.2f
-    }
 
     fun bind() {
         if (connectivity.isOnline()) {
@@ -52,10 +47,11 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val items = interactors.interGetRemoteQuakes.invoke(
-                    north = NORTH_DEFAULT,
-                    south = SOUTH_DEFAULT,
-                    east = EAST_DEFAULT,
-                    west = WEST_DEFAULT,
+                    prefsManager.getNorth(),
+                    prefsManager.getSouth(),
+                    prefsManager.getEast(),
+                    prefsManager.getWest(),
+                    prefsManager.getMaxQuakeResults(),
                     username = BuildConfig.GEONAMES_USERNAME
                 )
                 mModels.value = items

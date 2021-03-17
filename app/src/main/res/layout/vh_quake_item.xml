@@ -16,7 +16,7 @@
         android:text="@string/vh_source_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Title" />
+        tools:text="Source label" />
 
     <TextView
         android:id="@+id/txt_source"
@@ -26,7 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/txt_source_label"
-        tools:text="Title" />
+        tools:text="Source" />
 
     <TextView
         android:id="@+id/txt_datetime_label"
@@ -35,7 +35,7 @@
         android:text="@string/vh_date_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_source_label"
-        tools:text="Date Time" />
+        tools:text="Date Time label" />
 
     <TextView
         android:id="@+id/txt_datetime"
@@ -54,7 +54,7 @@
         android:text="@string/vh_depth_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_datetime_label"
-        tools:text="Metadata" />
+        tools:text="Depth label" />
 
     <TextView
         android:id="@+id/txt_depth"
@@ -64,7 +64,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/txt_depth_label"
-        tools:text="Metadata" />
+        tools:text="Depth" />
 
     <TextView
         android:id="@+id/txt_magnitude_label"
@@ -73,7 +73,7 @@
         android:text="@string/vh_magnitude_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_depth_label"
-        tools:text="Metadata" />
+        tools:text="Magnitude label" />
 
     <TextView
         android:id="@+id/txt_magnitude"
@@ -83,7 +83,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/txt_magnitude_label"
-        tools:text="Metadata" />
+        tools:text="Magnitude" />
 
     <TextView
         android:id="@+id/txt_latitude_label"
@@ -92,7 +92,7 @@
         android:text="@string/vh_latitude_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_magnitude_label"
-        tools:text="Metadata" />
+        tools:text="Latitude label" />
 
     <TextView
         android:id="@+id/txt_latitude"
@@ -103,7 +103,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/txt_latitude_label"
-        tools:text="Metadata" />
+        tools:text="Latitude" />
 
     <TextView
         android:id="@+id/txt_longitude_label"
@@ -112,7 +112,7 @@
         android:text="@string/vh_longitude_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_latitude_label"
-        tools:text="Metadata" />
+        tools:text="Longitude label" />
 
     <TextView
         android:id="@+id/txt_longitude"
@@ -123,6 +123,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/txt_longitude_label"
-        tools:text="Metadata" />
+        tools:text="Longitude" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

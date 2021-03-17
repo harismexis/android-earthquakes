@@ -10,6 +10,7 @@ data class QuakeRemoteRepository(
         south: Float,
         east: Float,
         west: Float,
+        maxResults: Int,
         username: String
-    ): List<Quake> = dataSource.getQuakes(north, south, east, west, username)
+    ): List<Quake> = dataSource.getQuakes(north, south, east, west, maxResults, username)
 }

@@ -10,6 +10,7 @@ class InterGetRemoteQuakes(
         south: Float,
         east: Float,
         west: Float,
+        maxResults: Int,
         username: String
-    ) = repository.getQuakes(north, south, east, west, username)
+    ) = repository.getQuakes(north, south, east, west, maxResults, username)
 }

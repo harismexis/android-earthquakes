@@ -18,14 +18,6 @@ import org.mockito.MockitoAnnotations
 @RunWith(JUnit4::class)
 class InterGetRemoteQuakesTest : UnitTestSetup() {
 
-    companion object {
-        const val north = 44.1f
-        const val south = -9.9f
-        const val east = -22.4f
-        const val west = 55.2f
-        const val username = "testuser"
-    }
-
     @Mock
     private lateinit var mockRepository: QuakeRemoteRepository
 
@@ -45,9 +37,16 @@ class InterGetRemoteQuakesTest : UnitTestSetup() {
     private fun setupMocks() {
         mockItems = mockParser.getMockQuakesFromFeedWithAllItemsValid()
         runBlocking {
-            Mockito.`when`(mockRepository.getQuakes(
-                north, south, east, west, username
-            )).thenReturn(mockItems)
+            Mockito.`when`(
+                mockRepository.getQuakes(
+                    mockNorthBound,
+                    mockSouthBound,
+                    mockEastBound,
+                    mockWestBound,
+                    mockMaxResults,
+                    mockUsername
+                )
+            ).thenReturn(mockItems)
         }
     }
 
@@ -55,10 +54,24 @@ class InterGetRemoteQuakesTest : UnitTestSetup() {
     fun interactorInvoked_then_repositoryCallsExpectedMethodWithExpectedArgAndResult() =
         runBlocking {
             // when
-            val items = subject.invoke(north, south, east, west, username)
+            val items = subject.invoke(
+                mockNorthBound,
+                mockSouthBound,
+                mockEastBound,
+                mockWestBound,
+                mockMaxResults,
+                mockUsername
+            )
 
             // then
-            verify(mockRepository, times(1)).getQuakes(north, south, east, west, username)
+            verify(mockRepository, times(1)).getQuakes(
+                mockNorthBound,
+                mockSouthBound,
+                mockEastBound,
+                mockWestBound,
+                mockMaxResults,
+                mockUsername
+            )
             Assert.assertEquals(mockItems.size, items.size)
         }
 

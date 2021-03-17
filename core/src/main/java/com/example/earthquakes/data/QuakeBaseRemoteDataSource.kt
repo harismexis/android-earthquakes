@@ -9,6 +9,7 @@ interface QuakeBaseRemoteDataSource {
         south: Float,
         east: Float,
         west: Float,
+        maxResults: Int,
         username: String
     ): List<Quake>
 

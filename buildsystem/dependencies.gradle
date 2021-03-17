@@ -62,7 +62,9 @@ ext {
             retrofit_gson      : "com.squareup.retrofit2:converter-gson:$retrofit_gson",
             retrofit           : "com.squareup.retrofit2:retrofit:$retrofit",
 
-            swiperefreshlayout : "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_layout"
+            swiperefreshlayout : "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_layout",
+
+            preference         : 'androidx.preference:preference:1.1.0'
     ]
 
     librariesKapt = [

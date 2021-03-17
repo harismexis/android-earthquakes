@@ -1,4 +1,4 @@
-package com.example.earthquakes.presentation.interactors
+package com.example.earthquakes.presentation.home.interactors
 
 import com.example.earthquakes.interactors.InterGetLocalQuakes
 import com.example.earthquakes.interactors.InterGetRemoteQuakes

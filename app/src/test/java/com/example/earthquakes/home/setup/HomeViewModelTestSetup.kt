@@ -3,12 +3,13 @@ package com.example.earthquakes.home.setup
 import androidx.lifecycle.Observer
 import com.example.earthquakes.BuildConfig
 import com.example.earthquakes.domain.Quake
-import com.example.earthquakes.presentation.interactors.HomeInteractors
+import com.example.earthquakes.presentation.home.interactors.HomeInteractors
 import com.example.earthquakes.framework.util.network.ConnectivityMonitor
 import com.example.earthquakes.interactors.InterGetLocalQuakes
 import com.example.earthquakes.interactors.InterGetRemoteQuakes
 import com.example.earthquakes.interactors.InterStoreQuakes
 import com.example.earthquakes.presentation.home.viewmodel.HomeViewModel
+import com.example.earthquakes.presentation.preferences.PrefsManager
 import com.example.earthquakes.setup.UnitTestSetup
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.verify
@@ -18,14 +19,6 @@ import org.mockito.Mock
 import org.mockito.Mockito
 
 abstract class HomeViewModelTestSetup : UnitTestSetup() {
-
-    companion object {
-        const val north = 44.1f
-        const val south = -9.9f
-        const val east = -22.4f
-        const val west = 55.2f
-        const val username = BuildConfig.GEONAMES_USERNAME
-    }
 
     @Mock
     protected lateinit var mockInterGetLocalItems: InterGetLocalQuakes
@@ -43,6 +36,9 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     protected lateinit var mockConnectivity: ConnectivityMonitor
 
     @Mock
+    protected lateinit var mockPrefsManager: PrefsManager
+
+    @Mock
     lateinit var mockObserver: Observer<List<Quake>>
 
     private val mockItems = mockParser.getMockQuakesFromFeedWithAllItemsValid()
@@ -51,10 +47,11 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     override fun initialise() {
         super.initialise()
         initialiseMockInteractors()
+        mockPrefsManager()
     }
 
     override fun initialiseClassUnderTest() {
-        subject = HomeViewModel(mockInteractors, mockConnectivity)
+        subject = HomeViewModel(mockInteractors, mockConnectivity, mockPrefsManager)
     }
 
     private fun initialiseMockInteractors() {
@@ -90,14 +87,25 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     private fun mockRemoteCall(items: List<Quake>) {
         runBlocking {
             Mockito.`when`(mockInterGetRemoteItems.invoke(
-                north, south, east, west, username
+                mockPrefsManager.getNorth(),
+                mockPrefsManager.getSouth(),
+                mockPrefsManager.getEast(),
+                mockPrefsManager.getWest(),
+                mockPrefsManager.getMaxQuakeResults(),
+                BuildConfig.GEONAMES_USERNAME
             )).thenReturn(items)
         }
     }
 
     protected fun mockRemoteCallThrowsError() {
         runBlocking {
-            Mockito.`when`(mockInterGetRemoteItems.invoke(north, south, east, west, username))
+            Mockito.`when`(mockInterGetRemoteItems.invoke(
+                mockPrefsManager.getNorth(),
+                mockPrefsManager.getSouth(),
+                mockPrefsManager.getEast(),
+                mockPrefsManager.getWest(),
+                mockPrefsManager.getMaxQuakeResults(),
+                BuildConfig.GEONAMES_USERNAME))
                 .thenThrow(IllegalStateException("Error"))
         }
     }
@@ -105,13 +113,19 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     protected fun verifyRemoteCallDone() {
         runBlocking {
             verify(mockInterGetRemoteItems,
-                Mockito.times(1)).invoke(north, south, east, west, username)
+                Mockito.times(1)).invoke(
+                mockPrefsManager.getNorth(),
+                mockPrefsManager.getSouth(),
+                mockPrefsManager.getEast(),
+                mockPrefsManager.getWest(),
+                mockPrefsManager.getMaxQuakeResults(),
+                BuildConfig.GEONAMES_USERNAME)
         }
     }
 
     protected fun verifyRemoteCallNotDone() {
         runBlocking {
-            verify(mockInterGetRemoteItems, Mockito.never()).invoke(any(), any(), any(), any(), any())
+            verify(mockInterGetRemoteItems, Mockito.never()).invoke(any(), any(), any(), any(), any(), any())
         }
     }
 
@@ -180,6 +194,16 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
         runBlocking {
             verify(mockInterStoreItems, Mockito.never()).invoke(any())
         }
+    }
+
+    // prefs
+
+    private fun mockPrefsManager() {
+        Mockito.`when`(mockPrefsManager.getNorth()).thenReturn(mockNorthBound)
+        Mockito.`when`(mockPrefsManager.getSouth()).thenReturn(mockSouthBound)
+        Mockito.`when`(mockPrefsManager.getEast()).thenReturn(mockEastBound)
+        Mockito.`when`(mockPrefsManager.getWest()).thenReturn(mockWestBound)
+        Mockito.`when`(mockPrefsManager.getMaxQuakeResults()).thenReturn(mockMaxResults)
     }
 
 }

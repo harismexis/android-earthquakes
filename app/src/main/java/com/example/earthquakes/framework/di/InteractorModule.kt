@@ -7,7 +7,7 @@ import com.example.earthquakes.framework.datasource.network.data.QuakeRemoteData
 import com.example.earthquakes.interactors.InterGetLocalQuakes
 import com.example.earthquakes.interactors.InterGetRemoteQuakes
 import com.example.earthquakes.interactors.InterStoreQuakes
-import com.example.earthquakes.presentation.interactors.HomeInteractors
+import com.example.earthquakes.presentation.home.interactors.HomeInteractors
 import dagger.Module
 import dagger.Provides
 

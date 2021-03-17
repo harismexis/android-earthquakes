@@ -4,19 +4,23 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProviders
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.earthquakes.R
 import com.example.earthquakes.databinding.ActivityHomeBinding
 import com.example.earthquakes.domain.Quake
+import com.example.earthquakes.framework.base.BaseActivity
 import com.example.earthquakes.framework.extensions.getErrorMessage
 import com.example.earthquakes.framework.extensions.setDivider
 import com.example.earthquakes.presentation.home.ui.adapter.QuakeAdapter
 import com.example.earthquakes.presentation.home.ui.viewholder.QuakeViewHolder
 import com.example.earthquakes.presentation.home.viewmodel.HomeViewModel
-import com.example.earthquakes.framework.base.BaseActivity
+import com.example.earthquakes.presentation.preferences.PrefsActivity
 
 class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
 
@@ -31,6 +35,7 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
 
     override fun initialise() {
         super.initialise()
+        PreferenceManager.setDefaultValues(this, R.xml.settings, false)
         setupSwipeToRefresh()
         viewModel.bind()
     }
@@ -56,7 +61,6 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
         if (item.longitude == null && item.latitude == null) return
         val lon = item.longitude
         val lat = item.latitude
-        val mapUri = Uri.parse("geo:0,0?q=$lat,$lon(Quake)")
         val uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=$lat,$lon")
         val intent = Intent(Intent.ACTION_VIEW, uri)
         intent.setPackage("com.google.android.apps.maps")
@@ -102,6 +106,21 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
                     binding.homeSwipeRefresh.isRefreshing = false
                 }
             }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_home, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_settings -> {
+                startActivity(Intent(this, PrefsActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

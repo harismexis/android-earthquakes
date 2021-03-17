@@ -1,0 +1,44 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_north_default"
+        android:inputType="numberDecimal|numberSigned"
+        android:key="north"
+        android:singleLine="true"
+        android:summary="North coordinate of bounding box"
+        android:title="North bound" />
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_south_default"
+        android:inputType="numberDecimal|numberSigned"
+        android:key="south"
+        android:singleLine="true"
+        android:summary="South coordinate of bounding box"
+        android:title="South bound" />
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_east_default"
+        android:inputType="numberDecimal|numberSigned"
+        android:key="east"
+        android:singleLine="true"
+        android:summary="East coordinate of bounding box"
+        android:title="East bound" />
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_west_default"
+        android:inputType="numberDecimal|numberSigned"
+        android:key="west"
+        android:singleLine="true"
+        android:summary="West coordinate of bounding box"
+        android:title="West bound" />
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_max_results_default"
+        android:inputType="number"
+        android:key="max_quake_results"
+        android:singleLine="true"
+        android:title="Max results"
+        app:summary="Max quake results (up to 500)" />
+
+</PreferenceScreen>

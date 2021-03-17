@@ -23,14 +23,6 @@ class QuakeRemoteDataSourceTest : UnitTestSetup() {
 
     private lateinit var subject: QuakeRemoteDataSource
 
-    companion object {
-        const val north = 44.1f
-        const val south = -9.9f
-        const val east = -22.4f
-        const val west = 55.2f
-        const val username = "testuser"
-    }
-
     init {
         initialise()
     }
@@ -46,18 +38,33 @@ class QuakeRemoteDataSourceTest : UnitTestSetup() {
             // given
             val mockFeed = mockParser.getMockQuakeFeedAllIdsValid()
             Mockito.`when`(mockDao.getQuakeFeed(
-                north,
-                south,
-                east,
-                west,
-                username,
+                mockNorthBound,
+                mockSouthBound,
+                mockEastBound,
+                mockWestBound,
+                mockMaxResults,
+                mockUsername
             )).thenReturn(mockFeed)
 
             // when
-            val items = subject.getQuakes(north, south, east, west, username)
+            val items = subject.getQuakes(
+                mockNorthBound,
+                mockSouthBound,
+                mockEastBound,
+                mockWestBound,
+                mockMaxResults,
+                mockUsername
+            )
 
             // then
-            verify(mockDao, times(1)).getQuakeFeed(north, south, east, west, username)
+            verify(mockDao, times(1)).getQuakeFeed(
+                mockNorthBound,
+                mockSouthBound,
+                mockEastBound,
+                mockWestBound,
+                mockMaxResults,
+                mockUsername
+            )
             verificator.verifyItemsAgainstRemoteFeed(items, mockFeed)
         }
     }

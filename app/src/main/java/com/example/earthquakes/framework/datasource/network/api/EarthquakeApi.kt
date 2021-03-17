@@ -11,6 +11,7 @@ interface EarthquakeApi {
         @Query("south") south: Float,
         @Query("east") east: Float,
         @Query("west") west: Float,
+        @Query("maxRows") maxRows: Int = 10,
         @Query("username") username: String
     ): QuakeFeed?
 

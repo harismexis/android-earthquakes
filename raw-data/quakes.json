@@ -1,0 +1,94 @@
+{
+  "earthquakes": [
+    {
+      "datetime": "2011-03-11 04:46:23",
+      "depth": 24.4,
+      "lng": 142.369,
+      "src": "us",
+      "eqid": "c0001xgp",
+      "magnitude": 8.8,
+      "lat": 38.322
+    },
+    {
+      "datetime": "2012-04-11 06:38:37",
+      "depth": 22.9,
+      "lng": 93.0632,
+      "src": "us",
+      "eqid": "c000905e",
+      "magnitude": 8.6,
+      "lat": 2.311
+    },
+    {
+      "datetime": "2007-09-12 09:10:26",
+      "depth": 30,
+      "lng": 101.3815,
+      "src": "us",
+      "eqid": "2007hear",
+      "magnitude": 8.4,
+      "lat": -4.5172
+    },
+    {
+      "datetime": "2006-11-15 10:14:16",
+      "depth": 28.5,
+      "lng": 153.2238,
+      "src": "us",
+      "eqid": "vcam",
+      "magnitude": 8.3,
+      "lat": 46.6163
+    },
+    {
+      "datetime": "2015-09-16 22:57:40",
+      "depth": 25,
+      "lng": -71.6543,
+      "src": "us",
+      "eqid": "us20003k7a",
+      "magnitude": 8.3,
+      "lat": -31.5695
+    },
+    {
+      "datetime": "2007-01-13 03:23:20",
+      "depth": 10,
+      "lng": 154.4478,
+      "src": "us",
+      "eqid": "2007xmae",
+      "magnitude": 8.2,
+      "lat": 46.2882
+    },
+    {
+      "datetime": "2012-04-11 08:43:09",
+      "depth": 16.4,
+      "lng": 92.4522,
+      "src": "us",
+      "eqid": "c00090da",
+      "magnitude": 8.2,
+      "lat": 0.7731
+    },
+    {
+      "datetime": "2018-08-19 00:30:10",
+      "depth": 600,
+      "lng": -178.1536,
+      "src": "us",
+      "eqid": "us1000gcii",
+      "magnitude": 8.2,
+      "lat": -18.1125
+    },
+    {
+      "datetime": "2021-03-04 19:40:50",
+      "depth": 19.4,
+      "lng": -177.2672,
+      "src": "us",
+      "eqid": "us7000dflf",
+      "magnitude": 8.1,
+      "lat": -29.7399
+    },
+    {
+      "datetime": "2013-02-06 00:12:27",
+      "depth": 28.7,
+      "lng": 165.1378,
+      "src": "us",
+      "eqid": "c000f1s0",
+      "magnitude": 8,
+      "lat": -10.7377
+    }
+  ]
+}

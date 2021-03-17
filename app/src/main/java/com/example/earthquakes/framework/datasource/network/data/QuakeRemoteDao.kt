@@ -15,9 +15,10 @@ class QuakeRemoteDao @Inject constructor(private val api: EarthquakeApi) {
         south: Float,
         east: Float,
         west: Float,
+        maxResults: Int,
         username: String
     ): QuakeFeed? {
-        return api.getEarthquakes(north, south, east, west, username)
+        return api.getEarthquakes(north, south, east, west, maxResults, username)
     }
 
 }

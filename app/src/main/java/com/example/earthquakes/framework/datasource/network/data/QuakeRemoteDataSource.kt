@@ -15,9 +15,10 @@ class QuakeRemoteDataSource @Inject constructor(
         south: Float,
         east: Float,
         west: Float,
+        maxResults: Int,
         username: String
     ): List<Quake> {
-        return dao.getQuakeFeed(north, south, east, west, username).toItems()
+        return dao.getQuakeFeed(north, south, east, west, maxResults, username).toItems()
     }
 
 }
