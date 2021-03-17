@@ -4,7 +4,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
 import androidx.test.espresso.intent.Intents
 import androidx.test.espresso.intent.Intents.intended
@@ -23,9 +22,9 @@ import com.example.earthquakes.presentation.home.ui.activity.HomeActivity
 import com.example.earthquakes.presentation.home.viewmodel.HomeViewModel
 import com.example.earthquakes.presentation.preferences.PrefsActivity
 import com.example.earthquakes.setup.base.InstrumentedTestSetup
-import com.example.earthquakes.setup.viewmodel.MockHomeViewModelObject
 import com.example.earthquakes.setup.testutil.RecyclerViewItemCountAssertion
 import com.example.earthquakes.setup.testutil.RecyclerViewMatcher
+import com.example.earthquakes.setup.viewmodel.MockHomeViewModelObject
 import io.mockk.every
 import org.junit.After
 import org.junit.Before
@@ -181,10 +180,6 @@ class HomeActivityTest : InstrumentedTestSetup() {
         }
     }
 
-    private fun withRecyclerView(recyclerViewId: Int): RecyclerViewMatcher {
-        return RecyclerViewMatcher(recyclerViewId)
-    }
-
     private fun launchActivityAndMockLiveData() {
         testRule.launchActivity(null)
         testRule.activity.runOnUiThread {
@@ -192,9 +187,8 @@ class HomeActivityTest : InstrumentedTestSetup() {
         }
     }
 
-    @After
-    fun doAfterTest() {
-        Intents.release()
+    private fun withRecyclerView(recyclerViewId: Int): RecyclerViewMatcher {
+        return RecyclerViewMatcher(recyclerViewId)
     }
 
     private fun getString(id: Int): String {
@@ -202,13 +196,9 @@ class HomeActivityTest : InstrumentedTestSetup() {
             .targetContext.resources.getString(id)
     }
 
-    private fun clickRecyclerAt(position: Int) {
-        onView(withId(R.id.home_list)).perform(
-            actionOnItemAtPosition<RecyclerView.ViewHolder>(
-                position,
-                click()
-            )
-        )
+    @After
+    fun doAfterTest() {
+        Intents.release()
     }
 
 }

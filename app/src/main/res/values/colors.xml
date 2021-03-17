@@ -29,7 +29,7 @@
     <color name="red_8">#D32F2F</color>
     <!-- End Palette -->
 
-    <color name="default_background_color">@color/black</color>
+    <color name="default_background_color">@color/black_six</color>
     <color name="default_text_color">@color/white</color>
 
 </resources>
