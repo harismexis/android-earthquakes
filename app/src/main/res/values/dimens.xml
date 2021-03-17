@@ -19,4 +19,11 @@
     <!-- recycler divider -->
     <dimen name="divider_margin_horizontal">20dp</dimen>
 
+    <!-- prefs default values -->
+    <item name="pref_north_default" format="float" type="dimen">30.1</item>
+    <item name="pref_south_default" format="float" type="dimen">-30.2</item>
+    <item name="pref_east_default" format="float" type="dimen">-30.3</item>
+    <item name="pref_west_default" format="float" type="dimen">30.4</item>
+    <integer name="pref_max_results_default">10</integer>
+
 </resources>

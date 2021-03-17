@@ -6,7 +6,7 @@
     <string name="activity_settings_label">Settings</string>
     <string name="missing_value">missing value</string>
 
-    <!-- ViewHolder Item -->
+    <!-- ViewHolder Quake item -->
     <string name="vh_source_label">Source:</string>
     <string name="vh_date_label">Date:</string>
     <string name="vh_depth_label">Depth:</string>
@@ -14,12 +14,11 @@
     <string name="vh_longitude_label">Longitude:</string>
     <string name="vh_latitude_label">Latitude:</string>
 
-    <!-- default prefs-->
-    <string name="pref_north_default">44.1</string>
-    <string name="pref_south_default">-9.9</string>
-    <string name="pref_east_default">-22.4</string>
-    <string name="pref_west_default">55.2</string>
-    <string name="pref_max_results_default">10</string>
-
+    <!-- prefs keys -->
+    <string name="key_pref_north_bound">northBound</string>
+    <string name="key_pref_south_bound">southBound</string>
+    <string name="key_pref_east_bound">eastBound</string>
+    <string name="key_pref_west_bound">westBound</string>
+    <string name="key_pref_max_quakes">maxQuakes</string>
 
 </resources>

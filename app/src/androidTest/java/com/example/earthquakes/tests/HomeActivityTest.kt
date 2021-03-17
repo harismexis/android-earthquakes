@@ -128,25 +128,6 @@ class HomeActivityTest : InstrumentedTestSetup() {
         )
     }
 
-    @Test
-    fun clickOnHomeListItem_opensGoogleMaps() {
-        // given
-        every { mockViewModel.models } returns MockHomeViewModelObject.models
-        launchActivityAndMockLiveData()
-
-        // when
-        clickRecyclerAt(0)
-    }
-
-    private fun clickRecyclerAt(position: Int) {
-        onView(withId(R.id.home_list)).perform(
-            actionOnItemAtPosition<RecyclerView.ViewHolder>(
-                position,
-                click()
-            )
-        )
-    }
-
     private fun verifyRecyclerViewShowsExpectedData() {
         mockItems.forEachIndexed { index, item ->
             // scroll to item to make sure it's visible
@@ -203,6 +184,15 @@ class HomeActivityTest : InstrumentedTestSetup() {
     private fun getString(id: Int): String {
         return InstrumentationRegistry.getInstrumentation()
             .targetContext.resources.getString(id)
+    }
+
+    private fun clickRecyclerAt(position: Int) {
+        onView(withId(R.id.home_list)).perform(
+            actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                position,
+                click()
+            )
+        )
     }
 
 }

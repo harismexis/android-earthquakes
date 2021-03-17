@@ -1,63 +1,70 @@
 package com.example.earthquakes.presentation.preferences
 
-import android.app.Application
+import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
+import com.example.earthquakes.R
+import com.example.earthquakes.framework.extensions.getFloatRes
+import com.example.earthquakes.framework.extensions.getIntRes
 
-class PrefsManager(private val application: Application) {
+class PrefsManager(context: Context) {
+
+    private var appContext = context.applicationContext
+
+    private val keyNorthBound = appContext.getString(R.string.key_pref_north_bound)
+    private val keySouthBound = appContext.getString(R.string.key_pref_south_bound)
+    private val keyEastBound = appContext.getString(R.string.key_pref_east_bound)
+    private val keyWestBound = appContext.getString(R.string.key_pref_west_bound)
+    private val keyMaxQuakes = appContext.getString(R.string.key_pref_max_quakes)
+
+    private val northDefault: Float = appContext.getFloatRes(R.dimen.pref_north_default)
+    private val southDefault: Float = appContext.getFloatRes(R.dimen.pref_south_default)
+    private val eastDefault: Float = appContext.getFloatRes(R.dimen.pref_east_default)
+    private val westDefault: Float = appContext.getFloatRes(R.dimen.pref_west_default)
+    private val maxQuakesDefault: Int = appContext.getIntRes(R.integer.pref_max_results_default)
 
     companion object {
-        private const val KEY_NORTH = "north"
-        private const val KEY_SOUTH = "south"
-        private const val KEY_EAST = "east"
-        private const val KEY_WEST = "west"
-        private const val KEY_MAX_QUAKE_RESULTS = "max_quake_results"
-
-        private const val NORTH_DEFAULT = 44.1f
-        private const val SOUTH_DEFAULT = -9.9f
-        private const val EAST_DEFAULT = -22.4f
-        private const val WEST_DEFAULT = 55.2f
-        private const val MAX_QUAKE_RESULTS_DEFAULT = 10
+        private const val MAX_QUAKES_THRESHOLD = 500
     }
 
     fun getNorth(): Float {
-        val north = getStringPref(KEY_NORTH)?.toFloatOrNull()
+        val north = getStringPref(keyNorthBound)?.toFloatOrNull()
         north?.let {
             return it
         }
-        return NORTH_DEFAULT
+        return northDefault
     }
 
     fun getSouth(): Float {
-        val north = getStringPref(KEY_SOUTH)?.toFloatOrNull()
-        north?.let {
+        val south = getStringPref(keySouthBound)?.toFloatOrNull()
+        south?.let {
             return it
         }
-        return SOUTH_DEFAULT
+        return southDefault
     }
 
     fun getEast(): Float {
-        val north = getStringPref(KEY_EAST)?.toFloatOrNull()
-        north?.let {
+        val east = getStringPref(keyEastBound)?.toFloatOrNull()
+        east?.let {
             return it
         }
-        return EAST_DEFAULT
+        return eastDefault
     }
 
     fun getWest(): Float {
-        val north = getStringPref(KEY_WEST)?.toFloatOrNull()
-        north?.let {
+        val west = getStringPref(keyWestBound)?.toFloatOrNull()
+        west?.let {
             return it
         }
-        return WEST_DEFAULT
+        return westDefault
     }
 
     fun getMaxQuakeResults(): Int {
-        val maxResults = getStringPref(KEY_MAX_QUAKE_RESULTS)?.toIntOrNull()
+        val maxResults = getStringPref(keyMaxQuakes)?.toIntOrNull()
         maxResults?.let {
-            return if (maxResults <= 500) it else 500
+            return if (maxResults <= MAX_QUAKES_THRESHOLD) it else MAX_QUAKES_THRESHOLD
         }
-        return MAX_QUAKE_RESULTS_DEFAULT
+        return maxQuakesDefault
     }
 
     private fun getStringPref(
@@ -67,6 +74,6 @@ class PrefsManager(private val application: Application) {
     }
 
     private fun getSharedPreferences(): SharedPreferences {
-        return PreferenceManager.getDefaultSharedPreferences(application.applicationContext)
+        return PreferenceManager.getDefaultSharedPreferences(appContext)
     }
 }
