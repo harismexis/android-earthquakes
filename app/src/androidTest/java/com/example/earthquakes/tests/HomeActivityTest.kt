@@ -1,6 +1,7 @@
 package com.example.earthquakes.tests
 
 import android.content.Intent
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
@@ -18,6 +19,7 @@ import androidx.test.uiautomator.UiDevice
 import com.example.earthquakes.R
 import com.example.earthquakes.domain.Quake
 import com.example.earthquakes.framework.util.getGoogleMapsUrlAt
+import com.example.earthquakes.framework.util.guardLet
 import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAKES_WHEN_ALL_IDS_VALID
 import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAKES_WHEN_NO_DATA
 import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAKES_WHEN_TWO_EMPTY
@@ -163,7 +165,8 @@ class HomeActivityTest : InstrumentedTestSetup() {
     fun clickOnHomeListItem_opensGoogleMaps() {
         // given
         every { mockViewModel.models } returns MockHomeViewModelObject.models
-        val uri = getGoogleMapsUrlAt(mockItems[0].latitude!!, mockItems[0].longitude!!)
+        val (lat, lon) = guardLet(mockItems[0].latitude, mockItems[0].longitude) { return }
+        val uri = getGoogleMapsUrlAt(lat, lon)
         val mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
 
         // when

@@ -2,11 +2,11 @@ package com.example.earthquakes.presentation.home.ui.activity
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.net.Uri
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProviders
 import androidx.preference.PreferenceManager
@@ -17,8 +17,8 @@ import com.example.earthquakes.domain.Quake
 import com.example.earthquakes.framework.base.BaseActivity
 import com.example.earthquakes.framework.extensions.getErrorMessage
 import com.example.earthquakes.framework.extensions.setDivider
-import com.example.earthquakes.framework.util.getGoogleMapsUrlAt
 import com.example.earthquakes.framework.util.getMapIntent
+import com.example.earthquakes.framework.util.guardLet
 import com.example.earthquakes.presentation.home.ui.adapter.QuakeAdapter
 import com.example.earthquakes.presentation.home.ui.viewholder.QuakeViewHolder
 import com.example.earthquakes.presentation.home.viewmodel.HomeViewModel
@@ -60,9 +60,12 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
     }
 
     override fun onQuakeItemClick(item: Quake, position: Int) {
-        if (item.longitude == null || item.latitude == null) return
+        val (lat, lon) = guardLet(item.latitude, item.longitude) {
+            Toast.makeText(this, "Invalid coordinates", Toast.LENGTH_SHORT).show()
+            return
+        }
         try {
-            startActivity(getMapIntent(item.latitude!!, item.longitude!!))
+            startActivity(getMapIntent(lat, lon))
         } catch (e: ActivityNotFoundException) {
             Log.d(TAG, e.getErrorMessage())
         }
