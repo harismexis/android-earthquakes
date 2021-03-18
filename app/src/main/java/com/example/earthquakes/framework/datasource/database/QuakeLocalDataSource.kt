@@ -11,7 +11,8 @@ class QuakeLocalDataSource @Inject constructor(
     private val dao: QuakeLocalDao
 ) : QuakeBaseLocalDataSource {
 
-    override suspend fun insert(items: List<Quake>) {
+    override suspend fun storeQuakes(items: List<Quake>) {
+        dao.deleteAll()
         dao.insertItems(items.toLocalItems())
     }
 

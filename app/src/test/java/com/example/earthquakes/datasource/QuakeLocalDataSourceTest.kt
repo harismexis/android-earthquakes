@@ -38,7 +38,7 @@ class QuakeLocalDataSourceTest : UnitTestSetup() {
             val mockLocalItems = mockItems.toLocalItems()
 
             // when
-            subject.insert(mockItems)
+            subject.storeQuakes(mockItems)
 
             // then
             verify(mockDao, times(1)).insertItems(mockLocalItems)

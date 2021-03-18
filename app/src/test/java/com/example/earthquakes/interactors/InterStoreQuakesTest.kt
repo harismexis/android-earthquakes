@@ -40,7 +40,7 @@ class InterStoreQuakesTest : UnitTestSetup() {
             subject.invoke(mockItems)
 
             // then
-            verify(mockRepository, times(1)).insertQuakes(mockItems)
+            verify(mockRepository, times(1)).storeQuakes(mockItems)
         }
 
 }
