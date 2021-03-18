@@ -18,17 +18,17 @@ class ApplicationModule {
     }
 
     @Provides
-    fun provideLocalDao(app: MainApplication): QuakeLocalDao {
+    fun provideLocalDao(app: Context): QuakeLocalDao {
         return QuakeDatabase.getDatabase(app.applicationContext).getDao()
     }
 
     @Provides
-    fun provideResourceProvider(app: MainApplication): ResourceProvider {
+    fun provideResourceProvider(app: Context): ResourceProvider {
         return ResourceProvider(app.applicationContext)
     }
 
     @Provides
-    fun providePrefsManager(app: MainApplication): PrefsManager {
+    fun providePrefsManager(app: Context): PrefsManager {
         return PrefsManager(app.applicationContext)
     }
 
