@@ -172,8 +172,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
     fun clickOnHomeListItem_opensGoogleMaps() {
         // given
         every { mockViewModel.quakesResult } returns MockHomeViewModelObject.quakesResult
-        val (lat, lon) = guardLet(mockQuakeItems[0].latitude, mockQuakeItems[0].longitude) { return }
-        val uri = getGoogleMapsUrlAt(lat, lon)
+        val uri = getGoogleMapsUrlAt(mockQuakeItems[0].latitude!!, mockQuakeItems[0].longitude!!)
         val mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
 
         // when
