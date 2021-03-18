@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.annotation.StringRes
 import com.example.earthquakes.R
 
-class ResourceProvider(private val context: Context) {
+class ResourceProvider(context: Context) {
 
     private val appContext = context.applicationContext
 

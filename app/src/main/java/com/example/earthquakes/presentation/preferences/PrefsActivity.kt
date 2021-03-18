@@ -2,7 +2,6 @@ package com.example.earthquakes.presentation.preferences
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import com.example.earthquakes.R
 import com.example.earthquakes.databinding.ActivityPrefsBinding
 

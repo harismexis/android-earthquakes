@@ -5,6 +5,7 @@ import com.example.earthquakes.framework.datasource.database.QuakeLocalDao
 import com.example.earthquakes.framework.datasource.database.QuakeDatabase
 import com.example.earthquakes.framework.application.MainApplication
 import com.example.earthquakes.framework.resource.ResourceProvider
+import com.example.earthquakes.presentation.preferences.PrefsManager
 import dagger.Module
 import dagger.Provides
 
@@ -12,18 +13,23 @@ import dagger.Provides
 class ApplicationModule {
 
     @Provides
-    fun provideLocalDao(app: MainApplication): QuakeLocalDao {
-        return QuakeDatabase.getDatabase(app.applicationContext).getDao()
-    }
-
-    @Provides
     fun provideAppContext(app: MainApplication): Context {
         return app.applicationContext
     }
 
     @Provides
+    fun provideLocalDao(app: MainApplication): QuakeLocalDao {
+        return QuakeDatabase.getDatabase(app.applicationContext).getDao()
+    }
+
+    @Provides
     fun provideResourceProvider(app: MainApplication): ResourceProvider {
         return ResourceProvider(app.applicationContext)
+    }
+
+    @Provides
+    fun providePrefsManager(app: MainApplication): PrefsManager {
+        return PrefsManager(app.applicationContext)
     }
 
 }

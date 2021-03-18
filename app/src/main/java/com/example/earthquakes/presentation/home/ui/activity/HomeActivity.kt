@@ -25,7 +25,6 @@ import com.example.earthquakes.presentation.home.ui.adapter.QuakeAdapter
 import com.example.earthquakes.presentation.home.ui.viewholder.QuakeViewHolder
 import com.example.earthquakes.presentation.home.viewmodel.HomeViewModel
 import com.example.earthquakes.presentation.preferences.PrefsActivity
-import java.lang.Exception
 
 class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
 

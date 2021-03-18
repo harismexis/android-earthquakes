@@ -2,7 +2,6 @@ package com.example.earthquakes.interactors
 
 import com.example.earthquakes.data.QuakeRemoteRepository
 import com.example.earthquakes.domain.Quake
-import com.example.earthquakes.home.setup.HomeViewModelTestSetup
 import com.example.earthquakes.setup.UnitTestSetup
 import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify

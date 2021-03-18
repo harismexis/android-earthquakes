@@ -16,8 +16,7 @@ import javax.inject.Singleton
         ViewModelModule::class,
         ApplicationModule::class,
         InteractorModule::class,
-        QuakeApiModule::class,
-        PrefsModule::class]
+        QuakeApiModule::class]
 )
 interface MainComponent : AndroidInjector<MainApplication> {
 

@@ -2,8 +2,6 @@ package com.example.earthquakes.framework.datasource.network.data
 
 import com.example.earthquakes.framework.datasource.network.api.EarthquakeApi
 import com.example.earthquakes.framework.datasource.network.model.QuakeFeed
-import com.example.earthquakes.framework.datasource.network.model.RemoteQuake
-import retrofit2.http.Query
 import javax.inject.Inject
 import javax.inject.Singleton
 
