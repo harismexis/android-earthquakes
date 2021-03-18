@@ -13,3 +13,7 @@ fun EditText?.makeSignedDecimal() {
 fun EditText?.makeNumeric() {
     this?.inputType = InputType.TYPE_CLASS_NUMBER
 }
+
+fun EditText?.makeMasked() {
+    this?.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+}

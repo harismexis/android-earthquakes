@@ -6,6 +6,7 @@ import androidx.annotation.StringRes
 import androidx.preference.EditTextPreference
 import androidx.preference.PreferenceFragmentCompat
 import com.example.earthquakes.R
+import com.example.earthquakes.framework.extensions.makeMasked
 import com.example.earthquakes.framework.extensions.makeNumeric
 import com.example.earthquakes.framework.extensions.makeSignedDecimal
 import com.example.earthquakes.framework.util.filter.InputFilterMinMax
@@ -19,6 +20,7 @@ class PrefsFragment : PreferenceFragmentCompat() {
         setupBoundingBoxPref(R.string.key_pref_east_bound, R.string.pref_east_default)
         setupBoundingBoxPref(R.string.key_pref_west_bound, R.string.pref_west_default)
         setupMaxResultsPref()
+        setupUsernamePref()
     }
 
     private fun findEditTextPrefByKey(@StringRes key: Int): EditTextPreference? {
@@ -49,6 +51,15 @@ class PrefsFragment : PreferenceFragmentCompat() {
                 editText.makeNumeric()
                 editText.filters = arrayOf<InputFilter>(InputFilterMinMax(1, 500))
                 if (editText.text.isNullOrBlank()) editText.setText(defaultValue)
+            }
+        }
+    }
+
+    private fun setupUsernamePref() {
+        val username = findEditTextPrefByKey(R.string.key_pref_username)
+        username?.let {
+            it.setOnBindEditTextListener { editText ->
+                editText.makeMasked()
             }
         }
     }
