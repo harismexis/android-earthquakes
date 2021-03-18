@@ -16,6 +16,7 @@ class PrefsManager(context: Context) {
     private val keyEastBound = appContext.getString(R.string.key_pref_east_bound)
     private val keyWestBound = appContext.getString(R.string.key_pref_west_bound)
     private val keyMaxQuakes = appContext.getString(R.string.key_pref_max_quakes)
+    private val keyUsername = appContext.getString(R.string.key_pref_username)
 
     private val northDefault: Float =
         appContext.getStringResAsFloat(R.string.pref_north_default) ?: 0.0f
@@ -70,6 +71,10 @@ class PrefsManager(context: Context) {
             return if (maxResults <= MAX_QUAKES_THRESHOLD) it else MAX_QUAKES_THRESHOLD
         }
         return maxQuakesDefault
+    }
+
+    fun getUsername(): String {
+        return getStringPref(keyUsername) ?: ""
     }
 
     private fun getStringPref(

@@ -93,46 +93,61 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
 
     private fun mockRemoteCall(items: List<Quake>) {
         runBlocking {
-            Mockito.`when`(mockInterGetRemoteItems.invoke(
-                mockPrefsManager.getNorth(),
-                mockPrefsManager.getSouth(),
-                mockPrefsManager.getEast(),
-                mockPrefsManager.getWest(),
-                mockPrefsManager.getMaxQuakeResults(),
-                BuildConfig.GEONAMES_USERNAME
-            )).thenReturn(items)
+            Mockito.`when`(
+                mockInterGetRemoteItems.invoke(
+                    mockPrefsManager.getNorth(),
+                    mockPrefsManager.getSouth(),
+                    mockPrefsManager.getEast(),
+                    mockPrefsManager.getWest(),
+                    mockPrefsManager.getMaxQuakeResults(),
+                    mockPrefsManager.getUsername()
+                )
+            ).thenReturn(items)
         }
     }
 
     protected fun mockRemoteCallThrowsError() {
         runBlocking {
-            Mockito.`when`(mockInterGetRemoteItems.invoke(
-                mockPrefsManager.getNorth(),
-                mockPrefsManager.getSouth(),
-                mockPrefsManager.getEast(),
-                mockPrefsManager.getWest(),
-                mockPrefsManager.getMaxQuakeResults(),
-                BuildConfig.GEONAMES_USERNAME))
+            Mockito.`when`(
+                mockInterGetRemoteItems.invoke(
+                    mockPrefsManager.getNorth(),
+                    mockPrefsManager.getSouth(),
+                    mockPrefsManager.getEast(),
+                    mockPrefsManager.getWest(),
+                    mockPrefsManager.getMaxQuakeResults(),
+                    mockPrefsManager.getUsername()
+                )
+            )
                 .thenThrow(IllegalStateException(ERROR_MESSAGE))
         }
     }
 
     protected fun verifyRemoteCallDone() {
         runBlocking {
-            verify(mockInterGetRemoteItems,
-                Mockito.times(1)).invoke(
+            verify(
+                mockInterGetRemoteItems,
+                Mockito.times(1)
+            ).invoke(
                 mockPrefsManager.getNorth(),
                 mockPrefsManager.getSouth(),
                 mockPrefsManager.getEast(),
                 mockPrefsManager.getWest(),
                 mockPrefsManager.getMaxQuakeResults(),
-                BuildConfig.GEONAMES_USERNAME)
+                mockPrefsManager.getUsername()
+            )
         }
     }
 
     protected fun verifyRemoteCallNotDone() {
         runBlocking {
-            verify(mockInterGetRemoteItems, Mockito.never()).invoke(any(), any(), any(), any(), any(), any())
+            verify(mockInterGetRemoteItems, Mockito.never()).invoke(
+                any(),
+                any(),
+                any(),
+                any(),
+                any(),
+                any()
+            )
         }
     }
 
@@ -207,14 +222,14 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
         }
     }
 
-    // prefs
-
     private fun mockPrefsManager() {
         Mockito.`when`(mockPrefsManager.getNorth()).thenReturn(mockNorthBound)
         Mockito.`when`(mockPrefsManager.getSouth()).thenReturn(mockSouthBound)
         Mockito.`when`(mockPrefsManager.getEast()).thenReturn(mockEastBound)
         Mockito.`when`(mockPrefsManager.getWest()).thenReturn(mockWestBound)
         Mockito.`when`(mockPrefsManager.getMaxQuakeResults()).thenReturn(mockMaxResults)
+        Mockito.`when`(mockPrefsManager.getMaxQuakeResults()).thenReturn(mockMaxResults)
+        Mockito.`when`(mockPrefsManager.getUsername()).thenReturn(mockUsername)
     }
 
 }

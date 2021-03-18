@@ -41,7 +41,14 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
         super.initialise()
         PreferenceManager.setDefaultValues(this, R.xml.settings, false)
         setupSwipeToRefresh()
-        viewModel.bind()
+        onInitialise()
+    }
+
+    private fun onInitialise() {
+        if (viewModel.hasUserName()) {
+            binding.loadingProgressBar.visibility = View.VISIBLE
+            viewModel.bind()
+        } else showToastMissingUsername()
     }
 
     override fun initialiseViewModel() {
@@ -79,45 +86,11 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
 
     override fun observeLiveData() {
         viewModel.quakesResult.observe(this, {
-            when(it) {
+            when (it) {
                 is QuakesResult.QuakesSuccess -> populate(it.items)
-                is QuakesResult.QuakesError -> populate(it.error)
+                is QuakesResult.QuakesError -> populateError(it.error)
             }
         })
-    }
-
-    private fun populate(models: List<Quake>) {
-        binding.homeSwipeRefresh.isRefreshing = false
-        binding.loadingProgressBar.visibility = View.GONE
-        binding.homeList.visibility = View.VISIBLE
-        uiModels.clear()
-        uiModels.addAll(models)
-        adapter.notifyDataSetChanged()
-    }
-
-    private fun populate(error: String) {
-        binding.homeSwipeRefresh.isRefreshing = false
-        binding.loadingProgressBar.visibility = View.GONE
-        Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
-    }
-
-    private fun initialiseRecycler() {
-        adapter = QuakeAdapter(uiModels, this)
-        adapter.setHasStableIds(true)
-        binding.homeList.layoutManager = LinearLayoutManager(this)
-        binding.homeList.adapter = adapter
-        binding.homeList.setDivider(R.drawable.divider)
-    }
-
-    private fun setupSwipeToRefresh() {
-        binding.homeSwipeRefresh.setOnRefreshListener {
-            binding.homeSwipeRefresh.isRefreshing = true
-            viewModel.refresh { canRefresh ->
-                if (!canRefresh) {
-                    binding.homeSwipeRefresh.isRefreshing = false
-                }
-            }
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -133,6 +106,52 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun populate(models: List<Quake>) {
+        showRefreshView(false)
+        binding.loadingProgressBar.visibility = View.GONE
+        binding.homeList.visibility = View.VISIBLE
+        uiModels.clear()
+        uiModels.addAll(models)
+        adapter.notifyDataSetChanged()
+    }
+
+    private fun populateError(error: String) {
+        binding.homeSwipeRefresh.isRefreshing = false
+        binding.loadingProgressBar.visibility = View.GONE
+        Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun initialiseRecycler() {
+        adapter = QuakeAdapter(uiModels, this)
+        adapter.setHasStableIds(true)
+        binding.homeList.layoutManager = LinearLayoutManager(this)
+        binding.homeList.adapter = adapter
+        binding.homeList.setDivider(R.drawable.divider)
+    }
+
+    private fun setupSwipeToRefresh() {
+        binding.homeSwipeRefresh.setOnRefreshListener {
+            showRefreshView(true)
+            viewModel.refresh { canRefresh ->
+                if (!canRefresh) {
+                    showRefreshView(false)
+                }
+            }
+        }
+    }
+
+    private fun showRefreshView(show: Boolean) {
+        binding.homeSwipeRefresh.isRefreshing = show
+    }
+
+    private fun showToastMissingUsername() {
+        Toast.makeText(
+            this,
+            getString(R.string.please_enter_username),
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
 }

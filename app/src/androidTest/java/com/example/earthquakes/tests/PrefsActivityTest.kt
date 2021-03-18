@@ -81,6 +81,17 @@ class PrefsActivityTest : InstrumentedTestSetup() {
     }
 
     @Test
+    fun testClickOnUsernamePreference() {
+        // when
+        testRule.launchActivity(null)
+
+        // then
+        onView(withId(androidx.preference.R.id.recycler_view))
+            .perform(actionOnItem<RecyclerView.ViewHolder>(
+                hasDescendant(withText(R.string.pref_username_title)), click()))
+    }
+
+    @Test
     fun checkPreferenceViewsBySummaries() {
         // when
         testRule.launchActivity(null)
@@ -104,6 +115,10 @@ class PrefsActivityTest : InstrumentedTestSetup() {
 
         onView(withId(androidx.preference.R.id.recycler_view)).check(
             matches(hasDescendant(withText(R.string.pref_max_quakes_summary)))
+        )
+
+        onView(withId(androidx.preference.R.id.recycler_view)).check(
+            matches(hasDescendant(withText(R.string.pref_username_summary)))
         )
     }
 

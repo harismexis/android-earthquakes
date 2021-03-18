@@ -36,4 +36,10 @@
         android:title="@string/pref_max_quakes_title"
         app:summary="@string/pref_max_quakes_summary" />
 
+    <EditTextPreference
+        android:key="@string/key_pref_username"
+        android:singleLine="true"
+        android:title="@string/pref_username_title"
+        app:summary="@string/pref_username_summary" />
+
 </PreferenceScreen>

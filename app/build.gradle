@@ -17,7 +17,6 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "com.example.earthquakes.setup.runner.InstrumentedRunner"
-        buildConfigField "String", "GEONAMES_USERNAME", commonValues.GEONAMES_USERNAME
         buildConfigField "String", "EARTHQUAKE_API_BASE_URL", commonValues.EARTHQUAKE_API_BASE_URL
     }
 
