@@ -19,7 +19,6 @@ import com.example.earthquakes.R
 import com.example.earthquakes.domain.Quake
 import com.example.earthquakes.framework.quakeresult.QuakesResult
 import com.example.earthquakes.framework.util.getGoogleMapsUrlAt
-import com.example.earthquakes.framework.util.guardLet
 import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAKES_WHEN_ALL_IDS_VALID
 import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAKES_WHEN_NO_DATA
 import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAKES_WHEN_TWO_EMPTY

@@ -2,7 +2,6 @@ package com.example.earthquakes.framework.extensions
 
 import android.text.InputType
 import android.widget.EditText
-import androidx.preference.EditTextPreference
 
 fun EditText?.makeSignedDecimal() {
     this?.inputType = InputType.TYPE_CLASS_NUMBER or
