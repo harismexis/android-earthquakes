@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Earthquakes</string>
-    <string name="activity_home_label">Home</string>
+    <string name="app_name">Quakes</string>
+    <string name="activity_home_label">Quakes</string>
     <string name="activity_settings_label">Settings</string>
     <string name="missing_value">missing value</string>
 
