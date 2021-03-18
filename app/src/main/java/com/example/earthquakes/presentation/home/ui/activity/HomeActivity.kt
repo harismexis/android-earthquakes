@@ -17,6 +17,8 @@ import com.example.earthquakes.domain.Quake
 import com.example.earthquakes.framework.base.BaseActivity
 import com.example.earthquakes.framework.extensions.getErrorMessage
 import com.example.earthquakes.framework.extensions.setDivider
+import com.example.earthquakes.framework.util.getGoogleMapsUrlAt
+import com.example.earthquakes.framework.util.getMapIntent
 import com.example.earthquakes.presentation.home.ui.adapter.QuakeAdapter
 import com.example.earthquakes.presentation.home.ui.viewholder.QuakeViewHolder
 import com.example.earthquakes.presentation.home.viewmodel.HomeViewModel
@@ -58,14 +60,9 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
     }
 
     override fun onQuakeItemClick(item: Quake, position: Int) {
-        if (item.longitude == null && item.latitude == null) return
-        val lon = item.longitude
-        val lat = item.latitude
-        val uri = Uri.parse("https://www.google.com/maps/search/?api=1&query=$lat,$lon")
-        val intent = Intent(Intent.ACTION_VIEW, uri)
-        intent.setPackage("com.google.android.apps.maps")
+        if (item.longitude == null || item.latitude == null) return
         try {
-            startActivity(intent)
+            startActivity(getMapIntent(item.latitude!!, item.longitude!!))
         } catch (e: ActivityNotFoundException) {
             Log.d(TAG, e.getErrorMessage())
         }

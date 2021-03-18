@@ -1,19 +1,23 @@
 package com.example.earthquakes.tests
 
+import android.content.Intent
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
 import androidx.test.espresso.intent.Intents
 import androidx.test.espresso.intent.Intents.intended
-import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
+import androidx.test.espresso.intent.matcher.IntentMatchers.*
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
+import androidx.test.uiautomator.UiDevice
 import com.example.earthquakes.R
 import com.example.earthquakes.domain.Quake
+import com.example.earthquakes.framework.util.getGoogleMapsUrlAt
 import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAKES_WHEN_ALL_IDS_VALID
 import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAKES_WHEN_NO_DATA
 import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAKES_WHEN_TWO_EMPTY
@@ -26,11 +30,13 @@ import com.example.earthquakes.setup.testutil.RecyclerViewItemCountAssertion
 import com.example.earthquakes.setup.testutil.RecyclerViewMatcher
 import com.example.earthquakes.setup.viewmodel.MockHomeViewModelObject
 import io.mockk.every
+import org.hamcrest.Matchers.allOf
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+
 
 @RunWith(AndroidJUnit4::class)
 class HomeActivityTest : InstrumentedTestSetup() {
@@ -153,6 +159,36 @@ class HomeActivityTest : InstrumentedTestSetup() {
         intended(hasComponent(PrefsActivity::class.java.name))
     }
 
+    @Test
+    fun clickOnHomeListItem_opensGoogleMaps() {
+        // given
+        every { mockViewModel.models } returns MockHomeViewModelObject.models
+        val uri = getGoogleMapsUrlAt(mockItems[0].latitude!!, mockItems[0].longitude!!)
+        val mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+
+        // when
+        launchActivityAndMockLiveData()
+        clickRecyclerAt(0)
+        mDevice.pressBack() // Pressing back to return from Google Maps
+
+        // then
+        intended(
+            allOf(
+                hasAction(Intent.ACTION_VIEW),
+                hasData(uri)
+            )
+        )
+    }
+
+    private fun clickRecyclerAt(position: Int) {
+        onView(withId(R.id.home_list)).perform(
+            actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                position,
+                click()
+            )
+        )
+    }
+
     private fun verifyRecyclerViewShowsExpectedData() {
         mockItems.forEachIndexed { index, item ->
             // scroll to item to make sure it's visible
@@ -163,7 +199,12 @@ class HomeActivityTest : InstrumentedTestSetup() {
             onView(withRecyclerView(R.id.home_list).atPositionOnView(index, R.id.txt_source))
                 .check(matches(withText(item.source)))
 
-            onView(withRecyclerView(R.id.home_list).atPositionOnView(index, R.id.txt_datetime_label))
+            onView(
+                withRecyclerView(R.id.home_list).atPositionOnView(
+                    index,
+                    R.id.txt_datetime_label
+                )
+            )
                 .check(matches(withText(getString(R.string.vh_date_label))))
             onView(withRecyclerView(R.id.home_list).atPositionOnView(index, R.id.txt_datetime))
                 .check(matches(withText(item.datetime)))
@@ -173,17 +214,32 @@ class HomeActivityTest : InstrumentedTestSetup() {
             onView(withRecyclerView(R.id.home_list).atPositionOnView(index, R.id.txt_depth))
                 .check(matches(withText(item.depth.toString())))
 
-            onView(withRecyclerView(R.id.home_list).atPositionOnView(index, R.id.txt_magnitude_label))
+            onView(
+                withRecyclerView(R.id.home_list).atPositionOnView(
+                    index,
+                    R.id.txt_magnitude_label
+                )
+            )
                 .check(matches(withText(getString(R.string.vh_magnitude_label))))
             onView(withRecyclerView(R.id.home_list).atPositionOnView(index, R.id.txt_magnitude))
                 .check(matches(withText(item.magnitude.toString())))
 
-            onView(withRecyclerView(R.id.home_list).atPositionOnView(index, R.id.txt_longitude_label))
+            onView(
+                withRecyclerView(R.id.home_list).atPositionOnView(
+                    index,
+                    R.id.txt_longitude_label
+                )
+            )
                 .check(matches(withText(getString(R.string.vh_longitude_label))))
             onView(withRecyclerView(R.id.home_list).atPositionOnView(index, R.id.txt_longitude))
                 .check(matches(withText(item.longitude.toString())))
 
-            onView(withRecyclerView(R.id.home_list).atPositionOnView(index, R.id.txt_latitude_label))
+            onView(
+                withRecyclerView(R.id.home_list).atPositionOnView(
+                    index,
+                    R.id.txt_latitude_label
+                )
+            )
                 .check(matches(withText(getString(R.string.vh_latitude_label))))
             onView(withRecyclerView(R.id.home_list).atPositionOnView(index, R.id.txt_latitude))
                 .check(matches(withText(item.latitude.toString())))

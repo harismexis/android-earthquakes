@@ -37,6 +37,7 @@ ext {
     def mockk_android = '1.9.3' // 1.10.3-jdk8
     def swipe_refresh_layout = '1.1.0'
     def google_truth = '0.42'
+    def uiautomator = '2.1.3'
 
     libraries = [
             kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin",
@@ -92,7 +93,7 @@ ext {
 
             runner          : "androidx.test:runner:$androidx_test",
             rules           : "androidx.test:rules:$androidx_test",
-            // orchestrator    : "androidx.test:orchestrator:$androidx_test",
+            orchestrator    : "androidx.test:orchestrator:$androidx_test",
 
             junit           : "androidx.test.ext:junit:$androidx_junit",
             truth           : "androidx.test.ext:truth:$androidx_test",
@@ -112,7 +113,8 @@ ext {
 
             mockito_android : "org.mockito:mockito-android:$mockito",
             mockito_core    : "org.mockito:mockito-core:$mockito",
-            mockk_android : "io.mockk:mockk-android:$mockk_android"
+            mockk_android   : "io.mockk:mockk-android:$mockk_android",
+            uiautomator     : "com.android.support.test.uiautomator:uiautomator-v18:$uiautomator"
     ]
 
     daggerDependancies = [
