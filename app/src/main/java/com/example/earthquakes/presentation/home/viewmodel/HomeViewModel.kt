@@ -1,28 +1,26 @@
 package com.example.earthquakes.presentation.home.viewmodel
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.earthquakes.BuildConfig
-import com.example.earthquakes.domain.Quake
+import com.example.earthquakes.R
 import com.example.earthquakes.framework.extensions.getErrorMessage
 import com.example.earthquakes.framework.quakeresult.QuakesResult
-import com.example.earthquakes.framework.util.functional.Action1
+import com.example.earthquakes.framework.resource.ResourceProvider
 import com.example.earthquakes.framework.util.network.ConnectivityMonitor
 import com.example.earthquakes.presentation.home.interactors.HomeInteractors
 import com.example.earthquakes.presentation.preferences.PrefsManager
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
-import retrofit2.Retrofit
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(
     private val interactors: HomeInteractors,
     private val connectivity: ConnectivityMonitor,
-    private val prefsManager: PrefsManager
+    private val prefsManager: PrefsManager,
+    private val resProvider: ResourceProvider
 ) : ViewModel() {
 
     private val TAG = HomeViewModel::class.qualifiedName
@@ -55,7 +53,7 @@ class HomeViewModel @Inject constructor(
                 interactors.interStoreQuakes.invoke(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mQuakesResult.value = QuakesResult.QuakesError(e.getErrorMessage())
+                mQuakesResult.value = QuakesResult.QuakesError(getErrorMessage(e))
             }
         }
     }
@@ -70,6 +68,11 @@ class HomeViewModel @Inject constructor(
                 mQuakesResult.value = QuakesResult.QuakesError(e.getErrorMessage())
             }
         }
+    }
+
+    private fun getErrorMessage(e: Exception): String {
+        if (e is HttpException && e.code() == 401) return resProvider.getUnauthorisedUserMessage()
+        return e.getErrorMessage()
     }
 
 }

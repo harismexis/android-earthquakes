@@ -4,6 +4,7 @@ import androidx.lifecycle.Observer
 import com.example.earthquakes.BuildConfig
 import com.example.earthquakes.domain.Quake
 import com.example.earthquakes.framework.quakeresult.QuakesResult
+import com.example.earthquakes.framework.resource.ResourceProvider
 import com.example.earthquakes.presentation.home.interactors.HomeInteractors
 import com.example.earthquakes.framework.util.network.ConnectivityMonitor
 import com.example.earthquakes.interactors.InterGetLocalQuakes
@@ -40,6 +41,9 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     protected lateinit var mockPrefsManager: PrefsManager
 
     @Mock
+    protected lateinit var mockResourceProvider: ResourceProvider
+
+    @Mock
     lateinit var mockObserver: Observer<QuakesResult>
 
     private val mockItems = mockParser.getMockQuakesFromFeedWithAllItemsValid()
@@ -58,7 +62,12 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     }
 
     override fun initialiseClassUnderTest() {
-        subject = HomeViewModel(mockInteractors, mockConnectivity, mockPrefsManager)
+        subject = HomeViewModel(
+            mockInteractors,
+            mockConnectivity,
+            mockPrefsManager,
+            mockResourceProvider
+        )
     }
 
     private fun initialiseMockInteractors() {

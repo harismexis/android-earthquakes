@@ -152,7 +152,7 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
             getString(R.string.please_enter_username),
             Toast.LENGTH_SHORT
         )
-        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setGravity(Gravity.CENTER, 0, 0)
         toast.show()
     }
 

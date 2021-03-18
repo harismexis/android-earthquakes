@@ -4,6 +4,7 @@ import android.content.Context
 import com.example.earthquakes.framework.datasource.database.QuakeLocalDao
 import com.example.earthquakes.framework.datasource.database.QuakeDatabase
 import com.example.earthquakes.framework.application.MainApplication
+import com.example.earthquakes.framework.resource.ResourceProvider
 import dagger.Module
 import dagger.Provides
 
@@ -18,6 +19,11 @@ class ApplicationModule {
     @Provides
     fun provideAppContext(app: MainApplication): Context {
         return app.applicationContext
+    }
+
+    @Provides
+    fun provideResourceProvider(app: MainApplication): ResourceProvider {
+        return ResourceProvider(app.applicationContext)
     }
 
 }

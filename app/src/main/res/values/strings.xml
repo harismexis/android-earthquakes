@@ -5,9 +5,8 @@
     <string name="activity_home_label">Quakes</string>
     <string name="activity_settings_label">Settings</string>
     <string name="missing_value">missing value</string>
-
-    <!-- home -->
     <string name="please_enter_username">Please enter a registered user name in Settings</string>
+    <string name="unauthorised_user">Unauthorised user. Did you enter a registered username in Settings ?</string>
     <string name="action_settings">Settings</string>
 
     <!-- ViewHolder Quake item -->
