@@ -3,6 +3,7 @@ package com.example.earthquakes.home.setup
 import androidx.lifecycle.Observer
 import com.example.earthquakes.BuildConfig
 import com.example.earthquakes.domain.Quake
+import com.example.earthquakes.framework.quakeresult.QuakesResult
 import com.example.earthquakes.presentation.home.interactors.HomeInteractors
 import com.example.earthquakes.framework.util.network.ConnectivityMonitor
 import com.example.earthquakes.interactors.InterGetLocalQuakes
@@ -39,10 +40,16 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     protected lateinit var mockPrefsManager: PrefsManager
 
     @Mock
-    lateinit var mockObserver: Observer<List<Quake>>
+    lateinit var mockObserver: Observer<QuakesResult>
 
     private val mockItems = mockParser.getMockQuakesFromFeedWithAllItemsValid()
+    private val mockQuakesResultSuccess = QuakesResult.QuakesSuccess(mockItems)
+    private val mockQuakesResultError = QuakesResult.QuakesError(ERROR_MESSAGE)
     protected lateinit var subject: HomeViewModel
+
+    companion object {
+        const val ERROR_MESSAGE = "error"
+    }
 
     override fun initialise() {
         super.initialise()
@@ -106,7 +113,7 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
                 mockPrefsManager.getWest(),
                 mockPrefsManager.getMaxQuakeResults(),
                 BuildConfig.GEONAMES_USERNAME))
-                .thenThrow(IllegalStateException("Error"))
+                .thenThrow(IllegalStateException(ERROR_MESSAGE))
         }
     }
 
@@ -144,7 +151,7 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     protected fun mockLocalCallThrowsError() {
         runBlocking {
             Mockito.`when`(mockInterGetLocalItems.invoke())
-                .thenThrow(IllegalStateException("Error"))
+                .thenThrow(IllegalStateException(ERROR_MESSAGE))
         }
     }
 
@@ -163,15 +170,19 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     // LiveData
 
     protected fun initialiseLiveData() {
-        subject.models.observeForever(mockObserver)
+        subject.quakesResult.observeForever(mockObserver)
     }
 
-    protected fun verifyLiveDataChangedAsExpected() {
-        verifyLiveDataChanged(mockItems)
+    protected fun verifyLiveDataChangedWithSuccess() {
+        verifyLiveDataChanged(mockQuakesResultSuccess)
     }
 
-    private fun verifyLiveDataChanged(items: List<Quake>) {
-        verify(mockObserver).onChanged(items)
+    protected fun verifyLiveDataChangedWithError() {
+        verifyLiveDataChanged(mockQuakesResultError)
+    }
+
+    private fun verifyLiveDataChanged(result: QuakesResult) {
+        verify(mockObserver).onChanged(result)
     }
 
     protected fun verifyLiveDataNotChanged() {

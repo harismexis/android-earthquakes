@@ -1,7 +1,6 @@
 package com.example.earthquakes.tests
 
 import android.content.Intent
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
@@ -18,6 +17,7 @@ import androidx.test.rule.ActivityTestRule
 import androidx.test.uiautomator.UiDevice
 import com.example.earthquakes.R
 import com.example.earthquakes.domain.Quake
+import com.example.earthquakes.framework.quakeresult.QuakesResult
 import com.example.earthquakes.framework.util.getGoogleMapsUrlAt
 import com.example.earthquakes.framework.util.guardLet
 import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAKES_WHEN_ALL_IDS_VALID
@@ -51,12 +51,14 @@ class HomeActivityTest : InstrumentedTestSetup() {
         )
 
     private lateinit var mockViewModel: HomeViewModel
-    private lateinit var mockItems: List<Quake>
+    private lateinit var mockQuakeItems: List<Quake>
+    private lateinit var quakesSuccess: QuakesResult.QuakesSuccess
 
     @Before
     fun doBeforeTest() {
         Intents.init()
-        mockItems = mockParser.getMockQuakesFromFeedWithAllItemsValid()
+        mockQuakeItems = mockParser.getMockQuakesFromFeedWithAllItemsValid()
+        quakesSuccess = QuakesResult.QuakesSuccess(mockQuakeItems)
         mockViewModel = MockHomeViewModelObject.getMockHomeViewModel()
         every { mockViewModel.bind() } returns Unit
     }
@@ -64,14 +66,14 @@ class HomeActivityTest : InstrumentedTestSetup() {
     @Test
     fun remoteFeedHasAllItemsValid_then_homeListHasExpectedItems() {
         // given
-        every { mockViewModel.models } returns MockHomeViewModelObject.models
+        every { mockViewModel.quakesResult } returns MockHomeViewModelObject.quakesResult
 
         // when
         launchActivityAndMockLiveData()
 
         // then
         onView(withId(R.id.home_list)).check(matches(isDisplayed()))
-        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(mockItems.size))
+        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(quakesSuccess.items.size))
         onView(withId(R.id.home_list)).check(
             RecyclerViewItemCountAssertion(EXPECTED_NUM_QUAKES_WHEN_ALL_IDS_VALID)
         )
@@ -81,15 +83,16 @@ class HomeActivityTest : InstrumentedTestSetup() {
     @Test
     fun remoteFeedHasSomeIdsAbsent_homeListHasExpectedNumberOfItems() {
         // given
-        mockItems = mockParser.getMockQuakesFromFeedWithSomeIdsAbsent()
-        every { mockViewModel.models } returns MockHomeViewModelObject.models
+        mockQuakeItems = mockParser.getMockQuakesFromFeedWithSomeIdsAbsent()
+        quakesSuccess = QuakesResult.QuakesSuccess(mockQuakeItems)
+        every { mockViewModel.quakesResult } returns MockHomeViewModelObject.quakesResult
 
         // when
         launchActivityAndMockLiveData()
 
         // then
         onView(withId(R.id.home_list)).check(matches(isDisplayed()))
-        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(mockItems.size))
+        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(quakesSuccess.items.size))
         onView(withId(R.id.home_list)).check(
             RecyclerViewItemCountAssertion(EXPECTED_NUM_QUAKES_WHEN_TWO_IDS_ABSENT)
         )
@@ -99,15 +102,16 @@ class HomeActivityTest : InstrumentedTestSetup() {
     @Test
     fun remoteFeedHasAllIdsAbsent_homeListHasNoItems() {
         // given
-        mockItems = mockParser.getMockQuakesFromFeedWithAllIdsAbsent()
-        every { mockViewModel.models } returns MockHomeViewModelObject.models
+        mockQuakeItems = mockParser.getMockQuakesFromFeedWithAllIdsAbsent()
+        quakesSuccess = QuakesResult.QuakesSuccess(mockQuakeItems)
+        every { mockViewModel.quakesResult } returns MockHomeViewModelObject.quakesResult
 
         // when
         launchActivityAndMockLiveData()
 
         // then
         onView(withId(R.id.home_list)).check(matches(isDisplayed()))
-        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(mockItems.size))
+        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(quakesSuccess.items.size))
         onView(withId(R.id.home_list)).check(
             RecyclerViewItemCountAssertion(EXPECTED_NUM_QUAKES_WHEN_NO_DATA)
         )
@@ -116,15 +120,16 @@ class HomeActivityTest : InstrumentedTestSetup() {
     @Test
     fun remoteFeedHasSomeJsonItemsEmpty_homeListHasExpectedNumberOfItems() {
         // given
-        mockItems = mockParser.getMockQuakesFromFeedWithSomeItemsEmpty()
-        every { mockViewModel.models } returns MockHomeViewModelObject.models
+        mockQuakeItems = mockParser.getMockQuakesFromFeedWithSomeItemsEmpty()
+        quakesSuccess = QuakesResult.QuakesSuccess(mockQuakeItems)
+        every { mockViewModel.quakesResult } returns MockHomeViewModelObject.quakesResult
 
         // when
         launchActivityAndMockLiveData()
 
         // then
         onView(withId(R.id.home_list)).check(matches(isDisplayed()))
-        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(mockItems.size))
+        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(quakesSuccess.items.size))
         onView(withId(R.id.home_list)).check(
             RecyclerViewItemCountAssertion(EXPECTED_NUM_QUAKES_WHEN_TWO_EMPTY)
         )
@@ -134,15 +139,16 @@ class HomeActivityTest : InstrumentedTestSetup() {
     @Test
     fun remoteFeedHasEmptyJsonArray_homeListHasNoItems() {
         // given
-        mockItems = mockParser.getMockQuakesFromFeedWithEmptyJsonArray()
-        every { mockViewModel.models } returns MockHomeViewModelObject.models
+        mockQuakeItems = mockParser.getMockQuakesFromFeedWithEmptyJsonArray()
+        quakesSuccess = QuakesResult.QuakesSuccess(mockQuakeItems)
+        every { mockViewModel.quakesResult } returns MockHomeViewModelObject.quakesResult
 
         // when
         launchActivityAndMockLiveData()
 
         // then
         onView(withId(R.id.home_list)).check(matches(isDisplayed()))
-        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(mockItems.size))
+        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(quakesSuccess.items.size))
         onView(withId(R.id.home_list)).check(
             RecyclerViewItemCountAssertion(EXPECTED_NUM_QUAKES_WHEN_NO_DATA)
         )
@@ -151,7 +157,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
     @Test
     fun clickOnMenuSettingsItem_opensPrefsActivity() {
         // given
-        every { mockViewModel.models } returns MockHomeViewModelObject.models
+        every { mockViewModel.quakesResult } returns MockHomeViewModelObject.quakesResult
         launchActivityAndMockLiveData()
 
         // when
@@ -164,8 +170,8 @@ class HomeActivityTest : InstrumentedTestSetup() {
     @Test
     fun clickOnHomeListItem_opensGoogleMaps() {
         // given
-        every { mockViewModel.models } returns MockHomeViewModelObject.models
-        val (lat, lon) = guardLet(mockItems[0].latitude, mockItems[0].longitude) { return }
+        every { mockViewModel.quakesResult } returns MockHomeViewModelObject.quakesResult
+        val (lat, lon) = guardLet(mockQuakeItems[0].latitude, mockQuakeItems[0].longitude) { return }
         val uri = getGoogleMapsUrlAt(lat, lon)
         val mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
 
@@ -193,7 +199,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
     }
 
     private fun verifyRecyclerViewShowsExpectedData() {
-        mockItems.forEachIndexed { index, item ->
+        mockQuakeItems.forEachIndexed { index, item ->
             // scroll to item to make sure it's visible
             onView(withId(R.id.home_list)).perform(scrollToPosition<RecyclerView.ViewHolder>(index))
 
@@ -252,7 +258,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
     private fun launchActivityAndMockLiveData() {
         testRule.launchActivity(null)
         testRule.activity.runOnUiThread {
-            MockHomeViewModelObject.mModels.value = mockItems
+            MockHomeViewModelObject.mQuakesResult.value = quakesSuccess
         }
     }
 

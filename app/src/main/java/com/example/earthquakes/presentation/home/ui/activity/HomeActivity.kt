@@ -17,12 +17,14 @@ import com.example.earthquakes.domain.Quake
 import com.example.earthquakes.framework.base.BaseActivity
 import com.example.earthquakes.framework.extensions.getErrorMessage
 import com.example.earthquakes.framework.extensions.setDivider
+import com.example.earthquakes.framework.quakeresult.QuakesResult
 import com.example.earthquakes.framework.util.getMapIntent
 import com.example.earthquakes.framework.util.guardLet
 import com.example.earthquakes.presentation.home.ui.adapter.QuakeAdapter
 import com.example.earthquakes.presentation.home.ui.viewholder.QuakeViewHolder
 import com.example.earthquakes.presentation.home.viewmodel.HomeViewModel
 import com.example.earthquakes.presentation.preferences.PrefsActivity
+import java.lang.Exception
 
 class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
 
@@ -76,8 +78,11 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
     }
 
     override fun observeLiveData() {
-        viewModel.models.observe(this, {
-            populate(it)
+        viewModel.quakesResult.observe(this, {
+            when(it) {
+                is QuakesResult.QuakesSuccess -> populate(it.items)
+                is QuakesResult.QuakesError -> populate(it.error)
+            }
         })
     }
 
@@ -88,6 +93,12 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
         uiModels.clear()
         uiModels.addAll(models)
         adapter.notifyDataSetChanged()
+    }
+
+    private fun populate(error: String) {
+        binding.homeSwipeRefresh.isRefreshing = false
+        binding.loadingProgressBar.visibility = View.GONE
+        Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
     }
 
     private fun initialiseRecycler() {

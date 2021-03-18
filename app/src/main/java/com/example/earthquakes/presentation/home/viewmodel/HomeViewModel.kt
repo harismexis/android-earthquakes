@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.earthquakes.BuildConfig
 import com.example.earthquakes.domain.Quake
 import com.example.earthquakes.framework.extensions.getErrorMessage
+import com.example.earthquakes.framework.quakeresult.QuakesResult
 import com.example.earthquakes.framework.util.functional.Action1
 import com.example.earthquakes.framework.util.network.ConnectivityMonitor
 import com.example.earthquakes.presentation.home.interactors.HomeInteractors
@@ -23,9 +24,9 @@ class HomeViewModel @Inject constructor(
 
     private val TAG = HomeViewModel::class.qualifiedName
 
-    private val mModels = MutableLiveData<List<Quake>>()
-    val models: LiveData<List<Quake>>
-        get() = mModels
+    private val mQuakesResult = MutableLiveData<QuakesResult>()
+    val quakesResult: LiveData<QuakesResult>
+        get() = mQuakesResult
 
     fun bind() {
         if (connectivity.isOnline()) {
@@ -54,10 +55,11 @@ class HomeViewModel @Inject constructor(
                     prefsManager.getMaxQuakeResults(),
                     username = BuildConfig.GEONAMES_USERNAME
                 )
-                mModels.value = items
+                mQuakesResult.value = QuakesResult.QuakesSuccess(items)
                 interactors.interStoreQuakes.invoke(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
+                mQuakesResult.value = QuakesResult.QuakesError(e.getErrorMessage())
             }
         }
     }
@@ -65,9 +67,11 @@ class HomeViewModel @Inject constructor(
     private fun fetchLocalQuakes() {
         viewModelScope.launch {
             try {
-                mModels.value = interactors.interGetLocalQuakes.invoke()
+                val items = interactors.interGetLocalQuakes.invoke()
+                mQuakesResult.value = QuakesResult.QuakesSuccess(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
+                mQuakesResult.value = QuakesResult.QuakesError(e.getErrorMessage())
             }
         }
     }
