@@ -26,7 +26,7 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
         mockRemoteCallReturnsAllItemsValid()
 
         // when
-        subject.bind()
+        subject.fetchQuakes()
 
         // then
         verify_remoteFeedCallDone_dataStored_liveDataUpdated()
@@ -39,7 +39,7 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
         mockLocalCallReturnsAllItemsValid()
 
         // when
-        subject.bind()
+        subject.fetchQuakes()
 
         // then
         verifyInternetChecked()
@@ -50,41 +50,13 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
     }
 
     @Test
-    fun internetOn_when_viewModelRefreshes_then_dataRefreshed() {
-        // given
-        mockInternetOn()
-        mockRemoteCallReturnsAllItemsValid()
-
-        // when
-        subject.refresh {}
-
-        // then
-        verify_remoteFeedCallDone_dataStored_liveDataUpdated()
-    }
-
-    @Test
-    fun internetOff_when_viewModelRefreshes_then_nothingHappens() {
-        // given
-        mockInternetOff()
-
-        // when
-        subject.refresh {}
-
-        // then
-        verifyInternetChecked()
-        verifyZeroInteractions(mockInterGetRemoteItems)
-        verifyZeroInteractions(mockInterGetLocalItems)
-        verifyLiveDataNotChanged()
-    }
-
-    @Test
     fun remoteCallThrowsError_when_viewModelBinds_nothingHappens() {
         // given
         mockInternetOn()
         mockRemoteCallThrowsError()
 
         // when
-        subject.bind()
+        subject.fetchQuakes()
 
         // then
         verifyInternetChecked()
@@ -100,7 +72,7 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
         mockLocalCallThrowsError()
 
         // when
-        subject.bind()
+        subject.fetchQuakes()
 
         // then
         verifyInternetChecked()

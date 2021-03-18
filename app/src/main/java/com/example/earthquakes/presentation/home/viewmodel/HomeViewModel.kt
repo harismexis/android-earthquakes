@@ -35,20 +35,9 @@ class HomeViewModel @Inject constructor(
         return prefsManager.getUsername().isNotBlank()
     }
 
-    fun bind() {
-        if (connectivity.isOnline()) {
-            fetchRemoteQuakes()
-        } else {
-            fetchLocalQuakes()
-        }
-    }
-
-    fun refresh(callback: Action1<Boolean>) {
-        val canRefresh = connectivity.isOnline()
-        callback.call(canRefresh)
-        if (canRefresh) {
-            fetchRemoteQuakes()
-        }
+    fun fetchQuakes() {
+        if (connectivity.isOnline()) fetchRemoteQuakes()
+        else fetchLocalQuakes()
     }
 
     private fun fetchRemoteQuakes() {

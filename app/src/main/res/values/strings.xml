@@ -8,6 +8,7 @@
 
     <!-- home -->
     <string name="please_enter_username">Please enter a registered user name in Settings</string>
+    <string name="action_settings">Settings</string>
 
     <!-- ViewHolder Quake item -->
     <string name="vh_source_label">Source:</string>

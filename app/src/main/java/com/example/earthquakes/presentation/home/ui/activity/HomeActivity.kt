@@ -3,6 +3,7 @@ package com.example.earthquakes.presentation.home.ui.activity
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.util.Log
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -47,8 +48,18 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
     private fun onInitialise() {
         if (viewModel.hasUserName()) {
             binding.loadingProgressBar.visibility = View.VISIBLE
-            viewModel.bind()
+            viewModel.fetchQuakes()
         } else showToastMissingUsername()
+    }
+
+    private fun setupSwipeToRefresh() {
+        binding.homeSwipeRefresh.setOnRefreshListener {
+            if (viewModel.hasUserName()) viewModel.fetchQuakes()
+            else {
+                showRefreshView(false)
+                showToastMissingUsername()
+            }
+        }
     }
 
     override fun initialiseViewModel() {
@@ -131,27 +142,18 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
         binding.homeList.setDivider(R.drawable.divider)
     }
 
-    private fun setupSwipeToRefresh() {
-        binding.homeSwipeRefresh.setOnRefreshListener {
-            showRefreshView(true)
-            viewModel.refresh { canRefresh ->
-                if (!canRefresh) {
-                    showRefreshView(false)
-                }
-            }
-        }
-    }
-
     private fun showRefreshView(show: Boolean) {
         binding.homeSwipeRefresh.isRefreshing = show
     }
 
     private fun showToastMissingUsername() {
-        Toast.makeText(
+        val toast = Toast.makeText(
             this,
             getString(R.string.please_enter_username),
             Toast.LENGTH_SHORT
-        ).show()
+        )
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show()
     }
 
 }
