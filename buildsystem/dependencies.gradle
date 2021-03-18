@@ -6,7 +6,7 @@ allprojects {
 }
 
 ext {
-    kotlin = '1.4.21'
+    kotlin = '1.4.31'
     def androidx_test = '1.2.0'
     def appcompat = '1.2.0'
     def constraint_layout = '2.0.4'

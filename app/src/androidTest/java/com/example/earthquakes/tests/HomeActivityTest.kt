@@ -186,6 +186,9 @@ class HomeActivityTest : InstrumentedTestSetup() {
                 hasData(uri)
             )
         )
+
+        // To make sure we exited Google Maps
+        Thread.sleep(500)
     }
 
     private fun clickRecyclerAt(position: Int) {
