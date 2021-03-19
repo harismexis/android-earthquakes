@@ -41,7 +41,8 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
         super.initialise()
         PreferenceManager.setDefaultValues(this, R.xml.settings, false)
         setupSwipeToRefresh()
-        fetchQuakes()
+        binding.loadingProgressBar.visibility = View.VISIBLE
+        viewModel.fetchQuakes()
     }
 
     override fun initialiseViewModel() {
@@ -105,20 +106,9 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
         }
     }
 
-    private fun fetchQuakes() {
-        if (viewModel.hasUserName()) {
-            binding.loadingProgressBar.visibility = View.VISIBLE
-            viewModel.fetchQuakes()
-        } else showToastMissingUsername()
-    }
-
     private fun setupSwipeToRefresh() {
         binding.homeSwipeRefresh.setOnRefreshListener {
-            if (viewModel.hasUserName()) viewModel.fetchQuakes()
-            else {
-                showRefreshView(false)
-                showToastMissingUsername()
-            }
+            viewModel.fetchQuakes()
         }
     }
 
@@ -147,10 +137,6 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
 
     private fun showRefreshView(show: Boolean) {
         binding.homeSwipeRefresh.isRefreshing = show
-    }
-
-    private fun showToastMissingUsername() {
-        showToast(getString(R.string.please_enter_username))
     }
 
     private fun showToast(msg: String) {

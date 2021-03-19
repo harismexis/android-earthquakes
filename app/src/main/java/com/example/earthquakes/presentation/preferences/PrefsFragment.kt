@@ -58,8 +58,12 @@ class PrefsFragment : PreferenceFragmentCompat() {
     private fun setupUsernamePref() {
         val username = findEditTextPrefByKey(R.string.key_pref_username)
         username?.let {
+            val defaultValue = getString(R.string.pref_username_default)
             it.setOnBindEditTextListener { editText ->
                 editText.makeMasked()
+                if (editText.text.isNullOrBlank()) {
+                    editText.setText(defaultValue)
+                }
             }
         }
     }

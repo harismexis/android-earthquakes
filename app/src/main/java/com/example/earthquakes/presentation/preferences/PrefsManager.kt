@@ -28,6 +28,8 @@ class PrefsManager(context: Context) {
         appContext.getStringResAsFloat(R.string.pref_west_default) ?: 55.2f
     private val maxQuakesDefault: Int =
         appContext.getStringResAsInt(R.string.pref_max_results_default) ?: 10
+    private val userNameDefault: String =
+        appContext.getString(R.string.pref_username_default)
 
     companion object {
         private const val MAX_QUAKES_THRESHOLD = 500
@@ -74,7 +76,8 @@ class PrefsManager(context: Context) {
     }
 
     fun getUsername(): String {
-        return getStringPref(keyUsername) ?: ""
+        val username = getStringPref(keyUsername)
+        return if (!username.isNullOrBlank()) username else userNameDefault
     }
 
     private fun getStringPref(

@@ -28,10 +28,6 @@ class HomeViewModel @Inject constructor(
     val quakesResult: LiveData<QuakesResult>
         get() = mQuakesResult
 
-    fun hasUserName(): Boolean {
-        return prefsManager.getUsername().isNotBlank()
-    }
-
     fun fetchQuakes() {
         if (connectivity.isOnline()) fetchRemoteQuakes()
         else fetchLocalQuakes()

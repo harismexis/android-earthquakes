@@ -60,7 +60,6 @@ class HomeActivityTest : InstrumentedTestSetup() {
         quakesSuccess = QuakesResult.QuakesSuccess(mockQuakeItems)
         mockViewModel = MockHomeViewModelObject.getMockHomeViewModel()
         every { mockViewModel.fetchQuakes() } returns Unit
-        every { mockViewModel.hasUserName() } returns true
     }
 
     @Test
