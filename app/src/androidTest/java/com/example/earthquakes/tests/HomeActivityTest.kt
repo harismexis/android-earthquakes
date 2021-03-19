@@ -185,6 +185,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
         // then
         intended(
             allOf(
+                hasPackage("com.google.android.apps.maps"),
                 hasAction(Intent.ACTION_VIEW),
                 hasData(uri)
             )
