@@ -26,12 +26,7 @@ ext {
     def truth = '1.0'
     def mockito_kotlin = '2.2.0'
     def dagger_2 = '2.30.1'
-    def retrofit2_adapter_rxjava2 = '2.6.0'
-    def rxjava2 = '2.2.12'
-    def rxandroid = '2.1.1'
     def cardview = '1.0.0'
-    def glide = '4.11.0'
-    def rx_relay = '2.1.1'
     def mockito = '3.3.0'
     def mockk = '1.9.3' //1.10.3-jdk8
     def mockk_android = '1.9.3' // 1.10.3-jdk8
@@ -126,19 +121,6 @@ ext {
     annotationProcessorsDependencies = [
             dagger_compiler         : "com.google.dagger:dagger-compiler:$dagger_2",
             dagger_android_processor: "com.google.dagger:dagger-android-processor:$dagger_2",
-            glide_compiler          : "com.github.bumptech.glide:compiler:${glide}"
-    ]
-
-    rxJavaDependencies = [
-            retrofit_adapter: "com.squareup.retrofit2:adapter-rxjava2:$retrofit2_adapter_rxjava2",
-            rxjava          : "io.reactivex.rxjava2:rxjava:$rxjava2",
-            rxandroid       : "io.reactivex.rxjava2:rxandroid:$rxandroid",
-            rxrelay         : "com.jakewharton.rxrelay2:rxrelay:${rx_relay}",
-    ]
-
-    glideDependencies = [
-            glide        : "com.github.bumptech.glide:glide:${glide}",
-            glide_okhttp : "com.github.bumptech.glide:okhttp3-integration:${glide}"
     ]
 
 }

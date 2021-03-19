@@ -62,12 +62,9 @@ dependencies {
     implementation project(':core')
 
     implementation libraries.values()
-    implementation rxJavaDependencies.values()
     implementation daggerDependancies.values()
 
     debugImplementation librariesDebug.values()
-
-    api glideDependencies.values()
 
     kapt librariesKapt.values()
     kapt annotationProcessorsDependencies.values()
