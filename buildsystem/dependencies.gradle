@@ -26,9 +26,7 @@ ext {
     def truth = '1.0'
     def mockito_kotlin = '2.2.0'
     def dagger_2 = '2.30.1'
-    def cardview = '1.0.0'
     def mockito = '3.3.0'
-    def mockk = '1.9.3' //1.10.3-jdk8
     def mockk_android = '1.9.3' // 1.10.3-jdk8
     def swipe_refresh_layout = '1.1.0'
     def google_truth = '0.42'
@@ -43,7 +41,6 @@ ext {
             appCompat          : "androidx.appcompat:appcompat:$appcompat",
             material           : "com.google.android.material:material:$material",
             constraint_layout  : "androidx.constraintlayout:constraintlayout:$constraint_layout",
-            cardview           : "androidx.cardview:cardview:${cardview}",
 
             extensions         : "androidx.lifecycle:lifecycle-extensions:$lifecycle",
             livedata           : "androidx.lifecycle:lifecycle-livedata-ktx:$livedata",
@@ -69,11 +66,6 @@ ext {
 
     librariesDebug = [
             truth: "com.google.truth:truth:$truth"
-    ]
-
-    mockkDependencies = [
-            mockk         : "io.mockk:mockk:$mockk",
-            mockk_android : "io.mockk:mockk-android:$mockk_android"
     ]
 
     testLibraries = [
