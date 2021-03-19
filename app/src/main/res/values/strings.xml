@@ -8,6 +8,7 @@
     <string name="please_enter_username">Please enter a registered user name in Settings</string>
     <string name="unauthorised_user">Unauthorised user. Did you enter a registered username in Settings ?</string>
     <string name="action_settings">Settings</string>
+    <string name="action_scroll_to_top">Scroll to top</string>
 
     <!-- ViewHolder Quake item -->
     <string name="vh_source_label">Source:</string>

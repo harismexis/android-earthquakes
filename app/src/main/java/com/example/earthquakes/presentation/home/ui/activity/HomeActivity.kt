@@ -41,24 +41,7 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
         super.initialise()
         PreferenceManager.setDefaultValues(this, R.xml.settings, false)
         setupSwipeToRefresh()
-        onInitialise()
-    }
-
-    private fun onInitialise() {
-        if (viewModel.hasUserName()) {
-            binding.loadingProgressBar.visibility = View.VISIBLE
-            viewModel.fetchQuakes()
-        } else showToastMissingUsername()
-    }
-
-    private fun setupSwipeToRefresh() {
-        binding.homeSwipeRefresh.setOnRefreshListener {
-            if (viewModel.hasUserName()) viewModel.fetchQuakes()
-            else {
-                showRefreshView(false)
-                showToastMissingUsername()
-            }
-        }
+        fetchQuakes()
     }
 
     override fun initialiseViewModel() {
@@ -110,11 +93,32 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            R.id.action_scroll_to_top -> {
+                binding.homeList.scrollToPosition(0)
+                true
+            }
             R.id.action_settings -> {
                 startActivity(Intent(this, PrefsActivity::class.java))
                 true
             }
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun fetchQuakes() {
+        if (viewModel.hasUserName()) {
+            binding.loadingProgressBar.visibility = View.VISIBLE
+            viewModel.fetchQuakes()
+        } else showToastMissingUsername()
+    }
+
+    private fun setupSwipeToRefresh() {
+        binding.homeSwipeRefresh.setOnRefreshListener {
+            if (viewModel.hasUserName()) viewModel.fetchQuakes()
+            else {
+                showRefreshView(false)
+                showToastMissingUsername()
+            }
         }
     }
 
