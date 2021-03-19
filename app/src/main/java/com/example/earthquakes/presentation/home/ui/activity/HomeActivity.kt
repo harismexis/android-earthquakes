@@ -63,7 +63,7 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
 
     override fun onQuakeItemClick(item: Quake, position: Int) {
         val (lat, lon) = guardLet(item.latitude, item.longitude) {
-            Toast.makeText(this, "Invalid coordinates", Toast.LENGTH_SHORT).show()
+            showToast(getString(R.string.invalid_coordinates))
             return
         }
         try {
@@ -134,7 +134,7 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
     private fun populateError(error: String) {
         binding.homeSwipeRefresh.isRefreshing = false
         binding.loadingProgressBar.visibility = View.GONE
-        Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+        showToast(error)
     }
 
     private fun initialiseRecycler() {
@@ -150,11 +150,11 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
     }
 
     private fun showToastMissingUsername() {
-        val toast = Toast.makeText(
-            this,
-            getString(R.string.please_enter_username),
-            Toast.LENGTH_SHORT
-        )
+        showToast(getString(R.string.please_enter_username))
+    }
+
+    private fun showToast(msg: String) {
+        val toast = Toast.makeText(this, msg, Toast.LENGTH_SHORT)
         toast.setGravity(Gravity.CENTER, 0, 0)
         toast.show()
     }
