@@ -39,11 +39,12 @@
     <string name="pref_max_quakes_summary">Max quake results (max 500)</string>
     <string name="pref_username_summary">Username registered in geonames.org</string>
 
-    <string name="pref_north_default">30.0</string>
-    <string name="pref_south_default">-30.0</string>
-    <string name="pref_east_default">-30.0</string>
-    <string name="pref_west_default">30.0</string>
+    <string name="pref_north_default">44.1</string>
+    <string name="pref_south_default">-9.9</string>
+    <string name="pref_east_default">-22.4</string>
+    <string name="pref_west_default">55.2</string>
     <string name="pref_max_results_default">10</string>
+    <string name="pref_username_default">mkoppelman</string>
 
 
 </resources>

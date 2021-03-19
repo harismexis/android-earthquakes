@@ -19,15 +19,15 @@ class PrefsManager(context: Context) {
     private val keyUsername = appContext.getString(R.string.key_pref_username)
 
     private val northDefault: Float =
-        appContext.getStringResAsFloat(R.string.pref_north_default) ?: 0.0f
+        appContext.getStringResAsFloat(R.string.pref_north_default) ?: 44.1f
     private val southDefault: Float =
-        appContext.getStringResAsFloat(R.string.pref_south_default) ?: 0.0f
+        appContext.getStringResAsFloat(R.string.pref_south_default) ?: -9.9f
     private val eastDefault: Float =
-        appContext.getStringResAsFloat(R.string.pref_east_default) ?: 0.0f
+        appContext.getStringResAsFloat(R.string.pref_east_default) ?: -22.4f
     private val westDefault: Float =
-        appContext.getStringResAsFloat(R.string.pref_west_default) ?: 0.0f
+        appContext.getStringResAsFloat(R.string.pref_west_default) ?: 55.2f
     private val maxQuakesDefault: Int =
-        appContext.getStringResAsInt(R.string.pref_max_results_default) ?: 0
+        appContext.getStringResAsInt(R.string.pref_max_results_default) ?: 10
 
     companion object {
         private const val MAX_QUAKES_THRESHOLD = 500
