@@ -179,6 +179,9 @@ class HomeActivityTest : InstrumentedTestSetup() {
         clickRecyclerAt(0)
         mDevice.pressBack() // Pressing back to return from Google Maps
 
+        // To make sure we exited Google Maps
+        Thread.sleep(600)
+
         // then
         intended(
             allOf(
@@ -186,9 +189,6 @@ class HomeActivityTest : InstrumentedTestSetup() {
                 hasData(uri)
             )
         )
-
-        // To make sure we exited Google Maps
-        Thread.sleep(500)
     }
 
     private fun clickRecyclerAt(position: Int) {
