@@ -1,7 +1,5 @@
 package com.example.earthquakes.domain
 
-import java.io.Serializable
-
 data class Quake(
     val id: String,
     val datetime: String?,
@@ -10,4 +8,8 @@ data class Quake(
     val latitude: Float?,
     val source: String?,
     val magnitude: Float?,
-) : Serializable
+)
+
+fun Quake.getInfo(): String {
+    return "M: $magnitude D: $depth"
+}

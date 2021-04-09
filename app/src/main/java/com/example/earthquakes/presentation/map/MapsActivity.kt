@@ -7,10 +7,12 @@ import androidx.appcompat.widget.Toolbar
 import com.example.earthquakes.R
 import com.example.earthquakes.databinding.ActivityMapsBinding
 import com.example.earthquakes.domain.Quake
+import com.example.earthquakes.domain.getInfo
 import com.example.earthquakes.framework.base.BaseActivity
 import com.example.earthquakes.framework.quakeresult.QuakesResult
 import com.example.earthquakes.presentation.map.viewmodel.MapViewModel
 import com.google.android.gms.maps.*
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
@@ -65,6 +67,8 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback {
                 MarkerOptions()
                     .position(location)
                     .title(quake.datetime)
+                    .snippet(quake.getInfo())
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
             )
         }
     }
