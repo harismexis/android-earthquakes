@@ -260,7 +260,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
     private fun launchActivityAndMockLiveData() {
         testRule.launchActivity(null)
         testRule.activity.runOnUiThread {
-            MockHomeViewModelObject.mQuakesResult.value = quakesSuccess
+            MockHomeViewModelObject.quakesResult.value = quakesSuccess
         }
     }
 
