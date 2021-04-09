@@ -3,6 +3,7 @@ package com.example.earthquakes.framework.viewmodel.factory
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.earthquakes.presentation.home.viewmodel.HomeViewModel
+import com.example.earthquakes.presentation.map.viewmodel.MapViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -39,5 +40,10 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(HomeViewModel::class)
     internal abstract fun homeViewModel(viewModel: HomeViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MapViewModel::class)
+    internal abstract fun mapViewModel(viewModel: MapViewModel): ViewModel
 
 }

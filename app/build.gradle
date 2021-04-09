@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'com.google.secrets_gradle_plugin' version '0.5'
 }
 
 def commonValues = rootProject.ext.common
@@ -63,6 +64,8 @@ dependencies {
 
     implementation libraries.values()
     implementation daggerDependancies.values()
+    implementation playServices.values()
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     debugImplementation librariesDebug.values()
 

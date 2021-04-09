@@ -8,6 +8,7 @@ import com.example.earthquakes.interactors.InterGetLocalQuakes
 import com.example.earthquakes.interactors.InterGetRemoteQuakes
 import com.example.earthquakes.interactors.InterStoreQuakes
 import com.example.earthquakes.presentation.home.interactors.HomeInteractors
+import com.example.earthquakes.presentation.map.interactors.MapInteractors
 import dagger.Module
 import dagger.Provides
 
@@ -26,6 +27,14 @@ class InteractorModule {
             interStoreQuakes
         )
     }
+
+    @Provides
+    fun provideMapInteractors(
+        interGetLocalQuakes: InterGetLocalQuakes
+    ): MapInteractors {
+        return MapInteractors(interGetLocalQuakes)
+    }
+
 
     @Provides
     fun provideInteractorGetLocalQuakes(

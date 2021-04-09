@@ -24,6 +24,7 @@ import com.example.earthquakes.framework.util.guardLet
 import com.example.earthquakes.presentation.home.ui.adapter.QuakeAdapter
 import com.example.earthquakes.presentation.home.ui.viewholder.QuakeViewHolder
 import com.example.earthquakes.presentation.home.viewmodel.HomeViewModel
+import com.example.earthquakes.presentation.map.MapsActivity
 import com.example.earthquakes.presentation.preferences.PrefsActivity
 
 class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
@@ -96,6 +97,10 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
         return when (item.itemId) {
             R.id.action_scroll_to_top -> {
                 binding.homeList.scrollToPosition(0)
+                true
+            }
+            R.id.action_open_maps -> {
+                startActivity(Intent(this, MapsActivity::class.java))
                 true
             }
             R.id.action_settings -> {
