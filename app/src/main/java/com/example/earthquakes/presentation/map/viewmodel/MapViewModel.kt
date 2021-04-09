@@ -21,7 +21,7 @@ class MapViewModel @Inject constructor(
     val quakesResult: LiveData<QuakesResult>
         get() = mQuakesResult
 
-    private fun fetchLocalQuakes() {
+    fun fetchQuakes() {
         viewModelScope.launch {
             try {
                 val items = interactors.interGetLocalQuakes.invoke()
