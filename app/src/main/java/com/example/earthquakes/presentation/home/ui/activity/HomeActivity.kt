@@ -8,8 +8,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.ViewModelProviders
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.earthquakes.R
@@ -29,7 +29,7 @@ import com.example.earthquakes.presentation.preferences.PrefsActivity
 
 class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
 
-    private lateinit var viewModel: HomeViewModel
+    private val viewModel: HomeViewModel by viewModels { viewModelFactory }
     private lateinit var binding: ActivityHomeBinding
     private lateinit var adapter: QuakeAdapter
     private var uiModels: MutableList<Quake> = mutableListOf()
@@ -44,10 +44,6 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
         setupSwipeToRefresh()
         binding.loadingProgressBar.visibility = View.VISIBLE
         viewModel.fetchQuakes()
-    }
-
-    override fun initialiseViewModel() {
-        viewModel = ViewModelProviders.of(this, viewModelFactory)[HomeViewModel::class.java]
     }
 
     override fun initialiseViewBinding() {

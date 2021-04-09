@@ -2,8 +2,8 @@ package com.example.earthquakes.presentation.map
 
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.ViewModelProviders
 import com.example.earthquakes.R
 import com.example.earthquakes.databinding.ActivityMapsBinding
 import com.example.earthquakes.domain.Quake
@@ -16,7 +16,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 class MapsActivity : BaseActivity(), OnMapReadyCallback {
 
-    private lateinit var viewModel: MapViewModel
+    private val viewModel: MapViewModel by viewModels { viewModelFactory }
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
     private var quakes = ArrayList<Quake>()
@@ -79,10 +79,6 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback {
 
     override fun getRootView(): View {
         return binding.root
-    }
-
-    override fun initialiseViewModel() {
-        viewModel = ViewModelProviders.of(this, viewModelFactory)[MapViewModel::class.java]
     }
 
     override fun getToolbar(): Toolbar {

@@ -23,15 +23,12 @@ abstract class BaseActivity : AppCompatActivity() {
         initialiseViewBinding()
         setContentView(getRootView())
         initialiseView()
-        initialiseViewModel()
         observeLiveData()
     }
 
     abstract fun initialiseViewBinding()
 
     abstract fun getRootView(): View
-
-    abstract fun initialiseViewModel()
 
     abstract fun getToolbar(): Toolbar?
 

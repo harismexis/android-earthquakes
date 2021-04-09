@@ -7,29 +7,35 @@ allprojects {
 
 ext {
     kotlin = '1.4.31'
-    def androidx_test = '1.2.0'
+
     def appcompat = '1.2.0'
-    def constraint_layout = '2.0.4'
-    def coroutines_android = '1.3.2'
-    def espresso = '3.2.0'
-    def gson = '2.8.6'
-    def androidx_junit = '1.1.2'
-    def lifecycle = '2.1.0'
-    def livedata = '2.2.0-rc02'
     def material = '1.2.0'
-    def retrofit_gson = '2.6.2'
-    def retrofit = '2.9.0'
-    def room = '2.2.5'
+    def constraint_layout = '2.0.4'
+    def swipe_refresh_layout = '1.1.0'
+
+    def coroutines_android = '1.4.2'
+    def room = '2.3.0-beta02'
+    def viewmodel_ktx = '2.3.1'
+    def livedata_ktx = '2.3.1'
     def activity_ktx = '1.2.0-beta01'
     def fragment_ktx = '1.3.0-beta01'
+
+    def gson = '2.8.6'
+    def retrofit_gson = '2.9.0'
+    def retrofit = '2.9.0'
+    def dagger_2 = '2.30.1'
+
+    def androidx_test = '1.2.0'
+    def espresso = '3.2.0'
+    def androidx_junit = '1.1.2'
+    def arch_core = '2.1.0'
     def work = '2.2.0'
     def truth = '1.0'
     def mockito_kotlin = '2.2.0'
-    def dagger_2 = '2.30.1'
     def mockito = '3.3.0'
     def mockk_android = '1.9.3' // 1.10.3-jdk8
-    def swipe_refresh_layout = '1.1.0'
     def google_truth = '0.42'
+
     def uiautomator = '2.1.3'
     def play_services_location = '18.0.0'
     def play_services_maps = '17.0.0'
@@ -44,9 +50,8 @@ ext {
             material           : "com.google.android.material:material:$material",
             constraint_layout  : "androidx.constraintlayout:constraintlayout:$constraint_layout",
 
-            extensions         : "androidx.lifecycle:lifecycle-extensions:$lifecycle",
-            livedata           : "androidx.lifecycle:lifecycle-livedata-ktx:$livedata",
-            viewmodel          : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle",
+            livedata           : "androidx.lifecycle:lifecycle-livedata-ktx:$livedata_ktx",
+            viewmodel          : "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodel_ktx",
 
             activity_ktx       : "androidx.activity:activity-ktx:$activity_ktx",
             fragment_ktx       : "androidx.fragment:fragment-ktx:$fragment_ktx",
@@ -74,7 +79,7 @@ ext {
             junit           : "androidx.test.ext:junit:$androidx_junit",
             coroutines_test : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_android",
             mockito_kotlin  : "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin",
-            core_testing    : "androidx.arch.core:core-testing:$lifecycle"
+            core_testing    : "androidx.arch.core:core-testing:$arch_core"
     ]
 
     androidTestLibraries = [
@@ -96,7 +101,7 @@ ext {
             idling_concurrent           : "androidx.test.espresso.idling:idling-concurrent:$espresso",
             espresso_idling_resource    : "androidx.test.espresso:espresso-idling-resource:$espresso",
 
-            arch_core       : "androidx.arch.core:core-testing:$lifecycle",
+            arch_core       : "androidx.arch.core:core-testing:$arch_core",
             work_testing    : "androidx.work:work-testing:$work",
             coroutines_test : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_android",
 
