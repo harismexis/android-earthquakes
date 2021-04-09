@@ -4,6 +4,7 @@
     <string name="app_name">Quakes</string>
     <string name="activity_home_label">Quakes</string>
     <string name="activity_settings_label">Settings</string>
+    <string name="activity_map_label">Map</string>
     <string name="missing_value">missing value</string>
     <string name="please_enter_username">Please enter a registered user name in Settings</string>
     <string name="unauthorised_user">Unauthorised user. Did you enter a registered username in Settings ?</string>
