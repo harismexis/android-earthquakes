@@ -37,5 +37,8 @@ sharedTest folder.
 #### Map
 ![Alt text](screenshots/map-1.png?raw=true "app screenshot")
 
+#### Map - all quakes
+![Alt text](screenshots/map-all-quakes.png?raw=true "app screenshot")
+
 #### Settings
 ![Alt text](screenshots/settings-1.png?raw=true "app screenshot")
