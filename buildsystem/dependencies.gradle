@@ -15,6 +15,7 @@ ext {
     def activity_ktx = '1.2.3'
     def fragment_ktx = '1.3.4'
     def coroutines_android = '1.5.0'
+    def preference = '1.1.0'
     def room = '2.3.0-beta02'
     def dagger_2 = '2.36'
     def gson = '2.8.7'
@@ -59,7 +60,7 @@ ext {
 
             swiperefreshlayout : "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_layout",
 
-            preference         : 'androidx.preference:preference:1.1.0'
+            preference         : "androidx.preference:preference:$preference"
     ]
 
     librariesKapt = [
@@ -107,19 +108,19 @@ ext {
     ]
 
     daggerDependancies = [
-            dagger                : "com.google.dagger:dagger:$dagger_2",
-            dagger_android        : "com.google.dagger:dagger-android:$dagger_2",
-            dagger_android_support: "com.google.dagger:dagger-android-support:$dagger_2"
+            dagger                 : "com.google.dagger:dagger:$dagger_2",
+            dagger_android         : "com.google.dagger:dagger-android:$dagger_2",
+            dagger_android_support : "com.google.dagger:dagger-android-support:$dagger_2"
     ]
 
     annotationProcessorsDependencies = [
-            dagger_compiler         : "com.google.dagger:dagger-compiler:$dagger_2",
-            dagger_android_processor: "com.google.dagger:dagger-android-processor:$dagger_2",
+            dagger_compiler          : "com.google.dagger:dagger-compiler:$dagger_2",
+            dagger_android_processor : "com.google.dagger:dagger-android-processor:$dagger_2",
     ]
 
     playServices = [
             play_services_location : "com.google.android.gms:play-services-location:$play_services_location",
-            play_services_maps : "com.google.android.gms:play-services-maps:$play_services_maps"
+            play_services_maps     : "com.google.android.gms:play-services-maps:$play_services_maps"
     ]
 
 }
