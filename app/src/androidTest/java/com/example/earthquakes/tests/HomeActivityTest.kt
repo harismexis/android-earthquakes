@@ -179,7 +179,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
         mDevice.pressBack() // Pressing back to return from Google Maps
 
         // To make sure we exited Google Maps
-        Thread.sleep(600)
+        Thread.sleep(2000)
 
         // then
         intended(
