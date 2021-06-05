@@ -15,6 +15,7 @@ The project uses the Earthquakes API: https://www.geonames.org/export/JSON-webse
 The API requires a username which can be obtained by creating an account in the website and registering the 
 account username for using the APIs. The registration is done in the same website (geonames.org). 
 The username needs to be entered in the Settings screen of the application.
+Also a MAPS_API_KEY needs to be entered in local.properties.
 
 ### Technologies
 
