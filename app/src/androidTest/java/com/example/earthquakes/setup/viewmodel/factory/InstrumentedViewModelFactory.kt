@@ -37,6 +37,6 @@ abstract class InstrumentedViewModelModule {
 
 fun getMockViewModelMap(): MutableMap<Class<out ViewModel>, Provider<ViewModel>> {
     val viewModels: MutableMap<Class<out ViewModel>, Provider<ViewModel>> = mutableMapOf()
-    viewModels[HomeViewModel::class.java] = Provider { MockHomeViewModelObject.getMockHomeViewModel() }
+    viewModels[HomeViewModel::class.java] = Provider { MockHomeViewModelObject.mockHomeViewModel }
     return viewModels
 }

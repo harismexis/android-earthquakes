@@ -7,13 +7,6 @@ import io.mockk.mockk
 
 object MockHomeViewModelObject {
 
-    private var mockHomeViewModel: HomeViewModel = mockk(relaxed = true)
-
+    val mockHomeViewModel: HomeViewModel = mockk(relaxed = true)
     var quakesResult = MutableLiveData<QuakesResult>()
-
-    fun getMockHomeViewModel(): HomeViewModel {
-        return mockHomeViewModel
-    }
-
-
 }
