@@ -72,7 +72,6 @@ dependencies {
     implementation libraries.values()
     implementation daggerDependancies.values()
     implementation playServices.values()
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     debugImplementation librariesDebug.values()
 
