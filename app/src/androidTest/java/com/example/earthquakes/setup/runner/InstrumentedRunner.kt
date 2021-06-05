@@ -3,7 +3,7 @@ package com.example.earthquakes.setup.runner
 import android.app.Application
 import android.content.Context
 import androidx.test.runner.AndroidJUnitRunner
-import com.example.earthquakes.setup.application.InstrumentedMainApplication
+import com.example.earthquakes.setup.application.InstrumentedApplication
 
 open class InstrumentedRunner : AndroidJUnitRunner() {
 
@@ -12,6 +12,6 @@ open class InstrumentedRunner : AndroidJUnitRunner() {
         className: String?,
         context: Context?
     ): Application {
-        return super.newApplication(classLoader, InstrumentedMainApplication::class.java.name, context)
+        return super.newApplication(classLoader, InstrumentedApplication::class.java.name, context)
     }
 }

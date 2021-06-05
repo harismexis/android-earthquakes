@@ -7,7 +7,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.earthquakes.framework.datasource.database.QuakeDatabase
 import com.example.earthquakes.framework.datasource.database.QuakeLocalDao
 import com.example.earthquakes.framework.datasource.database.LocalQuake
-import com.example.earthquakes.setup.base.InstrumentedTestSetup
+import com.example.earthquakes.setup.base.InstrumentedSetup
 import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAKES_WHEN_ALL_IDS_VALID
 import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAKES_WHEN_NO_DATA
 import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAKES_WHEN_TWO_IDS_ABSENT
@@ -17,7 +17,7 @@ import org.junit.runner.RunWith
 import java.io.IOException
 
 @RunWith(AndroidJUnit4::class)
-class QuakeLocalDaoTest: InstrumentedTestSetup() {
+class QuakeLocalDaoTest: InstrumentedSetup() {
 
     private lateinit var dao: QuakeLocalDao
     private lateinit var database: QuakeDatabase

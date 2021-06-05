@@ -10,13 +10,13 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.example.earthquakes.R
 import com.example.earthquakes.presentation.preferences.PrefsActivity
-import com.example.earthquakes.setup.base.InstrumentedTestSetup
+import com.example.earthquakes.setup.base.InstrumentedSetup
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class PrefsActivityTest : InstrumentedTestSetup() {
+class PrefsActivityTest : InstrumentedSetup() {
 
     @get:Rule
     val testRule: ActivityTestRule<PrefsActivity> =

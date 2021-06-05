@@ -26,7 +26,7 @@ import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAK
 import com.example.earthquakes.presentation.home.ui.activity.HomeActivity
 import com.example.earthquakes.presentation.home.viewmodel.HomeViewModel
 import com.example.earthquakes.presentation.preferences.PrefsActivity
-import com.example.earthquakes.setup.base.InstrumentedTestSetup
+import com.example.earthquakes.setup.base.InstrumentedSetup
 import com.example.earthquakes.setup.testutil.RecyclerMatcher
 import com.example.earthquakes.setup.testutil.RecyclerViewItemCountAssertion
 import com.example.earthquakes.setup.viewmodel.MockHomeViewModelObject
@@ -39,7 +39,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class HomeActivityTest : InstrumentedTestSetup() {
+class HomeActivityTest : InstrumentedSetup() {
 
     @get:Rule
     val testRule: ActivityTestRule<HomeActivity> =

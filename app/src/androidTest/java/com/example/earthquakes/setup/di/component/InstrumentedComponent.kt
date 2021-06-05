@@ -1,6 +1,6 @@
 package com.example.earthquakes.setup.di.component
 
-import com.example.earthquakes.setup.application.InstrumentedMainApplication
+import com.example.earthquakes.setup.application.InstrumentedApplication
 import com.example.earthquakes.setup.di.module.InstrumentedApplicationModule
 import com.example.earthquakes.setup.viewmodel.factory.InstrumentedViewModelModule
 import com.example.earthquakes.framework.di.ActivityBindingsModule
@@ -19,12 +19,12 @@ import javax.inject.Singleton
         InstrumentedApplicationModule::class
     ]
 )
-interface InstrumentedMainComponent : AndroidInjector<InstrumentedMainApplication> {
+interface InstrumentedComponent : AndroidInjector<InstrumentedApplication> {
 
     @Component.Factory
     interface Factory {
-        fun create(@BindsInstance application: InstrumentedMainApplication)
-                : InstrumentedMainComponent
+        fun create(@BindsInstance application: InstrumentedApplication)
+                : InstrumentedComponent
     }
 
 }
