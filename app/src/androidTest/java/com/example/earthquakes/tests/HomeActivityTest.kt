@@ -27,8 +27,8 @@ import com.example.earthquakes.presentation.home.ui.activity.HomeActivity
 import com.example.earthquakes.presentation.home.viewmodel.HomeViewModel
 import com.example.earthquakes.presentation.preferences.PrefsActivity
 import com.example.earthquakes.setup.base.InstrumentedTestSetup
+import com.example.earthquakes.setup.testutil.RecyclerMatcher
 import com.example.earthquakes.setup.testutil.RecyclerViewItemCountAssertion
-import com.example.earthquakes.setup.testutil.RecyclerViewMatcher
 import com.example.earthquakes.setup.viewmodel.MockHomeViewModelObject
 import io.mockk.every
 import org.hamcrest.Matchers.allOf
@@ -37,7 +37,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-
 
 @RunWith(AndroidJUnit4::class)
 class HomeActivityTest : InstrumentedTestSetup() {
@@ -264,8 +263,8 @@ class HomeActivityTest : InstrumentedTestSetup() {
         }
     }
 
-    private fun withRecyclerView(recyclerViewId: Int): RecyclerViewMatcher {
-        return RecyclerViewMatcher(recyclerViewId)
+    private fun withRecyclerView(recyclerViewId: Int): RecyclerMatcher {
+        return RecyclerMatcher(recyclerViewId)
     }
 
     private fun getString(id: Int): String {
