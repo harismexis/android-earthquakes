@@ -1,7 +1,6 @@
 package com.example.earthquakes.home.setup
 
 import androidx.lifecycle.Observer
-import com.example.earthquakes.BuildConfig
 import com.example.earthquakes.domain.Quake
 import com.example.earthquakes.framework.quakeresult.QuakesResult
 import com.example.earthquakes.framework.resource.ResourceProvider
@@ -47,8 +46,8 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     lateinit var mockObserver: Observer<QuakesResult>
 
     private val mockItems = mockParser.getMockQuakesFromFeedWithAllItemsValid()
-    private val mockQuakesResultSuccess = QuakesResult.QuakesSuccess(mockItems)
-    private val mockQuakesResultError = QuakesResult.QuakesError(ERROR_MESSAGE)
+    private val mockQuakesResultSuccess = QuakesResult.Success(mockItems)
+    private val mockQuakesResultError = QuakesResult.Error(ERROR_MESSAGE)
     protected lateinit var subject: HomeViewModel
 
     companion object {

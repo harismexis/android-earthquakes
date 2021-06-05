@@ -50,13 +50,13 @@ class HomeActivityTest : InstrumentedSetup() {
 
     private lateinit var mockViewModel: HomeViewModel
     private lateinit var mockQuakeItems: List<Quake>
-    private lateinit var quakesSuccess: QuakesResult.QuakesSuccess
+    private lateinit var quakesSuccess: QuakesResult.Success
 
     @Before
     fun doBeforeTest() {
         Intents.init()
         mockQuakeItems = mockParser.getMockQuakesFromFeedWithAllItemsValid()
-        quakesSuccess = QuakesResult.QuakesSuccess(mockQuakeItems)
+        quakesSuccess = QuakesResult.Success(mockQuakeItems)
         mockViewModel = MockHomeViewModelObject.mockHomeViewModel
         every { mockViewModel.fetchQuakes() } returns Unit
     }
@@ -82,7 +82,7 @@ class HomeActivityTest : InstrumentedSetup() {
     fun remoteFeedHasSomeIdsAbsent_homeListHasExpectedNumberOfItems() {
         // given
         mockQuakeItems = mockParser.getMockQuakesFromFeedWithSomeIdsAbsent()
-        quakesSuccess = QuakesResult.QuakesSuccess(mockQuakeItems)
+        quakesSuccess = QuakesResult.Success(mockQuakeItems)
         every { mockViewModel.quakesResult } returns MockHomeViewModelObject.quakesResult
 
         // when
@@ -101,7 +101,7 @@ class HomeActivityTest : InstrumentedSetup() {
     fun remoteFeedHasAllIdsAbsent_homeListHasNoItems() {
         // given
         mockQuakeItems = mockParser.getMockQuakesFromFeedWithAllIdsAbsent()
-        quakesSuccess = QuakesResult.QuakesSuccess(mockQuakeItems)
+        quakesSuccess = QuakesResult.Success(mockQuakeItems)
         every { mockViewModel.quakesResult } returns MockHomeViewModelObject.quakesResult
 
         // when
@@ -119,7 +119,7 @@ class HomeActivityTest : InstrumentedSetup() {
     fun remoteFeedHasSomeJsonItemsEmpty_homeListHasExpectedNumberOfItems() {
         // given
         mockQuakeItems = mockParser.getMockQuakesFromFeedWithSomeItemsEmpty()
-        quakesSuccess = QuakesResult.QuakesSuccess(mockQuakeItems)
+        quakesSuccess = QuakesResult.Success(mockQuakeItems)
         every { mockViewModel.quakesResult } returns MockHomeViewModelObject.quakesResult
 
         // when
@@ -138,7 +138,7 @@ class HomeActivityTest : InstrumentedSetup() {
     fun remoteFeedHasEmptyJsonArray_homeListHasNoItems() {
         // given
         mockQuakeItems = mockParser.getMockQuakesFromFeedWithEmptyJsonArray()
-        quakesSuccess = QuakesResult.QuakesSuccess(mockQuakeItems)
+        quakesSuccess = QuakesResult.Success(mockQuakeItems)
         every { mockViewModel.quakesResult } returns MockHomeViewModelObject.quakesResult
 
         // when

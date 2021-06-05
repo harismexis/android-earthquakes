@@ -44,11 +44,11 @@ class HomeViewModel @Inject constructor(
                     prefsManager.getMaxQuakeResults(),
                     prefsManager.getUsername()
                 )
-                mQuakesResult.value = QuakesResult.QuakesSuccess(items)
+                mQuakesResult.value = QuakesResult.Success(items)
                 interactors.interStoreQuakes.invoke(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mQuakesResult.value = QuakesResult.QuakesError(getErrorMessage(e))
+                mQuakesResult.value = QuakesResult.Error(getErrorMessage(e))
             }
         }
     }
@@ -57,10 +57,10 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val items = interactors.interGetLocalQuakes.invoke()
-                mQuakesResult.value = QuakesResult.QuakesSuccess(items)
+                mQuakesResult.value = QuakesResult.Success(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
-                mQuakesResult.value = QuakesResult.QuakesError(e.getErrorMessage())
+                mQuakesResult.value = QuakesResult.Error(e.getErrorMessage())
             }
         }
     }

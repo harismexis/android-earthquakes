@@ -78,8 +78,8 @@ class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
     override fun observeLiveData() {
         viewModel.quakesResult.observe(this, {
             when (it) {
-                is QuakesResult.QuakesSuccess -> populate(it.items)
-                is QuakesResult.QuakesError -> populateError(it.error)
+                is QuakesResult.Success -> populate(it.items)
+                is QuakesResult.Error -> populateError(it.error)
             }
         })
     }
