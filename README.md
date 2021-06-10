@@ -19,13 +19,12 @@ Also a MAPS_API_KEY needs to be entered in local.properties.
 
 ### Technologies
 
-The project is written in Kotlin and uses Clean Architecture + MVVM \
-Some frameworks & libraries have been used i.e. JetPack (Coroutines, LiveData, Room, ViewModel), Retrofit, Gson, 
+Kotlin, Clean Architecture + MVVM, JetPack, Coroutines, LiveData, Room, ViewModel, Retrofit, Gson, 
 Dagger, Mockito-kotlin, Mockk, Espresso.
 
 ### Tests
 
-The project contains Unit Tests and Instrumented Tests. Some network responses from real JSON data have been 
+The project contains Unit & Instrumented Tests. Some network responses from real JSON data have been 
 used for mocking the network call responses and database items. The Tests share common resources under the 
 sharedTest folder.
 
