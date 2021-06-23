@@ -3,14 +3,16 @@ package com.example.earthquakes.setup.viewmodel.factory
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.earthquakes.presentation.home.viewmodel.HomeViewModel
-import com.example.earthquakes.setup.viewmodel.MockHomeViewModelObject
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
+import io.mockk.mockk
 import javax.inject.Inject
 import javax.inject.Provider
 import javax.inject.Singleton
 import kotlin.reflect.KClass
+
+val mockHomeViewModel: HomeViewModel = mockk(relaxed = true)
 
 @Singleton
 class InstrumentedViewModelFactory @Inject constructor() : ViewModelProvider.Factory {
@@ -37,6 +39,6 @@ abstract class InstrumentedViewModelModule {
 
 fun getMockViewModelMap(): MutableMap<Class<out ViewModel>, Provider<ViewModel>> {
     val viewModels: MutableMap<Class<out ViewModel>, Provider<ViewModel>> = mutableMapOf()
-    viewModels[HomeViewModel::class.java] = Provider { MockHomeViewModelObject.mockHomeViewModel }
+    viewModels[HomeViewModel::class.java] = Provider { mockHomeViewModel }
     return viewModels
 }

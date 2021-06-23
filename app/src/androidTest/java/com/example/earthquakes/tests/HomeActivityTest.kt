@@ -1,6 +1,7 @@
 package com.example.earthquakes.tests
 
 import android.content.Intent
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
@@ -24,12 +25,11 @@ import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAK
 import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAKES_WHEN_TWO_EMPTY
 import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAKES_WHEN_TWO_IDS_ABSENT
 import com.example.earthquakes.presentation.home.ui.activity.HomeActivity
-import com.example.earthquakes.presentation.home.viewmodel.HomeViewModel
 import com.example.earthquakes.presentation.preferences.PrefsActivity
 import com.example.earthquakes.setup.base.InstrumentedSetup
 import com.example.earthquakes.setup.testutil.RecyclerMatcher
 import com.example.earthquakes.setup.testutil.RecyclerViewItemCountAssertion
-import com.example.earthquakes.setup.viewmodel.MockHomeViewModelObject
+import com.example.earthquakes.setup.viewmodel.factory.mockHomeViewModel
 import io.mockk.every
 import org.hamcrest.Matchers.allOf
 import org.junit.After
@@ -48,23 +48,22 @@ class HomeActivityTest : InstrumentedSetup() {
             false, false
         )
 
-    private lateinit var mockViewModel: HomeViewModel
     private lateinit var mockQuakeItems: List<Quake>
     private lateinit var quakesSuccess: QuakesResult.Success
+    private var mockQuakesResult = MutableLiveData<QuakesResult>()
 
     @Before
     fun doBeforeTest() {
         Intents.init()
         mockQuakeItems = mockParser.getMockQuakesFromFeedWithAllItemsValid()
         quakesSuccess = QuakesResult.Success(mockQuakeItems)
-        mockViewModel = MockHomeViewModelObject.mockHomeViewModel
-        every { mockViewModel.fetchQuakes() } returns Unit
+        every { mockHomeViewModel.fetchQuakes() } returns Unit
     }
 
     @Test
     fun remoteFeedHasAllItemsValid_then_homeListHasExpectedItems() {
         // given
-        every { mockViewModel.quakesResult } returns MockHomeViewModelObject.quakesResult
+        every { mockHomeViewModel.quakesResult } returns mockQuakesResult
 
         // when
         launchActivityAndMockLiveData()
@@ -83,7 +82,7 @@ class HomeActivityTest : InstrumentedSetup() {
         // given
         mockQuakeItems = mockParser.getMockQuakesFromFeedWithSomeIdsAbsent()
         quakesSuccess = QuakesResult.Success(mockQuakeItems)
-        every { mockViewModel.quakesResult } returns MockHomeViewModelObject.quakesResult
+        every { mockHomeViewModel.quakesResult } returns mockQuakesResult
 
         // when
         launchActivityAndMockLiveData()
@@ -102,7 +101,7 @@ class HomeActivityTest : InstrumentedSetup() {
         // given
         mockQuakeItems = mockParser.getMockQuakesFromFeedWithAllIdsAbsent()
         quakesSuccess = QuakesResult.Success(mockQuakeItems)
-        every { mockViewModel.quakesResult } returns MockHomeViewModelObject.quakesResult
+        every { mockHomeViewModel.quakesResult } returns mockQuakesResult
 
         // when
         launchActivityAndMockLiveData()
@@ -120,7 +119,7 @@ class HomeActivityTest : InstrumentedSetup() {
         // given
         mockQuakeItems = mockParser.getMockQuakesFromFeedWithSomeItemsEmpty()
         quakesSuccess = QuakesResult.Success(mockQuakeItems)
-        every { mockViewModel.quakesResult } returns MockHomeViewModelObject.quakesResult
+        every { mockHomeViewModel.quakesResult } returns mockQuakesResult
 
         // when
         launchActivityAndMockLiveData()
@@ -139,7 +138,7 @@ class HomeActivityTest : InstrumentedSetup() {
         // given
         mockQuakeItems = mockParser.getMockQuakesFromFeedWithEmptyJsonArray()
         quakesSuccess = QuakesResult.Success(mockQuakeItems)
-        every { mockViewModel.quakesResult } returns MockHomeViewModelObject.quakesResult
+        every { mockHomeViewModel.quakesResult } returns mockQuakesResult
 
         // when
         launchActivityAndMockLiveData()
@@ -155,7 +154,7 @@ class HomeActivityTest : InstrumentedSetup() {
     @Test
     fun clickOnMenuSettingsItem_opensPrefsActivity() {
         // given
-        every { mockViewModel.quakesResult } returns MockHomeViewModelObject.quakesResult
+        every { mockHomeViewModel.quakesResult } returns mockQuakesResult
         launchActivityAndMockLiveData()
 
         // when
@@ -168,7 +167,7 @@ class HomeActivityTest : InstrumentedSetup() {
     @Test
     fun clickOnHomeListItem_opensGoogleMaps() {
         // given
-        every { mockViewModel.quakesResult } returns MockHomeViewModelObject.quakesResult
+        every { mockHomeViewModel.quakesResult } returns mockQuakesResult
         val uri = getGoogleMapsUrlAt(mockQuakeItems[0].latitude!!, mockQuakeItems[0].longitude!!)
         val mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
 
@@ -178,7 +177,7 @@ class HomeActivityTest : InstrumentedSetup() {
         mDevice.pressBack() // Pressing back to return from Google Maps
 
         // To make sure we exited Google Maps
-        Thread.sleep(2000)
+        Thread.sleep(3000)
 
         // then
         intended(
@@ -259,7 +258,7 @@ class HomeActivityTest : InstrumentedSetup() {
     private fun launchActivityAndMockLiveData() {
         testRule.launchActivity(null)
         testRule.activity.runOnUiThread {
-            MockHomeViewModelObject.quakesResult.value = quakesSuccess
+            mockQuakesResult.value = quakesSuccess
         }
     }
 
