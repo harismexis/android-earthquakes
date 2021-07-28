@@ -2,7 +2,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        jcenter()
     }
 }
 
@@ -59,9 +58,7 @@ ext {
             room: "androidx.room:room-compiler:$room"
     ]
 
-    librariesDebug = [
-            truth: "com.google.truth:truth:$truth"
-    ]
+    librariesDebug = []
 
     testLibraries = [
             junit           : "androidx.test.ext:junit:$androidx_junit",

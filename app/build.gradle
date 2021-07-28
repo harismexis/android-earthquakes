@@ -71,16 +71,10 @@ dependencies {
     implementation libraries.values()
     implementation daggerDependancies.values()
     implementation playServices.values()
-
-    debugImplementation librariesDebug.values()
-
     kapt librariesKapt.values()
     kapt annotationProcessorsDependencies.values()
-
     testImplementation testLibraries.values()
-
     androidTestImplementation androidTestLibraries.values()
-
     kaptAndroidTest annotationProcessorsDependencies.dagger_compiler
     kaptAndroidTest annotationProcessorsDependencies.dagger_android_processor
 
