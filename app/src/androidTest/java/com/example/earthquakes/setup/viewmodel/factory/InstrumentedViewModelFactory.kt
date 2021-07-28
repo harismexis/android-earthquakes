@@ -17,7 +17,7 @@ val mockHomeViewModel: HomeViewModel = mockk(relaxed = true)
 @Singleton
 class InstrumentedViewModelFactory @Inject constructor() : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>) =
-        getMockViewModelMap()[modelClass]?.get() as T
+        createMockVmMap()[modelClass]?.get() as T
 }
 
 @Target(
@@ -37,7 +37,7 @@ abstract class InstrumentedViewModelModule {
             : ViewModelProvider.Factory
 }
 
-fun getMockViewModelMap(): MutableMap<Class<out ViewModel>, Provider<ViewModel>> {
+fun createMockVmMap(): MutableMap<Class<out ViewModel>, Provider<ViewModel>> {
     val viewModels: MutableMap<Class<out ViewModel>, Provider<ViewModel>> = mutableMapOf()
     viewModels[HomeViewModel::class.java] = Provider { mockHomeViewModel }
     return viewModels
