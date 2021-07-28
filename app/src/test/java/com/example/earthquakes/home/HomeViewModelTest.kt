@@ -1,7 +1,6 @@
 package com.example.earthquakes.home
 
 import com.example.earthquakes.home.setup.HomeViewModelTestSetup
-import com.nhaarman.mockitokotlin2.verifyZeroInteractions
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith

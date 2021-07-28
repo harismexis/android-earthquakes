@@ -3,8 +3,6 @@ package com.example.earthquakes.interactors
 import com.example.earthquakes.data.QuakeRemoteRepository
 import com.example.earthquakes.domain.Quake
 import com.example.earthquakes.setup.UnitTestSetup
-import com.nhaarman.mockitokotlin2.times
-import com.nhaarman.mockitokotlin2.verify
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Test
@@ -13,6 +11,8 @@ import org.junit.runners.JUnit4
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
+import org.mockito.kotlin.times
+import org.mockito.kotlin.verify
 
 @RunWith(JUnit4::class)
 class InterGetRemoteQuakesTest : UnitTestSetup() {

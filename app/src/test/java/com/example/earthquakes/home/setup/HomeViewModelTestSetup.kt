@@ -12,12 +12,12 @@ import com.example.earthquakes.interactors.InterStoreQuakes
 import com.example.earthquakes.presentation.home.viewmodel.HomeViewModel
 import com.example.earthquakes.presentation.preferences.PrefsManager
 import com.example.earthquakes.setup.UnitTestSetup
-import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.verify
-import com.nhaarman.mockitokotlin2.verifyZeroInteractions
 import kotlinx.coroutines.runBlocking
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.kotlin.any
+import org.mockito.kotlin.verify
+import org.mockito.kotlin.verifyZeroInteractions
 
 abstract class HomeViewModelTestSetup : UnitTestSetup() {
 

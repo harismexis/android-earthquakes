@@ -3,13 +3,13 @@ package com.example.earthquakes.interactors
 import com.example.earthquakes.data.QuakeLocalRepository
 import com.example.earthquakes.domain.Quake
 import com.example.earthquakes.setup.UnitTestSetup
-import com.nhaarman.mockitokotlin2.times
-import com.nhaarman.mockitokotlin2.verify
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.Mock
+import org.mockito.kotlin.times
+import org.mockito.kotlin.verify
 
 @RunWith(JUnit4::class)
 class InterStoreQuakesTest : UnitTestSetup() {

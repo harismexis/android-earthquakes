@@ -4,14 +4,14 @@ import com.example.earthquakes.framework.datasource.network.data.QuakeRemoteDao
 import com.example.earthquakes.framework.datasource.network.data.QuakeRemoteDataSource
 import com.example.earthquakes.setup.UnitTestSetup
 import com.example.earthquakes.utils.QuakeRemoteVerificator
-import com.nhaarman.mockitokotlin2.times
-import com.nhaarman.mockitokotlin2.verify
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.kotlin.times
+import org.mockito.kotlin.verify
 
 @RunWith(JUnit4::class)
 class QuakeRemoteDataSourceTest : UnitTestSetup() {
