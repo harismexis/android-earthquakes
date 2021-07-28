@@ -48,15 +48,15 @@ class HomeActivityTest : InstrumentedSetup() {
             false, false
         )
 
-    private lateinit var mockQuakeItems: List<Quake>
+    private lateinit var mockQuakes: List<Quake>
     private lateinit var quakesSuccess: QuakesResult.Success
     private var mockQuakesResult = MutableLiveData<QuakesResult>()
 
     @Before
     fun doBeforeTest() {
         Intents.init()
-        mockQuakeItems = mockParser.getMockQuakesFromFeedWithAllItemsValid()
-        quakesSuccess = QuakesResult.Success(mockQuakeItems)
+        mockQuakes = mockProvider.getMockQuakesFromFeedWithAllItemsValid()
+        quakesSuccess = QuakesResult.Success(mockQuakes)
         every { mockHomeViewModel.fetchQuakes() } returns Unit
     }
 
@@ -80,8 +80,8 @@ class HomeActivityTest : InstrumentedSetup() {
     @Test
     fun remoteFeedHasSomeIdsAbsent_homeListHasExpectedNumberOfItems() {
         // given
-        mockQuakeItems = mockParser.getMockQuakesFromFeedWithSomeIdsAbsent()
-        quakesSuccess = QuakesResult.Success(mockQuakeItems)
+        mockQuakes = mockProvider.getMockQuakesFromFeedWithSomeIdsAbsent()
+        quakesSuccess = QuakesResult.Success(mockQuakes)
         every { mockHomeViewModel.quakesResult } returns mockQuakesResult
 
         // when
@@ -99,8 +99,8 @@ class HomeActivityTest : InstrumentedSetup() {
     @Test
     fun remoteFeedHasAllIdsAbsent_homeListHasNoItems() {
         // given
-        mockQuakeItems = mockParser.getMockQuakesFromFeedWithAllIdsAbsent()
-        quakesSuccess = QuakesResult.Success(mockQuakeItems)
+        mockQuakes = mockProvider.getMockQuakesFromFeedWithAllIdsAbsent()
+        quakesSuccess = QuakesResult.Success(mockQuakes)
         every { mockHomeViewModel.quakesResult } returns mockQuakesResult
 
         // when
@@ -117,8 +117,8 @@ class HomeActivityTest : InstrumentedSetup() {
     @Test
     fun remoteFeedHasSomeJsonItemsEmpty_homeListHasExpectedNumberOfItems() {
         // given
-        mockQuakeItems = mockParser.getMockQuakesFromFeedWithSomeItemsEmpty()
-        quakesSuccess = QuakesResult.Success(mockQuakeItems)
+        mockQuakes = mockProvider.getMockQuakesFromFeedWithSomeItemsEmpty()
+        quakesSuccess = QuakesResult.Success(mockQuakes)
         every { mockHomeViewModel.quakesResult } returns mockQuakesResult
 
         // when
@@ -136,8 +136,8 @@ class HomeActivityTest : InstrumentedSetup() {
     @Test
     fun remoteFeedHasEmptyJsonArray_homeListHasNoItems() {
         // given
-        mockQuakeItems = mockParser.getMockQuakesFromFeedWithEmptyJsonArray()
-        quakesSuccess = QuakesResult.Success(mockQuakeItems)
+        mockQuakes = mockProvider.getMockQuakesFromFeedWithEmptyJsonArray()
+        quakesSuccess = QuakesResult.Success(mockQuakes)
         every { mockHomeViewModel.quakesResult } returns mockQuakesResult
 
         // when
@@ -169,7 +169,7 @@ class HomeActivityTest : InstrumentedSetup() {
     fun clickOnHomeListItem_opensGoogleMaps() {
         // given
         every { mockHomeViewModel.quakesResult } returns mockQuakesResult
-        val uri = getGoogleMapsUrlAt(mockQuakeItems[0].latitude!!, mockQuakeItems[0].longitude!!)
+        val uri = getGoogleMapsUrlAt(mockQuakes[0].latitude!!, mockQuakes[0].longitude!!)
         val mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
 
         // when
@@ -200,7 +200,7 @@ class HomeActivityTest : InstrumentedSetup() {
     }
 
     private fun verifyRecyclerViewShowsExpectedData() {
-        mockQuakeItems.forEachIndexed { index, item ->
+        mockQuakes.forEachIndexed { index, item ->
             // scroll to item to make sure it's visible
             onView(withId(R.id.home_list)).perform(scrollToPosition<RecyclerView.ViewHolder>(index))
 

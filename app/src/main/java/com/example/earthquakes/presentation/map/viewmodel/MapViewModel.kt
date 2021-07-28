@@ -24,7 +24,7 @@ class MapViewModel @Inject constructor(
     fun fetchQuakes() {
         viewModelScope.launch {
             try {
-                val items = interactors.interGetLocalQuakes()
+                val items = interactors.useCaseGetLocalQuakes()
                 mQuakesResult.value = QuakesResult.Success(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())

@@ -3,6 +3,7 @@ package com.example.earthquakes.interactors
 import com.example.earthquakes.data.QuakeRemoteRepository
 import com.example.earthquakes.domain.Quake
 import com.example.earthquakes.setup.UnitTestSetup
+import com.example.earthquakes.usecases.UseCaseGetRemoteQuakes
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Test
@@ -15,13 +16,13 @@ import org.mockito.kotlin.times
 import org.mockito.kotlin.verify
 
 @RunWith(JUnit4::class)
-class InterGetRemoteQuakesTest : UnitTestSetup() {
+class UseCaseGetRemoteQuakesTest : UnitTestSetup() {
 
     @Mock
     private lateinit var mockRepository: QuakeRemoteRepository
 
     private lateinit var mockItems: List<Quake>
-    private lateinit var subject: InterGetRemoteQuakes
+    private lateinit var subject: UseCaseGetRemoteQuakes
 
     init {
         initialise()
@@ -30,7 +31,7 @@ class InterGetRemoteQuakesTest : UnitTestSetup() {
     override fun initialiseClassUnderTest() {
         MockitoAnnotations.initMocks(this)
         setupMocks()
-        subject = InterGetRemoteQuakes(mockRepository)
+        subject = UseCaseGetRemoteQuakes(mockRepository)
     }
 
     private fun setupMocks() {

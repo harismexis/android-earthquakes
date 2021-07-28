@@ -1,8 +1,8 @@
-package com.example.earthquakes.interactors
+package com.example.earthquakes.usecases
 
 import com.example.earthquakes.data.QuakeLocalRepository
 
-class InterGetLocalQuake(
+class UseCaseGetLocalQuake(
     private val repository: QuakeLocalRepository
 ) {
     suspend operator fun invoke(itemId: String) = repository.getQuake(itemId)

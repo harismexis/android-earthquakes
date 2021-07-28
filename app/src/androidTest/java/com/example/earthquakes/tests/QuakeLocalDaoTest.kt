@@ -41,7 +41,7 @@ class QuakeLocalDaoTest: InstrumentedSetup() {
     @Throws(Exception::class)
     fun savingItemsFromRemoteFeedWithAllItemsValid_then_expectedItemsRetrieved() = runBlocking {
         // given
-        val localItems = mockParser.getMockLocalQuakesFromFeedWithAllItemsValid()
+        val localItems = mockProvider.getMockLocalQuakesFromFeedWithAllItemsValid()
 
         // when
         dao.insertItems(localItems)
@@ -55,7 +55,7 @@ class QuakeLocalDaoTest: InstrumentedSetup() {
     @Throws(Exception::class)
     fun savingItemsFromRemoteFeedWithSomeIdsAbsent_then_expectedItemsRetrieved() = runBlocking {
         // given
-        val localItems = mockParser.getMockLocalQuakesFromFeedWithSomeIdsAbsent()
+        val localItems = mockProvider.getMockLocalQuakesFromFeedWithSomeIdsAbsent()
 
         // when
         dao.insertItems(localItems)
@@ -69,7 +69,7 @@ class QuakeLocalDaoTest: InstrumentedSetup() {
     @Throws(Exception::class)
     fun savingItemsFromFeedWithAllIdsAbsent_then_noItemsRetrieved() = runBlocking {
         // given
-        val localItems = mockParser.getMockLocalQuakesFromFeedWithAllIdsAbsent()
+        val localItems = mockProvider.getMockLocalQuakesFromFeedWithAllIdsAbsent()
 
         // when
         dao.insertItems(localItems)

@@ -9,14 +9,14 @@ import com.example.earthquakes.framework.extensions.getErrorMessage
 import com.example.earthquakes.framework.quakeresult.QuakesResult
 import com.example.earthquakes.framework.resource.ResourceProvider
 import com.example.earthquakes.framework.util.network.ConnectivityMonitor
-import com.example.earthquakes.presentation.home.interactors.HomeInteractors
+import com.example.earthquakes.presentation.home.interactors.HomeUseCases
 import com.example.earthquakes.presentation.preferences.PrefsManager
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(
-    private val interactors: HomeInteractors,
+    private val useCases: HomeUseCases,
     private val connectivity: ConnectivityMonitor,
     private val prefsManager: PrefsManager,
     private val resProvider: ResourceProvider
@@ -36,7 +36,7 @@ class HomeViewModel @Inject constructor(
     private fun fetchRemoteQuakes() {
         viewModelScope.launch {
             try {
-                val items = interactors.interGetRemoteQuakes.invoke(
+                val items = useCases.getRemoteQuakes.invoke(
                     prefsManager.getNorth(),
                     prefsManager.getSouth(),
                     prefsManager.getEast(),
@@ -45,7 +45,7 @@ class HomeViewModel @Inject constructor(
                     prefsManager.getUsername()
                 )
                 mQuakesResult.value = QuakesResult.Success(items)
-                interactors.interStoreQuakes.invoke(items)
+                useCases.storeQuakes.invoke(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
                 mQuakesResult.value = QuakesResult.Error(getErrorMessage(e))
@@ -56,7 +56,7 @@ class HomeViewModel @Inject constructor(
     private fun fetchLocalQuakes() {
         viewModelScope.launch {
             try {
-                val items = interactors.interGetLocalQuakes()
+                val items = useCases.getLocalQuakes()
                 mQuakesResult.value = QuakesResult.Success(items)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())

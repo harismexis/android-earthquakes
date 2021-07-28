@@ -3,6 +3,7 @@ package com.example.earthquakes.interactors
 import com.example.earthquakes.data.QuakeLocalRepository
 import com.example.earthquakes.domain.Quake
 import com.example.earthquakes.setup.UnitTestSetup
+import com.example.earthquakes.usecases.UseCaseGetLocalQuake
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Test
@@ -14,13 +15,14 @@ import org.mockito.kotlin.times
 import org.mockito.kotlin.verify
 
 @RunWith(JUnit4::class)
-class InterGetLocalQuakesTest : UnitTestSetup() {
+class UseCaseGetLocalQuakeTest : UnitTestSetup() {
 
     @Mock
     private lateinit var mockRepository: QuakeLocalRepository
 
-    private lateinit var mockItems: List<Quake>
-    private lateinit var subject: InterGetLocalQuakes
+    private lateinit var mockItem: Quake
+    private lateinit var mockItemId: String
+    private lateinit var subject: UseCaseGetLocalQuake
 
     init {
         initialise()
@@ -28,13 +30,14 @@ class InterGetLocalQuakesTest : UnitTestSetup() {
 
     override fun initialiseClassUnderTest() {
         setupMocks()
-        subject = InterGetLocalQuakes(mockRepository)
+        subject = UseCaseGetLocalQuake(mockRepository)
     }
 
     private fun setupMocks() {
-        mockItems = mockParser.getMockQuakesFromFeedWithAllItemsValid()
+        mockItem = mockParser.getMockQuake()
+        mockItemId = mockItem.id
         runBlocking {
-            Mockito.`when`(mockRepository.getQuakes()).thenReturn(mockItems)
+            Mockito.`when`(mockRepository.getQuake(mockItemId)).thenReturn(mockItem)
         }
     }
 
@@ -42,11 +45,11 @@ class InterGetLocalQuakesTest : UnitTestSetup() {
     fun interactorInvoked_then_repositoryCallsExpectedMethodWithExpectedArgAndResult() =
         runBlocking {
             // when
-            val items = subject.invoke()
+            val item = subject.invoke(mockItemId)
 
             // then
-            verify(mockRepository, times(1)).getQuakes()
-            Assert.assertEquals(mockItems.size, items.size)
+            verify(mockRepository, times(1)).getQuake(mockItemId)
+            Assert.assertEquals(mockItem.id, item!!.id)
         }
 
 }
