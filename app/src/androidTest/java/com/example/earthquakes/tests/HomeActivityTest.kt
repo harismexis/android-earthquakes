@@ -50,7 +50,7 @@ class HomeActivityTest : InstrumentedSetup() {
 
     private lateinit var mockQuakes: List<Quake>
     private lateinit var quakesSuccess: QuakesResult.Success
-    private var mockQuakesResult = MutableLiveData<QuakesResult>()
+    private val mockQuakesResult = MutableLiveData<QuakesResult>()
 
     @Before
     fun doBeforeTest() {
