@@ -18,7 +18,7 @@ class QuakeLocalExtTest : UnitTestSetup() {
     @Test
     fun itemsAreConvertedToLocalItems_then_localItemsListIsTheExpected() {
         // given
-        val items = mockParser.getMockQuakesFromFeedWithAllItemsValid()
+        val items = mockProvider.getMockQuakesFromFeedWithAllItemsValid()
 
         // when
         val localItems = items.toLocalItems()
@@ -33,7 +33,7 @@ class QuakeLocalExtTest : UnitTestSetup() {
     @Test
     fun localItemsAreConvertedToItems_then_itemListIsTheExpected() {
         // given
-        val localItems = mockParser.getMockLocalQuakesFromFeedWithAllItemsValid()
+        val localItems = mockProvider.getMockLocalQuakesFromFeedWithAllItemsValid()
 
         // when
         val items = localItems.toItems()

@@ -64,11 +64,11 @@ ext {
     ]
 
     androidTestLibraries = [
+            junit                       : "androidx.test.ext:junit:$androidx_junit",
             test_core                   : "androidx.test:core:$androidx_test",
             runner                      : "androidx.test:runner:$androidx_test",
             rules                       : "androidx.test:rules:$androidx_test",
             orchestrator                : "androidx.test:orchestrator:$androidx_test",
-            junit                       : "androidx.test.ext:junit:$androidx_junit",
             truth                       : "androidx.test.ext:truth:$androidx_test",
             core_testing                : "androidx.arch.core:core-testing:$arch_core",
             coroutines_test : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines",

@@ -34,7 +34,7 @@ class UseCaseGetRemoteQuakesTest : UnitTestSetup() {
     }
 
     private fun setupMocks() {
-        mockItems = mockParser.getMockQuakesFromFeedWithAllItemsValid()
+        mockItems = mockProvider.getMockQuakesFromFeedWithAllItemsValid()
         runBlocking {
             Mockito.`when`(
                 mockRepository.getQuakes(
@@ -50,7 +50,7 @@ class UseCaseGetRemoteQuakesTest : UnitTestSetup() {
     }
 
     @Test
-    fun interactorInvoked_then_repositoryCallsExpectedMethodWithExpectedArgAndResult() =
+    fun useCaseInvoked_then_repositoryCallsExpectedMethodWithExpectedArgAndResult() =
         runBlocking {
             // when
             val items = subject.invoke(

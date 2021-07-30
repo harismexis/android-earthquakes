@@ -30,11 +30,11 @@ class UseCaseStoreQuakesTest : UnitTestSetup() {
     }
 
     private fun setupMocks() {
-        mockItems = mockParser.getMockQuakesFromFeedWithAllItemsValid()
+        mockItems = mockProvider.getMockQuakesFromFeedWithAllItemsValid()
     }
 
     @Test
-    fun interactorInvoked_then_repositoryCallsExpectedMethodWithExpectedArgAndResult() =
+    fun useCaseInvoked_then_repositoryCallsExpectedMethodWithExpectedArgAndResult() =
         runBlocking {
             // when
             subject.invoke(mockItems)

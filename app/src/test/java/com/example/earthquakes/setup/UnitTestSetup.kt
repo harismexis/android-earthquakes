@@ -5,7 +5,7 @@ import org.mockito.MockitoAnnotations
 
 abstract class UnitTestSetup : BaseTestSetup() {
 
-    protected val mockParser = UnitTestFileReader()
+    protected val mockProvider = UnitTestFileReader()
 
     protected val mockNorthBound = 44.1f
     protected val mockSouthBound = -9.9f

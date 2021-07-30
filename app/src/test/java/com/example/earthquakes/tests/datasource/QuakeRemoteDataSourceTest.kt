@@ -36,7 +36,7 @@ class QuakeRemoteDataSourceTest : UnitTestSetup() {
         // when
         runBlocking {
             // given
-            val mockFeed = mockParser.getMockQuakeFeedAllIdsValid()
+            val mockFeed = mockProvider.getMockQuakeFeedAllIdsValid()
             Mockito.`when`(mockApi.getEarthquakes(
                 mockNorthBound,
                 mockSouthBound,

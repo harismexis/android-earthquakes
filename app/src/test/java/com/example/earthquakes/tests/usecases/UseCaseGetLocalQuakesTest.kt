@@ -32,14 +32,14 @@ class UseCaseGetLocalQuakesTest : UnitTestSetup() {
     }
 
     private fun setupMocks() {
-        mockItems = mockParser.getMockQuakesFromFeedWithAllItemsValid()
+        mockItems = mockProvider.getMockQuakesFromFeedWithAllItemsValid()
         runBlocking {
             Mockito.`when`(mockRepository.getQuakes()).thenReturn(mockItems)
         }
     }
 
     @Test
-    fun interactorInvoked_then_repositoryCallsExpectedMethodWithExpectedArgAndResult() =
+    fun useCaseInvoked_repositoryCallsExpectedMethodWithExpectedArgAndResult() =
         runBlocking {
             // when
             val items = subject.invoke()

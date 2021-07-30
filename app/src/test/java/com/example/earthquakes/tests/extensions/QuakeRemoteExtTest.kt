@@ -15,7 +15,7 @@ class QuakeRemoteExtTest : UnitTestSetup() {
     @Test
     fun feedHasAllItemsValid_then_conversionToItemsIsCorrect() {
         // given
-        val remoteFeed = mockParser.getMockQuakeFeedAllIdsValid()
+        val remoteFeed = mockProvider.getMockQuakeFeedAllIdsValid()
 
         // when
         val items = remoteFeed.toItems()
@@ -30,7 +30,7 @@ class QuakeRemoteExtTest : UnitTestSetup() {
     @Test
     fun feedHasSomeIdsAbsent_then_conversionToItemsIsCorrect() {
         // given
-        val remoteFeed = mockParser.getMockQuakeFeedSomeIdsAbsent()
+        val remoteFeed = mockProvider.getMockQuakeFeedSomeIdsAbsent()
 
         // when
         val items = remoteFeed.toItems()
@@ -43,7 +43,7 @@ class QuakeRemoteExtTest : UnitTestSetup() {
     @Test
     fun feedHasSomeEmptyItems_then_conversionToItemsIsCorrect() {
         // given
-        val remoteFeed = mockParser.getMockQuakeFeedSomeItemsEmpty()
+        val remoteFeed = mockProvider.getMockQuakeFeedSomeItemsEmpty()
 
         // when
         val items = remoteFeed.toItems()
@@ -56,7 +56,7 @@ class QuakeRemoteExtTest : UnitTestSetup() {
     @Test
     fun feedHasAllIdsAbsent_then_itemListIsEmpty() {
         // given
-        val remoteFeed = mockParser.getMockQuakeFeedAllIdsAbsent()
+        val remoteFeed = mockProvider.getMockQuakeFeedAllIdsAbsent()
 
         // when
         val items = remoteFeed.toItems()
@@ -68,7 +68,7 @@ class QuakeRemoteExtTest : UnitTestSetup() {
     @Test
     fun feedIsAnEmptyJson_then_itemListIsEmpty() {
         // given
-        val remoteFeed = mockParser.getMockQuakeFeedEmptyJsonArray()
+        val remoteFeed = mockProvider.getMockQuakeFeedEmptyJsonArray()
 
         // when
         val items = remoteFeed.toItems()

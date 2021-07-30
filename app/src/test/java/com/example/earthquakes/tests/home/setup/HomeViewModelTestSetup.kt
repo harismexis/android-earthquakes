@@ -41,7 +41,7 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     @Mock
     lateinit var mockObserver: Observer<QuakesResult>
 
-    private val mockItems = mockParser.getMockQuakesFromFeedWithAllItemsValid()
+    private val mockItems = mockProvider.getMockQuakesFromFeedWithAllItemsValid()
     private val mockQuakesResultSuccess = QuakesResult.Success(mockItems)
     private val mockQuakesResultError = QuakesResult.Error(ERROR_MESSAGE)
     protected lateinit var subject: HomeViewModel

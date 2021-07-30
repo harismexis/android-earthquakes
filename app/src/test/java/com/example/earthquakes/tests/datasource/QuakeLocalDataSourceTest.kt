@@ -34,7 +34,7 @@ class QuakeLocalDataSourceTest : UnitTestSetup() {
     fun dataSourceInsertsItems_then_daoInsertsExpectedLocalItems() {
         runBlocking {
             // given
-            val mockItems = mockParser.getMockQuakesFromFeedWithAllItemsValid()
+            val mockItems = mockProvider.getMockQuakesFromFeedWithAllItemsValid()
             val mockLocalItems = mockItems.toLocalItems()
 
             // when
@@ -49,7 +49,7 @@ class QuakeLocalDataSourceTest : UnitTestSetup() {
     fun dataSourceRequestsItem_then_daoRetrievesExpectedLocalItem() {
         runBlocking {
             // given
-            val mockLocalItem = mockParser.getMockQuake().toLocalItem()
+            val mockLocalItem = mockProvider.getMockQuake().toLocalItem()
             val mockItemId = mockLocalItem.id
             Mockito.`when`(mockDao.getItemById(mockItemId)).thenReturn(mockLocalItem)
 
@@ -65,7 +65,7 @@ class QuakeLocalDataSourceTest : UnitTestSetup() {
     fun dataSourceRequestsItems_then_daoRetrievesExpectedLocalItems() {
         runBlocking {
             // given
-            val mockLocalItems = mockParser.getMockLocalQuakesFromFeedWithAllItemsValid()
+            val mockLocalItems = mockProvider.getMockLocalQuakesFromFeedWithAllItemsValid()
             Mockito.`when`(mockDao.getAllItems()).thenReturn(mockLocalItems)
 
             // when

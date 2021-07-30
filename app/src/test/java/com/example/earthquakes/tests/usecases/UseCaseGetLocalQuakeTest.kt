@@ -33,7 +33,7 @@ class UseCaseGetLocalQuakeTest : UnitTestSetup() {
     }
 
     private fun setupMocks() {
-        mockItem = mockParser.getMockQuake()
+        mockItem = mockProvider.getMockQuake()
         mockItemId = mockItem.id
         runBlocking {
             Mockito.`when`(mockRepository.getQuake(mockItemId)).thenReturn(mockItem)
@@ -41,7 +41,7 @@ class UseCaseGetLocalQuakeTest : UnitTestSetup() {
     }
 
     @Test
-    fun interactorInvoked_then_repositoryCallsExpectedMethodWithExpectedArgAndResult() =
+    fun useCaseInvoked_repositoryCallsExpectedMethodWithExpectedArgAndResult() =
         runBlocking {
             // when
             val item = subject.invoke(mockItemId)
