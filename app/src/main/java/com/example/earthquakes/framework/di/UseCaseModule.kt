@@ -1,11 +1,7 @@
 package com.example.earthquakes.framework.di
 
-import com.example.earthquakes.data.IQuakeLocalDataSource
-import com.example.earthquakes.data.IQuakeRemoteDataSource
 import com.example.earthquakes.data.QuakeLocalRepository
 import com.example.earthquakes.data.QuakeRemoteRepository
-import com.example.earthquakes.framework.data.database.QuakeLocalDataSource
-import com.example.earthquakes.framework.data.network.datasource.QuakeRemoteDataSource
 import com.example.earthquakes.usecases.UseCaseGetLocalQuakes
 import com.example.earthquakes.usecases.UseCaseGetRemoteQuakes
 import com.example.earthquakes.usecases.UseCaseStoreQuakes
@@ -19,25 +15,25 @@ class UseCaseModule {
     @Provides
     @Singleton
     fun useCaseGetLocalQuakes(
-        dataSource: IQuakeLocalDataSource
+        repo: QuakeLocalRepository
     ): UseCaseGetLocalQuakes {
-        return UseCaseGetLocalQuakes(QuakeLocalRepository(dataSource))
+        return UseCaseGetLocalQuakes(repo)
     }
 
     @Provides
     @Singleton
     fun useCaseGetRemoteQuakes(
-        dataSource: IQuakeRemoteDataSource
+        repo: QuakeRemoteRepository
     ): UseCaseGetRemoteQuakes {
-        return UseCaseGetRemoteQuakes(QuakeRemoteRepository(dataSource))
+        return UseCaseGetRemoteQuakes(repo)
     }
 
     @Provides
     @Singleton
     fun useCaseStoreQuakes(
-        dataSource: IQuakeLocalDataSource
+        repo: QuakeLocalRepository
     ): UseCaseStoreQuakes {
-        return UseCaseStoreQuakes(QuakeLocalRepository(dataSource))
+        return UseCaseStoreQuakes(repo)
     }
 
 }
