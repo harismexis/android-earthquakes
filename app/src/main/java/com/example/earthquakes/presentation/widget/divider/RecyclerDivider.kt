@@ -1,4 +1,4 @@
-package com.example.earthquakes.framework.divider
+package com.example.earthquakes.presentation.widget.divider
 
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable

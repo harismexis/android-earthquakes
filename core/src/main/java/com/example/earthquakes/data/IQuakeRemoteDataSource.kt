@@ -2,7 +2,7 @@ package com.example.earthquakes.data
 
 import com.example.earthquakes.domain.Quake
 
-interface QuakeBaseRemoteDataSource {
+interface IQuakeRemoteDataSource {
 
     suspend fun getQuakes(
         north: Float,

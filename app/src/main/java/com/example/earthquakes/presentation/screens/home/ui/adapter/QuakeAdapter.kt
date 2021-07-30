@@ -1,11 +1,11 @@
-package com.example.earthquakes.presentation.home.ui.adapter
+package com.example.earthquakes.presentation.screens.home.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.earthquakes.databinding.VhQuakeItemBinding
 import com.example.earthquakes.domain.Quake
-import com.example.earthquakes.presentation.home.ui.viewholder.QuakeViewHolder
+import com.example.earthquakes.presentation.screens.home.ui.viewholder.QuakeViewHolder
 
 class QuakeAdapter(
     private val models: List<Quake>,

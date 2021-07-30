@@ -1,4 +1,4 @@
-package com.example.earthquakes.framework.base
+package com.example.earthquakes.presentation.base
 
 import android.os.Bundle
 import android.view.View

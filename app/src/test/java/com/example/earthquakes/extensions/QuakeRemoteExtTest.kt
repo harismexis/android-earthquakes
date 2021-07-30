@@ -24,7 +24,7 @@ class QuakeRemoteExtTest : UnitTestSetup() {
         verifyListsHaveSameSize(remoteFeed.earthquakes!!, items)
         verifyListSizeWhenAllIdsValid(remoteFeed.earthquakes!!)
         verifyListSizeWhenAllIdsValid(items)
-        verificator.verifyItemsAgainstRemoteFeed(items, remoteFeed)
+        verificator.verifyItemsAgainstQuakesResponse(items, remoteFeed)
     }
 
     @Test
@@ -37,7 +37,7 @@ class QuakeRemoteExtTest : UnitTestSetup() {
 
         // then
         verifyListSizeWhenSomeIdsAbsent(items)
-        verificator.verifyItemsAgainstRemoteFeed(items, remoteFeed)
+        verificator.verifyItemsAgainstQuakesResponse(items, remoteFeed)
     }
 
     @Test
@@ -50,7 +50,7 @@ class QuakeRemoteExtTest : UnitTestSetup() {
 
         // then
         verifyListSizeWhenSomeItemsEmpty(items)
-        verificator.verifyItemsAgainstRemoteFeed(items, remoteFeed)
+        verificator.verifyItemsAgainstQuakesResponse(items, remoteFeed)
     }
 
     @Test

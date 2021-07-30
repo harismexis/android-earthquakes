@@ -1,5 +1,5 @@
 package com.example.earthquakes.framework.data.network.model
 
-data class QuakeFeed(
+data class QuakesResponse(
     var earthquakes: List<RemoteQuake?>?
 )

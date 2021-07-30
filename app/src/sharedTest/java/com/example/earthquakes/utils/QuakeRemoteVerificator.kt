@@ -1,24 +1,24 @@
 package com.example.earthquakes.utils
 
 import com.example.earthquakes.domain.Quake
-import com.example.earthquakes.framework.data.network.model.QuakeFeed
+import com.example.earthquakes.framework.data.network.model.QuakesResponse
 import com.example.earthquakes.framework.data.network.model.RemoteQuake
 import org.junit.Assert
 
 class QuakeRemoteVerificator {
 
-    fun verifyItemsAgainstRemoteFeed(
-        actualItems: List<Quake>,
-        remoteFeed: QuakeFeed?
+    fun verifyItemsAgainstQuakesResponse(
+        actual: List<Quake>,
+        resp: QuakesResponse?
     ) {
-        if (remoteFeed == null || remoteFeed.earthquakes.isNullOrEmpty()) {
-            verifyListSizeForNoData(actualItems)
+        if (resp == null || resp.earthquakes.isNullOrEmpty()) {
+            verifyListSizeForNoData(actual)
             return
         }
-        val remoteItems = remoteFeed.earthquakes!!
+        val remoteItems = resp.earthquakes!!
         remoteItems.forEach lit@{ remoteItem ->
             if (remoteItem == null || remoteItem.id.isNullOrBlank()) return@lit
-            actualItems.forEach { actualItem ->
+            actual.forEach { actualItem ->
                 if (remoteItem.id == actualItem.id) {
                     verifyItemAgainstRemoteItem(actualItem, remoteItem)
                     return@lit

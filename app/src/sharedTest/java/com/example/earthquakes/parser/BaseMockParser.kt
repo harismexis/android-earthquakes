@@ -2,7 +2,7 @@ package com.example.earthquakes.parser
 
 import com.example.earthquakes.domain.Quake
 import com.example.earthquakes.framework.data.database.LocalQuake
-import com.example.earthquakes.framework.data.network.model.QuakeFeed
+import com.example.earthquakes.framework.data.network.model.QuakesResponse
 import com.example.earthquakes.framework.extensions.toItems
 import com.example.earthquakes.framework.extensions.toLocalItems
 import com.google.gson.Gson
@@ -63,19 +63,19 @@ abstract class BaseMockParser {
 
     // get json object
 
-    fun getMockQuakeFeedAllIdsValid(): QuakeFeed =
+    fun getMockQuakeFeedAllIdsValid(): QuakesResponse =
         getMockQuakeFeed(getMockQuakeDataAllIdsValid())
 
-    fun getMockQuakeFeedSomeIdsAbsent(): QuakeFeed =
+    fun getMockQuakeFeedSomeIdsAbsent(): QuakesResponse =
         getMockQuakeFeed(getMockQuakeDataSomeIdsAbsent())
 
-    fun getMockQuakeFeedSomeItemsEmpty(): QuakeFeed =
+    fun getMockQuakeFeedSomeItemsEmpty(): QuakesResponse =
         getMockQuakeFeed(getMockQuakeDataSomeItemsEmpty())
 
-    fun getMockQuakeFeedAllIdsAbsent(): QuakeFeed =
+    fun getMockQuakeFeedAllIdsAbsent(): QuakesResponse =
         getMockQuakeFeed(getMockQuakeDataAllIdsAbsent())
 
-    fun getMockQuakeFeedEmptyJsonArray(): QuakeFeed =
+    fun getMockQuakeFeedEmptyJsonArray(): QuakesResponse =
         getMockQuakeFeed(mockQuakeDataEmptyJson())
 
     // get raw string json
@@ -97,7 +97,7 @@ abstract class BaseMockParser {
 
     private fun mockQuakeDataEmptyJson(): String = getFileAsString(TEST_QUAKES_FILE_EMPTY_JSON)
 
-    private fun getMockQuakeFeed(text: String): QuakeFeed {
+    private fun getMockQuakeFeed(text: String): QuakesResponse {
         return convertToFeed(text)
     }
 

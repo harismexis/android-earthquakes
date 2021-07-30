@@ -18,14 +18,14 @@ import androidx.test.rule.ActivityTestRule
 import androidx.test.uiautomator.UiDevice
 import com.example.earthquakes.R
 import com.example.earthquakes.domain.Quake
-import com.example.earthquakes.framework.quakeresult.QuakesResult
+import com.example.earthquakes.result.QuakesResult
 import com.example.earthquakes.framework.util.getGoogleMapsUrlAt
 import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAKES_WHEN_ALL_IDS_VALID
 import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAKES_WHEN_NO_DATA
 import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAKES_WHEN_TWO_EMPTY
 import com.example.earthquakes.parser.BaseMockParser.Companion.EXPECTED_NUM_QUAKES_WHEN_TWO_IDS_ABSENT
-import com.example.earthquakes.presentation.home.ui.activity.HomeActivity
-import com.example.earthquakes.presentation.preferences.PrefsActivity
+import com.example.earthquakes.presentation.screens.home.ui.activity.HomeActivity
+import com.example.earthquakes.presentation.screens.preferences.PrefsActivity
 import com.example.earthquakes.setup.base.InstrumentedSetup
 import com.example.earthquakes.setup.testutil.RecyclerMatcher
 import com.example.earthquakes.setup.testutil.RecyclerViewItemCountAssertion

@@ -1,4 +1,4 @@
-package com.example.earthquakes.presentation.home.viewmodel
+package com.example.earthquakes.presentation.screens.home.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -6,10 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.earthquakes.framework.extensions.getErrorMessage
-import com.example.earthquakes.framework.quakeresult.QuakesResult
+import com.example.earthquakes.result.QuakesResult
 import com.example.earthquakes.framework.resource.ResourceProvider
 import com.example.earthquakes.framework.util.network.ConnectivityMonitor
-import com.example.earthquakes.presentation.preferences.PrefsManager
+import com.example.earthquakes.presentation.screens.preferences.PrefsManager
 import com.example.earthquakes.usecases.UseCaseGetLocalQuakes
 import com.example.earthquakes.usecases.UseCaseGetRemoteQuakes
 import com.example.earthquakes.usecases.UseCaseStoreQuakes

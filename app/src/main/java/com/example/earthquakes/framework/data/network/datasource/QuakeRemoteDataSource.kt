@@ -1,16 +1,15 @@
 package com.example.earthquakes.framework.data.network.datasource
 
-import com.example.earthquakes.data.QuakeBaseRemoteDataSource
+import com.example.earthquakes.data.IQuakeRemoteDataSource
 import com.example.earthquakes.domain.Quake
 import com.example.earthquakes.framework.data.network.api.EarthquakeApi
 import com.example.earthquakes.framework.extensions.toItems
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
 class QuakeRemoteDataSource @Inject constructor(
     private val api: EarthquakeApi
-) : QuakeBaseRemoteDataSource {
+) : IQuakeRemoteDataSource {
 
     override suspend fun getQuakes(
         north: Float,

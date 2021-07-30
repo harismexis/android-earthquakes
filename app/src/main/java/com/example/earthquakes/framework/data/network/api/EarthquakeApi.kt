@@ -1,6 +1,6 @@
 package com.example.earthquakes.framework.data.network.api
 
-import com.example.earthquakes.framework.data.network.model.QuakeFeed
+import com.example.earthquakes.framework.data.network.model.QuakesResponse
 import retrofit2.http.*
 
 interface EarthquakeApi {
@@ -13,6 +13,6 @@ interface EarthquakeApi {
         @Query("west") west: Float,
         @Query("maxRows") maxRows: Int,
         @Query("username") username: String
-    ): QuakeFeed?
+    ): QuakesResponse?
 
 }

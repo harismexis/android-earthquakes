@@ -1,4 +1,4 @@
-package com.example.earthquakes.presentation.home.ui.activity
+package com.example.earthquakes.presentation.screens.home.ui.activity
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -15,17 +15,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.earthquakes.R
 import com.example.earthquakes.databinding.ActivityHomeBinding
 import com.example.earthquakes.domain.Quake
-import com.example.earthquakes.framework.base.BaseActivity
+import com.example.earthquakes.presentation.base.BaseActivity
 import com.example.earthquakes.framework.extensions.getErrorMessage
 import com.example.earthquakes.framework.extensions.setDivider
-import com.example.earthquakes.framework.quakeresult.QuakesResult
+import com.example.earthquakes.result.QuakesResult
 import com.example.earthquakes.framework.util.getMapIntent
 import com.example.earthquakes.framework.util.guardLet
-import com.example.earthquakes.presentation.home.ui.adapter.QuakeAdapter
-import com.example.earthquakes.presentation.home.ui.viewholder.QuakeViewHolder
-import com.example.earthquakes.presentation.home.viewmodel.HomeViewModel
-import com.example.earthquakes.presentation.map.MapsActivity
-import com.example.earthquakes.presentation.preferences.PrefsActivity
+import com.example.earthquakes.presentation.screens.home.ui.adapter.QuakeAdapter
+import com.example.earthquakes.presentation.screens.home.ui.viewholder.QuakeViewHolder
+import com.example.earthquakes.presentation.screens.home.viewmodel.HomeViewModel
+import com.example.earthquakes.presentation.screens.map.MapsActivity
+import com.example.earthquakes.presentation.screens.preferences.PrefsActivity
 
 class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
 

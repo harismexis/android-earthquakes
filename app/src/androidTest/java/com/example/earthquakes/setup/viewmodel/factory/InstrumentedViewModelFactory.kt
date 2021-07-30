@@ -2,7 +2,7 @@ package com.example.earthquakes.setup.viewmodel.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.earthquakes.presentation.home.viewmodel.HomeViewModel
+import com.example.earthquakes.presentation.screens.home.viewmodel.HomeViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module

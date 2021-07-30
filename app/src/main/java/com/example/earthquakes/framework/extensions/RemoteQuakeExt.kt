@@ -2,9 +2,9 @@ package com.example.earthquakes.framework.extensions
 
 import com.example.earthquakes.framework.data.network.model.RemoteQuake
 import com.example.earthquakes.domain.Quake
-import com.example.earthquakes.framework.data.network.model.QuakeFeed
+import com.example.earthquakes.framework.data.network.model.QuakesResponse
 
-fun QuakeFeed?.toItems(): List<Quake> {
+fun QuakesResponse?.toItems(): List<Quake> {
     val items = mutableListOf<Quake>()
     if (this == null || this.earthquakes == null) return items.toList()
     val filteredList = this.earthquakes!!.filter { it != null && !it.id.isNullOrBlank() }

@@ -1,5 +1,7 @@
 package com.example.earthquakes.framework.di
 
+import com.example.earthquakes.data.IQuakeLocalDataSource
+import com.example.earthquakes.data.IQuakeRemoteDataSource
 import com.example.earthquakes.data.QuakeLocalRepository
 import com.example.earthquakes.data.QuakeRemoteRepository
 import com.example.earthquakes.framework.data.database.QuakeLocalDataSource
@@ -16,24 +18,24 @@ class UseCaseModule {
 
     @Provides
     @Singleton
-    fun provideUseCaseGetLocalQuakes(
-        dataSource: QuakeLocalDataSource
+    fun useCaseGetLocalQuakes(
+        dataSource: IQuakeLocalDataSource
     ): UseCaseGetLocalQuakes {
         return UseCaseGetLocalQuakes(QuakeLocalRepository(dataSource))
     }
 
     @Provides
     @Singleton
-    fun provideUseCaseGetRemoteQuakes(
-        dataSource: QuakeRemoteDataSource
+    fun useCaseGetRemoteQuakes(
+        dataSource: IQuakeRemoteDataSource
     ): UseCaseGetRemoteQuakes {
         return UseCaseGetRemoteQuakes(QuakeRemoteRepository(dataSource))
     }
 
     @Provides
     @Singleton
-    fun provideUseCaseStoreQuakes(
-        dataSource: QuakeLocalDataSource
+    fun useCaseStoreQuakes(
+        dataSource: IQuakeLocalDataSource
     ): UseCaseStoreQuakes {
         return UseCaseStoreQuakes(QuakeLocalRepository(dataSource))
     }

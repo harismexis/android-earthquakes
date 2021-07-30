@@ -14,3 +14,4 @@ data class LocalQuake(
     @ColumnInfo(name = "source") val source: String?,
     @ColumnInfo(name = "magnitude") val magnitude: Float?
 )
+

@@ -2,7 +2,7 @@ package com.example.earthquakes.data
 
 import com.example.earthquakes.domain.Quake
 
-interface QuakeBaseLocalDataSource {
+interface IQuakeLocalDataSource {
 
     suspend fun storeQuakes(items: List<Quake>)
 

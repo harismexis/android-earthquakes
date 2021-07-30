@@ -17,7 +17,7 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".presentation.home.ui.activity.HomeActivity"
+            android:name="com.example.earthquakes.presentation.screens.home.ui.activity.HomeActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,11 +27,11 @@
         </activity>
 
         <activity
-            android:name=".presentation.preferences.PrefsActivity"
+            android:name="com.example.earthquakes.presentation.screens.preferences.PrefsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity
-            android:name=".presentation.map.MapsActivity"
+            android:name="com.example.earthquakes.presentation.screens.map.MapsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <meta-data

@@ -1,4 +1,4 @@
-package com.example.earthquakes.presentation.preferences
+package com.example.earthquakes.presentation.screens.preferences
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

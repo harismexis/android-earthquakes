@@ -1,8 +1,8 @@
 package com.example.earthquakes.framework.di
 
-import com.example.earthquakes.framework.base.BaseActivity
-import com.example.earthquakes.presentation.home.ui.activity.HomeActivity
-import com.example.earthquakes.presentation.map.MapsActivity
+import com.example.earthquakes.presentation.base.BaseActivity
+import com.example.earthquakes.presentation.screens.home.ui.activity.HomeActivity
+import com.example.earthquakes.presentation.screens.map.MapsActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

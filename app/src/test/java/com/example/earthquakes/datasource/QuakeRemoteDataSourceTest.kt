@@ -65,7 +65,7 @@ class QuakeRemoteDataSourceTest : UnitTestSetup() {
                 mockMaxResults,
                 mockUsername
             )
-            verificator.verifyItemsAgainstRemoteFeed(items, mockFeed)
+            verificator.verifyItemsAgainstQuakesResponse(items, mockFeed)
         }
     }
 

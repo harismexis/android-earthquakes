@@ -1,4 +1,4 @@
-package com.example.earthquakes.presentation.home.ui.viewholder
+package com.example.earthquakes.presentation.screens.home.ui.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.earthquakes.R

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/default_background_color"
-    tools:context="com.example.earthquakes.presentation.home.ui.activity.HomeActivity">
+    tools:context=".presentation.screens.home.ui.activity.HomeActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/home_toolbar"
@@ -35,7 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_toolbar"
-        tools:context="com.example.earthquakes.presentation.home.ui.activity.HomeActivity">
+        tools:context=".presentation.screens.home.ui.activity.HomeActivity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/home_list"

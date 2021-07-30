@@ -3,7 +3,7 @@ package com.example.earthquakes.data
 import com.example.earthquakes.domain.Quake
 
 class QuakeLocalRepository(
-    private val dataSource: QuakeBaseLocalDataSource
+    private val dataSource: IQuakeLocalDataSource
 ) {
     suspend fun storeQuakes(items: List<Quake>) = dataSource.storeQuakes(items)
 

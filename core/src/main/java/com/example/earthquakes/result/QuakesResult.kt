@@ -1,4 +1,4 @@
-package com.example.earthquakes.framework.quakeresult
+package com.example.earthquakes.result
 
 import com.example.earthquakes.domain.Quake
 

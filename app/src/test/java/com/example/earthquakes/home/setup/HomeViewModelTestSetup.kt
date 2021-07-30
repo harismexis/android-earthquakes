@@ -2,14 +2,14 @@ package com.example.earthquakes.home.setup
 
 import androidx.lifecycle.Observer
 import com.example.earthquakes.domain.Quake
-import com.example.earthquakes.framework.quakeresult.QuakesResult
+import com.example.earthquakes.result.QuakesResult
 import com.example.earthquakes.framework.resource.ResourceProvider
 import com.example.earthquakes.framework.util.network.ConnectivityMonitor
 import com.example.earthquakes.usecases.UseCaseGetLocalQuakes
 import com.example.earthquakes.usecases.UseCaseGetRemoteQuakes
 import com.example.earthquakes.usecases.UseCaseStoreQuakes
-import com.example.earthquakes.presentation.home.viewmodel.HomeViewModel
-import com.example.earthquakes.presentation.preferences.PrefsManager
+import com.example.earthquakes.presentation.screens.home.viewmodel.HomeViewModel
+import com.example.earthquakes.presentation.screens.preferences.PrefsManager
 import com.example.earthquakes.setup.UnitTestSetup
 import kotlinx.coroutines.runBlocking
 import org.mockito.Mock

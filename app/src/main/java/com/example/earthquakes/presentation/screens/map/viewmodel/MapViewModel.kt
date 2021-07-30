@@ -1,4 +1,4 @@
-package com.example.earthquakes.presentation.map.viewmodel
+package com.example.earthquakes.presentation.screens.map.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.earthquakes.framework.extensions.getErrorMessage
-import com.example.earthquakes.framework.quakeresult.QuakesResult
+import com.example.earthquakes.result.QuakesResult
 import com.example.earthquakes.usecases.UseCaseGetLocalQuakes
 import kotlinx.coroutines.launch
 import javax.inject.Inject
