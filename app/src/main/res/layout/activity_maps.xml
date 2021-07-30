@@ -33,6 +33,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
-        tools:context=".presentation.screens.map.MapsActivity" />
+        tools:context=".presentation.screens.map.ui.MapsActivity" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

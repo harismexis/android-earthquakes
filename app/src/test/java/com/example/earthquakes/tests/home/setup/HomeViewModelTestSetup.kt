@@ -9,7 +9,7 @@ import com.example.earthquakes.tests.usecases.UseCaseGetLocalQuakes
 import com.example.earthquakes.tests.usecases.UseCaseGetRemoteQuakes
 import com.example.earthquakes.tests.usecases.UseCaseStoreQuakes
 import com.example.earthquakes.presentation.screens.home.viewmodel.HomeViewModel
-import com.example.earthquakes.presentation.screens.preferences.PrefsManager
+import com.example.earthquakes.presentation.screens.preferences.manager.PrefsManager
 import com.example.earthquakes.setup.UnitTestSetup
 import kotlinx.coroutines.runBlocking
 import org.mockito.Mock

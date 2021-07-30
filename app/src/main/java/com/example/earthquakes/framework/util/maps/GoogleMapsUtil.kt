@@ -1,4 +1,4 @@
-package com.example.earthquakes.framework.util
+package com.example.earthquakes.framework.util.maps
 
 import android.content.Intent
 import android.net.Uri

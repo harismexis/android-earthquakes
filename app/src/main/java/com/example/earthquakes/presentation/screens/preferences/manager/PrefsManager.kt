@@ -1,4 +1,4 @@
-package com.example.earthquakes.presentation.screens.preferences
+package com.example.earthquakes.presentation.screens.preferences.manager
 
 import android.content.Context
 import android.content.SharedPreferences

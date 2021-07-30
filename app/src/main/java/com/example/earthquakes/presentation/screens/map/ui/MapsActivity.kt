@@ -1,4 +1,4 @@
-package com.example.earthquakes.presentation.screens.map
+package com.example.earthquakes.presentation.screens.map.ui
 
 import android.view.View
 import android.widget.Toast

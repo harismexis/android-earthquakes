@@ -9,7 +9,7 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.example.earthquakes.R
-import com.example.earthquakes.presentation.screens.preferences.PrefsActivity
+import com.example.earthquakes.presentation.screens.preferences.ui.PrefsActivity
 import com.example.earthquakes.setup.InstrumentedSetup
 import org.junit.Rule
 import org.junit.Test

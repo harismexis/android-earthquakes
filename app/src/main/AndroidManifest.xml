@@ -27,11 +27,11 @@
         </activity>
 
         <activity
-            android:name="com.example.earthquakes.presentation.screens.preferences.PrefsActivity"
+            android:name="com.example.earthquakes.presentation.screens.preferences.ui.PrefsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity
-            android:name="com.example.earthquakes.presentation.screens.map.MapsActivity"
+            android:name="com.example.earthquakes.presentation.screens.map.ui.MapsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <meta-data

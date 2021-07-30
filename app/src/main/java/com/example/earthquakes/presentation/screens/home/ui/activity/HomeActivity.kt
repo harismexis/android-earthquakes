@@ -19,13 +19,13 @@ import com.example.earthquakes.presentation.base.BaseActivity
 import com.example.earthquakes.framework.extensions.getErrorMessage
 import com.example.earthquakes.framework.extensions.setDivider
 import com.example.earthquakes.result.QuakesResult
-import com.example.earthquakes.framework.util.getMapIntent
-import com.example.earthquakes.framework.util.guardLet
+import com.example.earthquakes.framework.util.maps.getMapIntent
+import com.example.earthquakes.framework.util.kotlin.guardLet
 import com.example.earthquakes.presentation.screens.home.ui.adapter.QuakeAdapter
 import com.example.earthquakes.presentation.screens.home.ui.viewholder.QuakeViewHolder
 import com.example.earthquakes.presentation.screens.home.viewmodel.HomeViewModel
-import com.example.earthquakes.presentation.screens.map.MapsActivity
-import com.example.earthquakes.presentation.screens.preferences.PrefsActivity
+import com.example.earthquakes.presentation.screens.map.ui.MapsActivity
+import com.example.earthquakes.presentation.screens.preferences.ui.PrefsActivity
 
 class HomeActivity : BaseActivity(), QuakeViewHolder.QuakeItemClickListener {
 
