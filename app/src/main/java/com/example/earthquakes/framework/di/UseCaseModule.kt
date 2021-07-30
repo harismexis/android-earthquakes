@@ -7,33 +7,11 @@ import com.example.earthquakes.framework.datasource.network.data.QuakeRemoteData
 import com.example.earthquakes.usecases.UseCaseGetLocalQuakes
 import com.example.earthquakes.usecases.UseCaseGetRemoteQuakes
 import com.example.earthquakes.usecases.UseCaseStoreQuakes
-import com.example.earthquakes.presentation.home.interactors.HomeUseCases
-import com.example.earthquakes.presentation.map.interactors.MapInteractors
 import dagger.Module
 import dagger.Provides
 
 @Module
 class UseCaseModule {
-
-    @Provides
-    fun provideHomeUseCases(
-        getLocalQuakes: UseCaseGetLocalQuakes,
-        getRemoteQuakes: UseCaseGetRemoteQuakes,
-        storeQuakes: UseCaseStoreQuakes
-    ): HomeUseCases {
-        return HomeUseCases(
-            getLocalQuakes,
-            getRemoteQuakes,
-            storeQuakes
-        )
-    }
-
-    @Provides
-    fun provideMapUseCases(
-        getLocalQuakes: UseCaseGetLocalQuakes
-    ): MapInteractors {
-        return MapInteractors(getLocalQuakes)
-    }
 
     @Provides
     fun provideUseCaseGetLocalQuakes(

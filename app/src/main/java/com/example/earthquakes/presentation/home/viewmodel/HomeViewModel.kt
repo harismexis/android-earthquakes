@@ -9,7 +9,6 @@ import com.example.earthquakes.framework.extensions.getErrorMessage
 import com.example.earthquakes.framework.quakeresult.QuakesResult
 import com.example.earthquakes.framework.resource.ResourceProvider
 import com.example.earthquakes.framework.util.network.ConnectivityMonitor
-import com.example.earthquakes.presentation.home.interactors.HomeUseCases
 import com.example.earthquakes.presentation.preferences.PrefsManager
 import com.example.earthquakes.usecases.UseCaseGetLocalQuakes
 import com.example.earthquakes.usecases.UseCaseGetRemoteQuakes

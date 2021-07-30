@@ -4,7 +4,6 @@ import androidx.lifecycle.Observer
 import com.example.earthquakes.domain.Quake
 import com.example.earthquakes.framework.quakeresult.QuakesResult
 import com.example.earthquakes.framework.resource.ResourceProvider
-import com.example.earthquakes.presentation.home.interactors.HomeUseCases
 import com.example.earthquakes.framework.util.network.ConnectivityMonitor
 import com.example.earthquakes.usecases.UseCaseGetLocalQuakes
 import com.example.earthquakes.usecases.UseCaseGetRemoteQuakes
@@ -31,9 +30,6 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
     protected lateinit var mockUseCaseStoreItems: UseCaseStoreQuakes
 
     @Mock
-    protected lateinit var mockUseCases: HomeUseCases
-
-    @Mock
     protected lateinit var mockConnectivity: ConnectivityMonitor
 
     @Mock
@@ -56,7 +52,6 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
 
     override fun initialise() {
         super.initialise()
-        // initialiseMockInteractors()
         mockPrefsManager()
     }
 
@@ -70,12 +65,6 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
             mockResourceProvider
         )
     }
-
-//    private fun initialiseMockInteractors() {
-//        Mockito.`when`(mockUseCases.getRemoteQuakes).thenReturn(mockUseCaseGetRemoteItems)
-//        Mockito.`when`(mockUseCases.getLocalQuakes).thenReturn(mockUseCaseGetLocalItems)
-//        Mockito.`when`(mockUseCases.storeQuakes).thenReturn(mockUseCaseStoreItems)
-//    }
 
     // Internet
 

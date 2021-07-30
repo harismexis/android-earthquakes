@@ -1,6 +1,5 @@
 package com.example.earthquakes.framework.di
 
-import android.content.Context
 import com.example.earthquakes.framework.datasource.database.QuakeLocalDao
 import com.example.earthquakes.framework.datasource.database.QuakeDatabase
 import com.example.earthquakes.framework.application.MainApplication
@@ -12,11 +11,6 @@ import dagger.Provides
 
 @Module
 class ApplicationModule {
-
-//    @Provides
-//    fun provideAppContext(app: MainApplication): Context {
-//        return app.applicationContext
-//    }
 
     @Provides
     fun provideLocalDao(app: MainApplication): QuakeLocalDao {
