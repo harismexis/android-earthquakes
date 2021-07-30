@@ -3,7 +3,9 @@ package com.example.earthquakes.framework.resource
 import android.content.Context
 import androidx.annotation.StringRes
 import com.example.earthquakes.R
+import javax.inject.Singleton
 
+@Singleton
 class ResourceProvider(context: Context) {
 
     private val appContext = context.applicationContext

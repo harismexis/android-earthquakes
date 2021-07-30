@@ -1,6 +1,6 @@
 package com.example.earthquakes.datasource
 
-import com.example.earthquakes.framework.datasource.network.data.QuakeRemoteDao
+import com.example.earthquakes.framework.datasource.network.api.EarthquakeApi
 import com.example.earthquakes.framework.datasource.network.data.QuakeRemoteDataSource
 import com.example.earthquakes.setup.UnitTestSetup
 import com.example.earthquakes.utils.QuakeRemoteVerificator
@@ -17,7 +17,7 @@ import org.mockito.kotlin.verify
 class QuakeRemoteDataSourceTest : UnitTestSetup() {
 
     @Mock
-    private lateinit var mockDao: QuakeRemoteDao
+    private lateinit var mockApi: EarthquakeApi
 
     private var verificator = QuakeRemoteVerificator()
 
@@ -28,7 +28,7 @@ class QuakeRemoteDataSourceTest : UnitTestSetup() {
     }
 
     override fun initialiseClassUnderTest() {
-        subject = QuakeRemoteDataSource(mockDao)
+        subject = QuakeRemoteDataSource(mockApi)
     }
 
     @Test
@@ -37,7 +37,7 @@ class QuakeRemoteDataSourceTest : UnitTestSetup() {
         runBlocking {
             // given
             val mockFeed = mockParser.getMockQuakeFeedAllIdsValid()
-            Mockito.`when`(mockDao.getQuakeFeed(
+            Mockito.`when`(mockApi.getEarthquakes(
                 mockNorthBound,
                 mockSouthBound,
                 mockEastBound,
@@ -57,7 +57,7 @@ class QuakeRemoteDataSourceTest : UnitTestSetup() {
             )
 
             // then
-            verify(mockDao, times(1)).getQuakeFeed(
+            verify(mockApi, times(1)).getEarthquakes(
                 mockNorthBound,
                 mockSouthBound,
                 mockEastBound,

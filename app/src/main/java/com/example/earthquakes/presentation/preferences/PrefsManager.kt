@@ -6,7 +6,9 @@ import androidx.preference.PreferenceManager
 import com.example.earthquakes.R
 import com.example.earthquakes.framework.extensions.getStringResAsFloat
 import com.example.earthquakes.framework.extensions.getStringResAsInt
+import javax.inject.Singleton
 
+@Singleton
 class PrefsManager(context: Context) {
 
     private var appContext = context.applicationContext
