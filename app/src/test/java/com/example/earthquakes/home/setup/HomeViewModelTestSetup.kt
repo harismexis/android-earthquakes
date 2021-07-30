@@ -56,24 +56,26 @@ abstract class HomeViewModelTestSetup : UnitTestSetup() {
 
     override fun initialise() {
         super.initialise()
-        initialiseMockInteractors()
+        // initialiseMockInteractors()
         mockPrefsManager()
     }
 
     override fun initialiseClassUnderTest() {
         subject = HomeViewModel(
-            mockUseCases,
+            mockUseCaseGetLocalItems,
+            mockUseCaseGetRemoteItems,
+            mockUseCaseStoreItems,
             mockConnectivity,
             mockPrefsManager,
             mockResourceProvider
         )
     }
 
-    private fun initialiseMockInteractors() {
-        Mockito.`when`(mockUseCases.getRemoteQuakes).thenReturn(mockUseCaseGetRemoteItems)
-        Mockito.`when`(mockUseCases.getLocalQuakes).thenReturn(mockUseCaseGetLocalItems)
-        Mockito.`when`(mockUseCases.storeQuakes).thenReturn(mockUseCaseStoreItems)
-    }
+//    private fun initialiseMockInteractors() {
+//        Mockito.`when`(mockUseCases.getRemoteQuakes).thenReturn(mockUseCaseGetRemoteItems)
+//        Mockito.`when`(mockUseCases.getLocalQuakes).thenReturn(mockUseCaseGetLocalItems)
+//        Mockito.`when`(mockUseCases.storeQuakes).thenReturn(mockUseCaseStoreItems)
+//    }
 
     // Internet
 
