@@ -1,12 +1,12 @@
 package com.example.earthquakes.setup
 
 import com.example.earthquakes.base.BaseTestSetup
-import com.example.earthquakes.testutil.UnitTestMockParser
+import com.example.earthquakes.util.UnitTestFileReader
 import org.mockito.MockitoAnnotations
 
 abstract class UnitTestSetup : BaseTestSetup() {
 
-    protected val mockParser = UnitTestMockParser()
+    protected val mockParser = UnitTestFileReader()
 
     protected val mockNorthBound = 44.1f
     protected val mockSouthBound = -9.9f

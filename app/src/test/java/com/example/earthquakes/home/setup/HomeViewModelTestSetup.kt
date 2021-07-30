@@ -3,7 +3,7 @@ package com.example.earthquakes.home.setup
 import androidx.lifecycle.Observer
 import com.example.earthquakes.domain.Quake
 import com.example.earthquakes.result.QuakesResult
-import com.example.earthquakes.framework.resource.ResourceProvider
+import com.example.earthquakes.framework.util.resource.ResourceProvider
 import com.example.earthquakes.framework.util.network.ConnectivityMonitor
 import com.example.earthquakes.usecases.UseCaseGetLocalQuakes
 import com.example.earthquakes.usecases.UseCaseGetRemoteQuakes

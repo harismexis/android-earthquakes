@@ -1,7 +1,7 @@
 package com.example.earthquakes.framework.extensions
 
 import com.example.earthquakes.domain.Quake
-import com.example.earthquakes.framework.data.database.LocalQuake
+import com.example.earthquakes.framework.data.database.table.LocalQuake
 
 fun List<LocalQuake?>?.toItems(): List<Quake> {
     val items = mutableListOf<Quake>()

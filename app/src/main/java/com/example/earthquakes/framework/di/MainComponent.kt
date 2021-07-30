@@ -1,7 +1,7 @@
 package com.example.earthquakes.framework.di
 
 import com.example.earthquakes.framework.application.MainApplication
-import com.example.earthquakes.framework.viewmodel.factory.ViewModelModule
+import com.example.earthquakes.presentation.factory.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector

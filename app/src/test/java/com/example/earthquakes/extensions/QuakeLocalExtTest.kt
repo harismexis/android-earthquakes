@@ -3,9 +3,9 @@ package com.example.earthquakes.extensions
 import com.example.earthquakes.framework.extensions.toItems
 import com.example.earthquakes.framework.extensions.toLocalItems
 import com.example.earthquakes.setup.UnitTestSetup
-import com.example.earthquakes.utils.QuakeLocalVerificator
-import com.example.earthquakes.utils.verifyListSizeWhenAllIdsValid
-import com.example.earthquakes.utils.verifyListsHaveSameSize
+import com.example.earthquakes.util.QuakeLocalVerificator
+import com.example.earthquakes.util.verifyListSizeWhenAllIdsValid
+import com.example.earthquakes.util.verifyListsHaveSameSize
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4

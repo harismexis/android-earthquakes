@@ -2,7 +2,7 @@ package com.example.earthquakes.extensions
 
 import com.example.earthquakes.framework.extensions.toItems
 import com.example.earthquakes.setup.UnitTestSetup
-import com.example.earthquakes.utils.*
+import com.example.earthquakes.util.*
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4

@@ -3,7 +3,7 @@ package com.example.earthquakes.datasource
 import com.example.earthquakes.framework.data.network.api.EarthquakeApi
 import com.example.earthquakes.framework.data.network.datasource.QuakeRemoteDataSource
 import com.example.earthquakes.setup.UnitTestSetup
-import com.example.earthquakes.utils.QuakeRemoteVerificator
+import com.example.earthquakes.util.QuakeRemoteVerificator
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import org.junit.runner.RunWith
