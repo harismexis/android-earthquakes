@@ -20,10 +20,10 @@ import com.example.earthquakes.R
 import com.example.earthquakes.domain.Quake
 import com.example.earthquakes.result.QuakesResult
 import com.example.earthquakes.framework.util.getGoogleMapsUrlAt
-import com.example.earthquakes.parser.BaseFileReader.Companion.EXPECTED_NUM_QUAKES_WHEN_ALL_IDS_VALID
-import com.example.earthquakes.parser.BaseFileReader.Companion.EXPECTED_NUM_QUAKES_WHEN_NO_DATA
-import com.example.earthquakes.parser.BaseFileReader.Companion.EXPECTED_NUM_QUAKES_WHEN_TWO_EMPTY
-import com.example.earthquakes.parser.BaseFileReader.Companion.EXPECTED_NUM_QUAKES_WHEN_TWO_IDS_ABSENT
+import com.example.earthquakes.reader.BaseFileReader.Companion.EXPECTED_NUM_QUAKES_WHEN_ALL_IDS_VALID
+import com.example.earthquakes.reader.BaseFileReader.Companion.EXPECTED_NUM_QUAKES_WHEN_NO_DATA
+import com.example.earthquakes.reader.BaseFileReader.Companion.EXPECTED_NUM_QUAKES_WHEN_TWO_EMPTY
+import com.example.earthquakes.reader.BaseFileReader.Companion.EXPECTED_NUM_QUAKES_WHEN_TWO_IDS_ABSENT
 import com.example.earthquakes.presentation.screens.home.ui.activity.HomeActivity
 import com.example.earthquakes.presentation.screens.preferences.PrefsActivity
 import com.example.earthquakes.setup.InstrumentedSetup

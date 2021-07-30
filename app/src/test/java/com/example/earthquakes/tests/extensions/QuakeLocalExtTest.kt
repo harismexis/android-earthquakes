@@ -1,4 +1,4 @@
-package com.example.earthquakes.extensions
+package com.example.earthquakes.tests.extensions
 
 import com.example.earthquakes.framework.extensions.toItems
 import com.example.earthquakes.framework.extensions.toLocalItems

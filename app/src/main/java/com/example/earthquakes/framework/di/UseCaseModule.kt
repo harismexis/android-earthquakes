@@ -2,9 +2,9 @@ package com.example.earthquakes.framework.di
 
 import com.example.earthquakes.data.QuakeLocalRepository
 import com.example.earthquakes.data.QuakeRemoteRepository
-import com.example.earthquakes.usecases.UseCaseGetLocalQuakes
-import com.example.earthquakes.usecases.UseCaseGetRemoteQuakes
-import com.example.earthquakes.usecases.UseCaseStoreQuakes
+import com.example.earthquakes.tests.usecases.UseCaseGetLocalQuakes
+import com.example.earthquakes.tests.usecases.UseCaseGetRemoteQuakes
+import com.example.earthquakes.tests.usecases.UseCaseStoreQuakes
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

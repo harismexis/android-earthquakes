@@ -1,6 +1,6 @@
-package com.example.earthquakes.home
+package com.example.earthquakes.tests.home
 
-import com.example.earthquakes.home.setup.HomeViewModelTestSetup
+import com.example.earthquakes.tests.home.setup.HomeViewModelTestSetup
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith

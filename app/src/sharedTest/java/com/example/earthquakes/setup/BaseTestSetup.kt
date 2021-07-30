@@ -1,4 +1,4 @@
-package com.example.earthquakes.base
+package com.example.earthquakes.setup
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import org.junit.Rule

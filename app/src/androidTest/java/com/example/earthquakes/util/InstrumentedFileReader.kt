@@ -1,7 +1,7 @@
 package com.example.earthquakes.util
 
 import androidx.test.platform.app.InstrumentationRegistry
-import com.example.earthquakes.parser.BaseFileReader
+import com.example.earthquakes.reader.BaseFileReader
 
 class InstrumentedFileReader: BaseFileReader() {
 

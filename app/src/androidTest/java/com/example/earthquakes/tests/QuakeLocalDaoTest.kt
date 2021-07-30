@@ -8,9 +8,9 @@ import com.example.earthquakes.framework.data.database.db.QuakeDatabase
 import com.example.earthquakes.framework.data.database.dao.QuakeLocalDao
 import com.example.earthquakes.framework.data.database.table.LocalQuake
 import com.example.earthquakes.setup.InstrumentedSetup
-import com.example.earthquakes.parser.BaseFileReader.Companion.EXPECTED_NUM_QUAKES_WHEN_ALL_IDS_VALID
-import com.example.earthquakes.parser.BaseFileReader.Companion.EXPECTED_NUM_QUAKES_WHEN_NO_DATA
-import com.example.earthquakes.parser.BaseFileReader.Companion.EXPECTED_NUM_QUAKES_WHEN_TWO_IDS_ABSENT
+import com.example.earthquakes.reader.BaseFileReader.Companion.EXPECTED_NUM_QUAKES_WHEN_ALL_IDS_VALID
+import com.example.earthquakes.reader.BaseFileReader.Companion.EXPECTED_NUM_QUAKES_WHEN_NO_DATA
+import com.example.earthquakes.reader.BaseFileReader.Companion.EXPECTED_NUM_QUAKES_WHEN_TWO_IDS_ABSENT
 import kotlinx.coroutines.runBlocking
 import org.junit.*
 import org.junit.runner.RunWith

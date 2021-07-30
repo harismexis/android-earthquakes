@@ -1,4 +1,4 @@
-package com.example.earthquakes.usecases
+package com.example.earthquakes.tests.usecases
 
 import com.example.earthquakes.data.QuakeRemoteRepository
 import com.example.earthquakes.domain.Quake

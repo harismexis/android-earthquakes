@@ -1,4 +1,4 @@
-package com.example.earthquakes.parser
+package com.example.earthquakes.reader
 
 import com.example.earthquakes.domain.Quake
 import com.example.earthquakes.framework.data.database.table.LocalQuake

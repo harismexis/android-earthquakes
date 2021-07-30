@@ -1,6 +1,6 @@
 package com.example.earthquakes.util
 
-import com.example.earthquakes.parser.BaseFileReader
+import com.example.earthquakes.reader.BaseFileReader
 
 class UnitTestFileReader : BaseFileReader() {
 

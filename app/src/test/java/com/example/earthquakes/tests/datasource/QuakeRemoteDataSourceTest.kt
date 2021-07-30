@@ -1,4 +1,4 @@
-package com.example.earthquakes.datasource
+package com.example.earthquakes.tests.datasource
 
 import com.example.earthquakes.framework.data.network.api.EarthquakeApi
 import com.example.earthquakes.framework.data.network.datasource.QuakeRemoteDataSource

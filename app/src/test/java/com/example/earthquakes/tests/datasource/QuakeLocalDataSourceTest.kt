@@ -1,4 +1,4 @@
-package com.example.earthquakes.datasource
+package com.example.earthquakes.tests.datasource
 
 import com.example.earthquakes.framework.data.database.dao.QuakeLocalDao
 import com.example.earthquakes.framework.data.database.datasource.QuakeLocalDataSource

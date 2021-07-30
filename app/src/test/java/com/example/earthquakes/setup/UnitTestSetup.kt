@@ -1,6 +1,5 @@
 package com.example.earthquakes.setup
 
-import com.example.earthquakes.base.BaseTestSetup
 import com.example.earthquakes.util.UnitTestFileReader
 import org.mockito.MockitoAnnotations
 

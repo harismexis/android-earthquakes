@@ -1,13 +1,13 @@
-package com.example.earthquakes.home.setup
+package com.example.earthquakes.tests.home.setup
 
 import androidx.lifecycle.Observer
 import com.example.earthquakes.domain.Quake
 import com.example.earthquakes.result.QuakesResult
 import com.example.earthquakes.framework.util.resource.ResourceProvider
 import com.example.earthquakes.framework.util.network.ConnectivityMonitor
-import com.example.earthquakes.usecases.UseCaseGetLocalQuakes
-import com.example.earthquakes.usecases.UseCaseGetRemoteQuakes
-import com.example.earthquakes.usecases.UseCaseStoreQuakes
+import com.example.earthquakes.tests.usecases.UseCaseGetLocalQuakes
+import com.example.earthquakes.tests.usecases.UseCaseGetRemoteQuakes
+import com.example.earthquakes.tests.usecases.UseCaseStoreQuakes
 import com.example.earthquakes.presentation.screens.home.viewmodel.HomeViewModel
 import com.example.earthquakes.presentation.screens.preferences.PrefsManager
 import com.example.earthquakes.setup.UnitTestSetup

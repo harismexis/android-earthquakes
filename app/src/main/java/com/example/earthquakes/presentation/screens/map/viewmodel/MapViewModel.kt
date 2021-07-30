@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.earthquakes.framework.extensions.getErrorMessage
 import com.example.earthquakes.result.QuakesResult
-import com.example.earthquakes.usecases.UseCaseGetLocalQuakes
+import com.example.earthquakes.tests.usecases.UseCaseGetLocalQuakes
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
