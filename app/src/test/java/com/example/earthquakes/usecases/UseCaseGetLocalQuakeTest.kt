@@ -1,25 +1,27 @@
-package com.example.earthquakes.interactors
+package com.example.earthquakes.usecases
 
 import com.example.earthquakes.data.QuakeLocalRepository
 import com.example.earthquakes.domain.Quake
 import com.example.earthquakes.setup.UnitTestSetup
-import com.example.earthquakes.usecases.UseCaseStoreQuakes
 import kotlinx.coroutines.runBlocking
+import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.Mock
+import org.mockito.Mockito
 import org.mockito.kotlin.times
 import org.mockito.kotlin.verify
 
 @RunWith(JUnit4::class)
-class UseCaseStoreQuakesTest : UnitTestSetup() {
+class UseCaseGetLocalQuakeTest : UnitTestSetup() {
 
     @Mock
     private lateinit var mockRepository: QuakeLocalRepository
 
-    private lateinit var mockItems: List<Quake>
-    private lateinit var subject: UseCaseStoreQuakes
+    private lateinit var mockItem: Quake
+    private lateinit var mockItemId: String
+    private lateinit var subject: UseCaseGetLocalQuake
 
     init {
         initialise()
@@ -27,21 +29,26 @@ class UseCaseStoreQuakesTest : UnitTestSetup() {
 
     override fun initialiseClassUnderTest() {
         setupMocks()
-        subject = UseCaseStoreQuakes(mockRepository)
+        subject = UseCaseGetLocalQuake(mockRepository)
     }
 
     private fun setupMocks() {
-        mockItems = mockParser.getMockQuakesFromFeedWithAllItemsValid()
+        mockItem = mockParser.getMockQuake()
+        mockItemId = mockItem.id
+        runBlocking {
+            Mockito.`when`(mockRepository.getQuake(mockItemId)).thenReturn(mockItem)
+        }
     }
 
     @Test
     fun interactorInvoked_then_repositoryCallsExpectedMethodWithExpectedArgAndResult() =
         runBlocking {
             // when
-            subject.invoke(mockItems)
+            val item = subject.invoke(mockItemId)
 
             // then
-            verify(mockRepository, times(1)).storeQuakes(mockItems)
+            verify(mockRepository, times(1)).getQuake(mockItemId)
+            Assert.assertEquals(mockItem.id, item!!.id)
         }
 
 }

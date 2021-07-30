@@ -1,9 +1,8 @@
-package com.example.earthquakes.interactors
+package com.example.earthquakes.usecases
 
 import com.example.earthquakes.data.QuakeRemoteRepository
 import com.example.earthquakes.domain.Quake
 import com.example.earthquakes.setup.UnitTestSetup
-import com.example.earthquakes.usecases.UseCaseGetRemoteQuakes
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Test
