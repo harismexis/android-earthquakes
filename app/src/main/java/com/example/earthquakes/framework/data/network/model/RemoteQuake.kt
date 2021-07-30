@@ -1,4 +1,4 @@
-package com.example.earthquakes.framework.datasource.network.model
+package com.example.earthquakes.framework.data.network.model
 
 import com.google.gson.annotations.SerializedName
 

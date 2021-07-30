@@ -1,6 +1,6 @@
-package com.example.earthquakes.framework.datasource.network.api
+package com.example.earthquakes.framework.data.network.api
 
-import com.example.earthquakes.framework.datasource.network.model.QuakeFeed
+import com.example.earthquakes.framework.data.network.model.QuakeFeed
 import retrofit2.http.*
 
 interface EarthquakeApi {

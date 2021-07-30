@@ -1,7 +1,7 @@
 package com.example.earthquakes.utils
 
 import com.example.earthquakes.domain.Quake
-import com.example.earthquakes.framework.datasource.database.LocalQuake
+import com.example.earthquakes.framework.data.database.LocalQuake
 import org.junit.Assert
 
 class QuakeLocalVerificator {

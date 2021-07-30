@@ -1,7 +1,7 @@
 package com.example.earthquakes.datasource
 
-import com.example.earthquakes.framework.datasource.database.QuakeLocalDao
-import com.example.earthquakes.framework.datasource.database.QuakeLocalDataSource
+import com.example.earthquakes.framework.data.database.QuakeLocalDao
+import com.example.earthquakes.framework.data.database.QuakeLocalDataSource
 import com.example.earthquakes.framework.extensions.toLocalItems
 import com.example.earthquakes.framework.extensions.toLocalItem
 import com.example.earthquakes.setup.UnitTestSetup

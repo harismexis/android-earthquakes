@@ -2,18 +2,20 @@ package com.example.earthquakes.framework.di
 
 import com.example.earthquakes.data.QuakeLocalRepository
 import com.example.earthquakes.data.QuakeRemoteRepository
-import com.example.earthquakes.framework.datasource.database.QuakeLocalDataSource
-import com.example.earthquakes.framework.datasource.network.data.QuakeRemoteDataSource
+import com.example.earthquakes.framework.data.database.QuakeLocalDataSource
+import com.example.earthquakes.framework.data.network.datasource.QuakeRemoteDataSource
 import com.example.earthquakes.usecases.UseCaseGetLocalQuakes
 import com.example.earthquakes.usecases.UseCaseGetRemoteQuakes
 import com.example.earthquakes.usecases.UseCaseStoreQuakes
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 class UseCaseModule {
 
     @Provides
+    @Singleton
     fun provideUseCaseGetLocalQuakes(
         dataSource: QuakeLocalDataSource
     ): UseCaseGetLocalQuakes {
@@ -21,6 +23,7 @@ class UseCaseModule {
     }
 
     @Provides
+    @Singleton
     fun provideUseCaseGetRemoteQuakes(
         dataSource: QuakeRemoteDataSource
     ): UseCaseGetRemoteQuakes {
@@ -28,6 +31,7 @@ class UseCaseModule {
     }
 
     @Provides
+    @Singleton
     fun provideUseCaseStoreQuakes(
         dataSource: QuakeLocalDataSource
     ): UseCaseStoreQuakes {

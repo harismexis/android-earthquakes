@@ -1,4 +1,4 @@
-package com.example.earthquakes.framework.datasource.database
+package com.example.earthquakes.framework.data.database
 
 import androidx.room.*
 

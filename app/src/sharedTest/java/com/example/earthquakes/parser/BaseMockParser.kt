@@ -1,8 +1,8 @@
 package com.example.earthquakes.parser
 
 import com.example.earthquakes.domain.Quake
-import com.example.earthquakes.framework.datasource.database.LocalQuake
-import com.example.earthquakes.framework.datasource.network.model.QuakeFeed
+import com.example.earthquakes.framework.data.database.LocalQuake
+import com.example.earthquakes.framework.data.network.model.QuakeFeed
 import com.example.earthquakes.framework.extensions.toItems
 import com.example.earthquakes.framework.extensions.toLocalItems
 import com.google.gson.Gson

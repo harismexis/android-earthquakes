@@ -1,8 +1,8 @@
 package com.example.earthquakes.utils
 
 import com.example.earthquakes.domain.Quake
-import com.example.earthquakes.framework.datasource.network.model.QuakeFeed
-import com.example.earthquakes.framework.datasource.network.model.RemoteQuake
+import com.example.earthquakes.framework.data.network.model.QuakeFeed
+import com.example.earthquakes.framework.data.network.model.RemoteQuake
 import org.junit.Assert
 
 class QuakeRemoteVerificator {

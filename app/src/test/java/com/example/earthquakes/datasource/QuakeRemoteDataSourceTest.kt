@@ -1,7 +1,7 @@
 package com.example.earthquakes.datasource
 
-import com.example.earthquakes.framework.datasource.network.api.EarthquakeApi
-import com.example.earthquakes.framework.datasource.network.data.QuakeRemoteDataSource
+import com.example.earthquakes.framework.data.network.api.EarthquakeApi
+import com.example.earthquakes.framework.data.network.datasource.QuakeRemoteDataSource
 import com.example.earthquakes.setup.UnitTestSetup
 import com.example.earthquakes.utils.QuakeRemoteVerificator
 import kotlinx.coroutines.runBlocking
