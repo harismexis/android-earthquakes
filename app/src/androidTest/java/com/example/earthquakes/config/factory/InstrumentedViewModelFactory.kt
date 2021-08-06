@@ -20,15 +20,6 @@ class InstrumentedViewModelFactory @Inject constructor() : ViewModelProvider.Fac
         createMockVmMap()[modelClass]?.get() as T
 }
 
-@Target(
-    AnnotationTarget.FUNCTION,
-    AnnotationTarget.PROPERTY_GETTER,
-    AnnotationTarget.PROPERTY_SETTER
-)
-@kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
-@MapKey
-internal annotation class ViewModelKey(val value: KClass<out ViewModel>)
-
 @Module
 abstract class InstrumentedViewModelModule {
 
